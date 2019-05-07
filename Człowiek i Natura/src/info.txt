@@ -1,0 +1,7 @@
+Człowiek i Natura
+
+version 0.1.0
+
+Authors
+Dominik Bartkowski
+Przemysław Rybaczuk
