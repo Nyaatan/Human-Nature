@@ -1,0 +1,48 @@
+WOLF{
+strength = <7,10>
+initiative = <6,8>
+type = <predator>
+drop = <(meat;0.3),(fur;0.1),(blood;0.05)>
+}
+
+SHEEP{
+strength = <3,5>
+initiative = <4,6>
+type = <prey>
+drop = <(meat;0.3),(wool;0.2),(blood;0.05)>
+}
+
+CYBERSHEEP {
+strength = <12,14>
+initiative = <5,8>
+type = <prey>
+drop = <(cyberwool;0.8),(quantumCircuit;0.1),(cyberheart;0.01)>
+}
+
+OAK{
+strength = <15,15>
+initiative = <1,1>
+type = <plant>
+drop = <(wood;1)>
+}
+
+FLOWER{
+strength = <1,1>
+initiative = <2,3>
+type = <plant>
+drop = <(flower;1)>
+}
+
+HOGWEED{
+strength = <11,11>
+initiative = <2,2>
+type = <plant>
+drop = <(hogweedLeaf;0.7)>
+}
+
+HUMAN{
+strngth = <6,6>
+initiative = <10,10>
+type = <predator>
+drop = <(meat,1)>
+}
