@@ -70,5 +70,7 @@ public abstract class Organism {
     public void die()
     {
         World.setField(this.coordinates, null);
+
+        this.setCoords(World.graveyard);
     }
 }

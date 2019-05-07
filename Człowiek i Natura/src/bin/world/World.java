@@ -11,14 +11,14 @@ import bin.world.organism.Plant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static bin.enums.Species.HUMAN;
 import static bin.enums.Values.INITIATIVE;
 
 public class World {
     public static DataLoader dataLoader = new DataLoader();
-    public static Pair<Integer,Integer> graveyard = new Pair<>(0,0);
+    public static final Pair<Integer,Integer> graveyard = new Pair<>(0,0);
 
     private static Pair<Integer,Integer> mapDimensions = new Pair<>(Integer.parseInt(dataLoader.getConfig("map_size").get(0)), Integer.parseInt(dataLoader.getConfig("map_size").get(1)));
     //the size of the map as maximum X and maximum Y
@@ -55,7 +55,7 @@ public class World {
 
     public static void makeOrganism(Species specimen, Pair <Integer,Integer> coords)
     {
-        if(map[coords.getX()][coords.getY()] == null && specimen != HUMAN) {
+        if(map[coords.getX()][coords.getY()] == null) {
             Organism newOrganism = null; //TODO FIX
 
             boolean isAnimal = false;
@@ -76,6 +76,22 @@ public class World {
         }
     }
 
+    public static void cleanCorpses()
+    {
+        Iterator orgIter = organisms.iterator();
+        while(orgIter.hasNext())
+        {
+            ArrayList<Organism> orgList = (ArrayList<Organism>) orgIter.next();
+            Iterator orgListIter = orgList.iterator();
+            while(orgListIter.hasNext())
+            {
+                Organism organism = (Organism) orgListIter.next();
+                if(organism.getCoords().equals(graveyard)) orgListIter.remove();
+            }
+        }
+        System.gc();
+    }
+
     public World() //TODO test
     {
         for(int i=0;i<15;++i) organisms.add(new ArrayList<>());
@@ -86,7 +102,9 @@ public class World {
             {
                 if(ThreadLocalRandom.current().nextInt(mapDimensions.getX()*mapDimensions.getY()) < mapDimensions.getX()*mapDimensions.getY()*Integer.parseInt(dataLoader.getConfig("spawn_rate").get(0))/100){
                     //chance of spawning: map_fields * config.spawn_rate%
-                    makeOrganism(Species.values()[ThreadLocalRandom.current().nextInt(Species.values().length)], new Pair<>(x,y)); //make random organism
+                    Species species = Species.HUMAN;
+                    while(species.equals(Species.HUMAN)) species = Species.values()[ThreadLocalRandom.current().nextInt(Species.values().length)];
+                    makeOrganism(species , new Pair<>(x,y)); //make random organism
                 }
                 else map[x][y] = null;
             }
