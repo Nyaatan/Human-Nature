@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static bin.enums.OrganismType.*;
 import static bin.enums.Species.*;
 import static bin.enums.Values.*;
-
+//TODO COMMENTS
 public class Animal extends Organism implements InteractionsPassive, InteractionsActive {
 
     private Pair<Integer, Integer> oldCoords;
