@@ -18,18 +18,16 @@ import static bin.enums.Values.INITIATIVE;
 public class World {
     private static ArrayList<String> log = new ArrayList<>();
 
-    private static WorldAPI worldAPI = new WorldAPI();
-
-    public static DataLoader dataLoader = new DataLoader(); //loads configs
     public static final Pair<Integer,Integer> graveyard = new Pair<>(0,0); //not accessible field on map, stores dead organism
 
-    private static Pair<Integer,Integer> mapDimensions = new Pair<>(Integer.parseInt(dataLoader.getConfig("map_size").get(0)), Integer.parseInt(dataLoader.getConfig("map_size").get(1)));
+    private static Pair<Integer,Integer> mapDimensions = new Pair<>(Integer.parseInt(DataLoader.getConfig("map_size").get(0)),
+            Integer.parseInt(DataLoader.getConfig("map_size").get(1)));
     //the size of the map as maximum X and maximum Y
 
     private static ArrayList<ArrayList<Organism>> organisms = new ArrayList<>(15); //contains all existing organisms in an initiative-sorted manner
     private static Organism[][] map; //reference array placing organisms in a place corresponding their coordinates,
 
-    public static Pair<Integer,Integer> getCoordsInDirection(Directions dir, Pair<Integer, Integer> fromCoords)
+    private static Pair<Integer,Integer> getCoordsInDirection(Directions dir, Pair<Integer, Integer> fromCoords)
     {
         if (dir.equals(Directions.UP) && fromCoords.getY() <= mapDimensions.getY())
             return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
@@ -52,11 +50,11 @@ public class World {
         else return new Pair<>(fromCoords.getX(),fromCoords.getY());
     } //returns correct pair of coordinates based on direction. Coordinates can't be outside the map
 
-    public static Organism getField(Pair<Integer,Integer> coords) { return map[coords.getX()][coords.getY()]; } //returns reference to object at given coordinates
+    private static Organism getField(Pair<Integer,Integer> coords) { return map[coords.getX()][coords.getY()]; } //returns reference to object at given coordinates
 
-    public static void setField(Pair<Integer,Integer> coords, Organism organism) { map[coords.getX()][coords.getY()] = organism;}
+    private static void setField(Pair<Integer,Integer> coords, Organism organism) { map[coords.getX()][coords.getY()] = organism;}
 
-    public static void makeOrganism(Species specimen, Pair <Integer,Integer> coords) //create new organism of given specimen at given coords
+    private static void makeOrganism(Species specimen, Pair <Integer,Integer> coords) //create new organism of given specimen at given coords
     {
         if(map[coords.getX()][coords.getY()] == null) {
             Organism newOrganism;
@@ -80,7 +78,7 @@ public class World {
         }
     }
 
-    public static void cleanCorpse() //delete dead organisms from organisms list
+    private static void cleanCorpse() //delete dead organisms from organisms list
     {
         for(ArrayList<Organism> organismList: organisms) {
             organismList.remove(map[graveyard.getX()][graveyard.getY()]);
@@ -90,6 +88,8 @@ public class World {
 
     public World() //generates map and starting organisms
     {
+        new WorldAPI();
+        new WorldSPI();
         for(int i=0;i<15;++i) organisms.add(new ArrayList<>());
         map = new Organism[mapDimensions.getX()][mapDimensions.getY()];
         for(int y=1;y<mapDimensions.getY();++y)
@@ -98,9 +98,9 @@ public class World {
             {
                 Species species = Species.HUMAN; //get random non-human specimen
                 while(species.equals(Species.HUMAN)) species = Species.values()[ThreadLocalRandom.current().nextInt(Species.values().length)];
-                if(ThreadLocalRandom.current().nextInt(mapDimensions.getX()*mapDimensions.getY()) <
-                        mapDimensions.getX()*mapDimensions.getY()*
-                                Integer.parseInt(dataLoader.getSpeciesConfig(species.toString()).get("spawn_rate").get(0))/100){
+                if(ThreadLocalRandom.current().nextInt(
+                        mapDimensions.getX()*mapDimensions.getY()) < mapDimensions.getX()*mapDimensions.getY()*
+                                Integer.parseInt(DataLoader.getSpeciesConfig(species.toString()).get("spawn_rate").get(0))/100){
                     //chance of spawning: map_fields * specimen.spawn_rate/100
 
                     makeOrganism(species , new Pair<>(x,y)); //make random organism
@@ -110,10 +110,12 @@ public class World {
         }
     }
 
-    public static void Log(Organism organism, String message) {
+    private static void log(Organism organism, String message) {
         String logText = organism.getSpecies() + "(x: " + organism.getCoords().getX() + ", y: " + organism.getCoords().getY() + ", ID: " + organism.toString().split("@")[1] + ") " + message;
         log.add(logText);
     }
+
+    private static void log(String message) {log.add(message);}
 
     private static ArrayList<String> getLog() {
         ArrayList<String> returnLog = new ArrayList<>(log);
@@ -145,6 +147,17 @@ public class World {
         public static Organism[][] getMap() {return World.getMap();}
         public static ArrayList<ArrayList<Organism>> getOrganisms() {return World.getOrganisms();}
         public static HashMap<Species, Integer> getPopulation() { return World.getPopulation();}
+    }
+
+    public static class WorldSPI {
+        public static void cleanCorpse() { World.cleanCorpse(); }
+        public static void makeOrganism(Species specimen, Pair <Integer,Integer> coords) { World.makeOrganism(specimen,coords); }
+        public static void setField(Pair<Integer,Integer> coords, Organism organism) { World.setField(coords, organism); }
+        public static Organism getField(Pair<Integer,Integer> coords) { return World.getField(coords); }
+        public static Pair<Integer,Integer> getCoordsInDirection(Directions dir, Pair<Integer, Integer> fromCoords) {
+            return World.getCoordsInDirection(dir, fromCoords); }
+        public static void log(Organism organism, String message) { World.log(organism, message); }
+        public static void log(String message) { World.log(message); }
     }
 
 }
