@@ -4,13 +4,13 @@ import bin.enums.Directions;
 import bin.enums.Species;
 import bin.interfaces.InteractionsPassive;
 import bin.system.Pair;
-import bin.world.World;
+import bin.world.World.WorldSPI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Math.abs;
 
-public class Plant extends Organism implements InteractionsPassive {
+public class Plant extends Mob implements InteractionsPassive {
     public Plant(Species specimen, Pair<Integer, Integer> coords) {
         super(specimen, coords);
     }
@@ -26,11 +26,11 @@ public class Plant extends Organism implements InteractionsPassive {
             Pair<Integer,Integer> coords = null;
             for(int j=0;j< ThreadLocalRandom.current().nextInt(1,range);++j) //get random field in range
             {
-                coords = World.getCoordsInDirection(Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)], this.coordinates);
+                coords = WorldSPI.getCoordsInDirection(Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)], this.coordinates);
             }
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {
-                World.makeOrganism(this.specimen, coords);
+                WorldSPI.makeOrganism(this.specimen, coords);
             }
         }
     }

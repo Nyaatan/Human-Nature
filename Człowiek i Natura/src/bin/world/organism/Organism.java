@@ -1,11 +1,12 @@
 package bin.world.organism;
 
-import bin.enums.GameObjectName;
 import bin.enums.OrganismType;
 import bin.enums.Species;
 import bin.enums.Values;
+import bin.system.DataLoader;
 import bin.system.Pair;
 import bin.world.World;
+import bin.world.World.WorldSPI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,26 +16,14 @@ public abstract class Organism {
 
     Organism(Species specimen, Pair<Integer, Integer> coords)
     {
-        HashMap<String,ArrayList<String>> creationData = World.dataLoader.getSpeciesConfig(specimen.toString());
+        HashMap<String,ArrayList<String>> creationData = DataLoader.getSpeciesConfig(specimen.toString());
         this.age = 0;
         this.specimen = specimen;
         this.type = OrganismType.valueOf(creationData.get("type").get(0).toUpperCase());
         this.strength = randFromCreationData(creationData, 0, 1, "strength");
         this.initiative = randFromCreationData(creationData, 0, 1, "initiative");
         this.coordinates = coords;
-        this.dropTable = parseDropTableData(creationData.get("drop"));
     } //sets up values of organism based on data from species file
-
-    private ArrayList<Pair<GameObjectName,Double>> parseDropTableData(ArrayList<String> dropTableData)
-    {
-        ArrayList<Pair<GameObjectName,Double>> result = new ArrayList<>();
-        for(String dataPair : dropTableData)
-        {
-            String[] newDataPair = dataPair.substring(1, dataPair.length() - 1).split(";");
-            result.add(new Pair<>(GameObjectName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
-        }
-        return result;
-    } //parses dropTable data from config to workable format
 
     private int randFromCreationData(HashMap<String, ArrayList<String>> creationData, int idMin, int idMax, String key)
     {
@@ -48,8 +37,6 @@ public abstract class Organism {
     protected Species specimen; //defines specimen of the organism, affecting stats and special interactions
 
     protected Pair <Integer, Integer> coordinates; //coordinates on world map
-
-    protected ArrayList<Pair<GameObjectName,Double>> dropTable = new ArrayList<>(); //list of chances for a GameObject drop upon death by human
 
     public void setCoords(Pair<Integer, Integer> coords){ this.coordinates = coords; } //imports new coordinates on map
 
@@ -69,10 +56,10 @@ public abstract class Organism {
 
     public void die() //move organism to graveyard
     {
-        World.Log( this," dies");
-        World.setField(this.coordinates, null);
+        WorldSPI.log( this," dies");
+        WorldSPI.setField(this.coordinates, null);
         this.setCoords(World.graveyard);
-        World.setField(World.graveyard, this);
-        World.cleanCorpse();
+        WorldSPI.setField(World.graveyard, this);
+        WorldSPI.cleanCorpse();
     }
 }
