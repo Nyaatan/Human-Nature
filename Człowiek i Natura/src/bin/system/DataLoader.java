@@ -3,7 +3,7 @@ package bin.system;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-
+//TODO COMMENTS
 public class DataLoader {
 
     private String pathCfg = System.getProperty("user.dir") + "\\src\\cfg\\config";
@@ -58,8 +58,6 @@ public class DataLoader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-        assert configScan != null;
         while(configScan.hasNextLine()) { outputLines.add(configScan.nextLine()); }
     }
 

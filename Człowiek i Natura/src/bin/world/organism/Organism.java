@@ -23,7 +23,7 @@ public abstract class Organism {
         this.initiative = randFromCreationData(creationData, 0, 1, "initiative");
         this.coordinates = coords;
         this.dropTable = parseDropTableData(creationData.get("drop"));
-    } //TODO TEST
+    } //sets up values of organism based on data from species file
 
     private ArrayList<Pair<GameObjectName,Double>> parseDropTableData(ArrayList<String> dropTableData)
     {
@@ -31,25 +31,25 @@ public abstract class Organism {
         for(String dataPair : dropTableData)
         {
             String[] newDataPair = dataPair.substring(1, dataPair.length() - 1).split(";");
-            result.add(new Pair<GameObjectName,Double>(GameObjectName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
+            result.add(new Pair<>(GameObjectName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
         }
         return result;
-    }
+    } //parses dropTable data from config to workable format
 
     private int randFromCreationData(HashMap<String, ArrayList<String>> creationData, int idMin, int idMax, String key)
     {
         return ThreadLocalRandom.current().nextInt(Integer.parseInt(creationData.get(key).get(idMin)), Integer.parseInt(creationData.get(key).get(idMax))+1);
-    }
+    } //rand a number in bounds from creation config
 
     protected int strength; //defines winner in case of collision between organisms
     protected int initiative; //defines, which organism will move first
     protected int age; //turns since creation of an object
-    protected OrganismType type;
+    protected OrganismType type; //type of organism, affects interactions
     protected Species specimen; //defines specimen of the organism, affecting stats and special interactions
 
     protected Pair <Integer, Integer> coordinates; //coordinates on world map
 
-    protected ArrayList<Pair<GameObjectName,Double>> dropTable = new ArrayList<>(); //list of chances for a GameObject drop
+    protected ArrayList<Pair<GameObjectName,Double>> dropTable = new ArrayList<>(); //list of chances for a GameObject drop upon death by human
 
     public void setCoords(Pair<Integer, Integer> coords){ this.coordinates = coords; } //imports new coordinates on map
 
@@ -67,10 +67,12 @@ public abstract class Organism {
 
     public Pair<Integer,Integer> getCoords() {return this.coordinates;} //returns current coordinates of the organism
 
-    public void die()
+    public void die() //move organism to graveyard
     {
+        World.Log( this," dies");
         World.setField(this.coordinates, null);
-
         this.setCoords(World.graveyard);
+        World.setField(World.graveyard, this);
+        World.cleanCorpse();
     }
 }
