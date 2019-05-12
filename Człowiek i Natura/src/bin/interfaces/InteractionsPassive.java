@@ -1,5 +1,5 @@
 package bin.interfaces;
 
 public interface InteractionsPassive {
-    void Multiply(); //returns ArrayList of new organisms
+    void multiply(); //returns ArrayList of new organisms
 }

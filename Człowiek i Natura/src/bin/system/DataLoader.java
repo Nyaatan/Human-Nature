@@ -1,6 +1,7 @@
 package bin.system;
 
-import bin.world.World;
+import bin.enums.item.ItemName;
+import bin.world.WorldSPI;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,24 +15,59 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-//TODO COMMENTS
 public class DataLoader {
+    private static String pathDir = System.getProperty("user.dir");
 
-    private static String pathCfg = System.getProperty("user.dir") + "\\cfg";
-    private static String pathSrcCfg = System.getProperty("user.dir") + "\\src\\cfg";
+    private static String pathCfg = pathDir  + "\\cfg";
+    private static String pathSrcCfg = pathDir + "\\src\\cfg";
 
-    private static HashMap<String,ArrayList<String>> configs = new HashMap<>();
+    private static String pathItemDescr = pathDir + "\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
+    private static String pathSrcItemDescr = pathDir + "\\src\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
+
+    private static HashMap<String,ArrayList<String>> configs = new HashMap<>(); //contains config lines equivalent to their file, which name is the key
+    private static HashMap<String,ArrayList<String>> descriptionsItem = new HashMap<>();
 
     public DataLoader() {
+        loadConfigs(configs, pathCfg, pathSrcCfg);
+        loadConfigs(descriptionsItem, pathItemDescr, pathSrcItemDescr);
+    }
+
+    public static ArrayList<String> getConfig(String config, String fileName) {
+        for(String configLine : configs.get(fileName))
+        {
+            if(configLine.contains(config)) { return parseConfig(configLine); }
+        }
+        return null;
+    } //returns a config line from "config" file
+
+    public static HashMap<String,ArrayList<String>> getBlockConfig(String blockName, String fileName)
+    {
+        return parseBlockConfig(configs.get(fileName.toLowerCase()), blockName);
+    } ////returns a config block from "species" file
+
+    public static Pair<String, String> getItemDescription(ItemName name) {
+        Pair<String, String> fullDescription = new Pair<>("", "");
+        fullDescription.setX(descriptionsItem.get(name.toString().toLowerCase()).get(0));
+        StringBuilder description = new StringBuilder();
+        for(String line : descriptionsItem.get(name.toString().toLowerCase()))
+        {
+            if(!line.equals(fullDescription.getX())) description.append(line);
+        }
+        fullDescription.setY(description.toString());
+        return fullDescription;
+    }
+
+    private static void loadConfigs(HashMap<String,ArrayList<String>> configs, String path, String pathSrc)
+    {
         ArrayList<File> filesInFolder = new ArrayList<>();
         try{ //does it for dev version
-            filesInFolder = (ArrayList<File>) Files.walk(Paths.get(pathSrcCfg)) //collects paths to each file in cfg folder and iterates by files
+            filesInFolder = (ArrayList<File>) Files.walk(Paths.get(pathSrc)) //collects paths to each file in cfg folder and iterates by files
                     .filter(Files::isRegularFile) //filters regular files to futher use
                     .map(Path::toFile) //maps every file by it's path
                     .collect(Collectors.toList()); //put's files into a list
         } catch (IOException e) { //if dev path is not found, do the same for release version. It just didn't work when I tried to do it regular way, so here will this heresy be
             try {
-                filesInFolder = (ArrayList<File>) Files.walk(Paths.get(pathCfg)) //as above, but with different path
+                filesInFolder = (ArrayList<File>) Files.walk(Paths.get(path)) //as above, but with different path
                         .filter(Files::isRegularFile)
                         .map(Path::toFile)
                         .collect(Collectors.toList());
@@ -41,29 +77,35 @@ public class DataLoader {
         }
         for(File file : filesInFolder) {
             try {
-                loadConfig(file);
+                loadConfig(file, configs);
             } catch (Exception e) {
-                loadConfig(file);
+                loadConfig(file, configs);
             }
         }
     }
 
-    public static ArrayList<String> getConfig(String config) {
-        for(String configLine : configs.get("config"))
-        {
-            if(configLine.contains(config)) { return parseConfig(configLine); }
+    private static void loadConfig(File file, HashMap<String, ArrayList<String>> configs) //loads config lines from file
+    {
+        ArrayList<String> outputLines = new ArrayList<>();
+        Scanner configScan = null;
+        try {
+            configScan = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            GameSystem.addLog(e.toString());
         }
-        return null;
-    } //returns a config line from "config" file
+        assert configScan != null;
+        while(configScan.hasNextLine()) { outputLines.add(configScan.nextLine()); }
+        configs.put(file.getName(), outputLines);
+    }
 
-    public static HashMap<String,ArrayList<String>> getSpeciesConfig(String Specimen)
+    private static HashMap<String,ArrayList<String>> parseBlockConfig(ArrayList<String> configLines, String blockName)
     {
         HashMap<String, ArrayList<String>> result = new HashMap<>();
         boolean inParsing = false;
 
-        for(String configLine : configs.get("species"))
+        for(String configLine : configLines)
         {
-            if(configLine.contains(Specimen.toUpperCase())) { inParsing = true; }
+            if(configLine.contains(blockName.toUpperCase())) { inParsing = true; }
             if(inParsing)
             {
                 if(configLine.contains("="))
@@ -77,20 +119,6 @@ public class DataLoader {
             }
         }
         return null;
-    } ////returns a config block from "species" file
-
-    private static void loadConfig(File file) //loads config lines from file
-    {
-        ArrayList<String> outputLines = new ArrayList<>();
-        Scanner configScan = null;
-        try {
-            configScan = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            World.WorldSPI.log(e.toString());
-        }
-        assert configScan != null;
-        while(configScan.hasNextLine()) { outputLines.add(configScan.nextLine()); }
-        configs.put(file.getName(), outputLines);
     }
 
     private static ArrayList<String> parseConfig(String configLine) //config format: config_name = <config>

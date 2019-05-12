@@ -1,14 +1,16 @@
+import bin.enums.item.ItemName;
 import bin.system.DataLoader;
-import bin.world.World;
-
-import static bin.world.World.WorldAPI;
+import bin.system.GameSystem;
+import bin.world.WorldAPI;
+import bin.world.organism.Organism;
 
 public class Main {
 
     public static void main(String[] args) {
-        new DataLoader(); //loads configs
-        new World();
-        System.out.println(WorldAPI.getPopulation());
-        System.out.println(WorldAPI.getLog());
+        GameSystem.Initialize();
+        GameSystem.Start();
+        System.out.println(DataLoader.getItemDescription(ItemName.WOOD).getY());
+        System.out.println(WorldAPI.getPopulation(0));
+        Organism[][] map = WorldAPI.getMap(0);
     }
 }

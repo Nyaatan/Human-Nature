@@ -1,38 +1,44 @@
 package bin.world.organism;
 
-import bin.enums.GameObjectName;
+import bin.enums.item.ItemName;
 import bin.enums.Species;
 import bin.system.DataLoader;
 import bin.system.Pair;
-import bin.world.gameObject.GameObject;
+import bin.world.item.Item;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ThreadLocalRandom;
 
 abstract class Mob extends Organism {
-    Mob(Species specimen, Pair<Integer, Integer> coords) {
-        super(specimen, coords);
-        HashMap<String,ArrayList<String>> creationData = DataLoader.getSpeciesConfig(specimen.toString());
+    Mob(int worldID, Species specimen, Pair<Integer, Integer> coords) {
+        super(worldID, specimen, coords);
+        HashMap<String,ArrayList<String>> creationData = DataLoader.getBlockConfig(specimen.toString(), "species");
         this.dropTable = parseDropTableData(creationData.get("drop"));
 
     }
-    private ArrayList<Pair<GameObjectName,Double>> dropTable; //list of chances for a GameObject drop upon death by human
+    private ArrayList<Pair<ItemName,Double>> dropTable; //list of chances for a Item drop upon death by human
 
-    private ArrayList<Pair<GameObjectName,Double>> parseDropTableData(ArrayList<String> dropTableData)
+    private ArrayList<Pair<ItemName,Double>> parseDropTableData(ArrayList<String> dropTableData)
     {
-        ArrayList<Pair<GameObjectName,Double>> result = new ArrayList<>();
+        ArrayList<Pair<ItemName,Double>> result = new ArrayList<>();
         for(String dataPair : dropTableData)
         {
             String[] newDataPair = dataPair.substring(1, dataPair.length() - 1).split(";");
-            result.add(new Pair<>(GameObjectName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
+            result.add(new Pair<>(ItemName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
         }
         return result;
     } //parses dropTable data from config to workable format
 
-    public GameObject drop()
+    public ArrayList<Item> drop()
     {
-        GameObject possibleDrop = new GameObject(null,null,null); //TODO
-        return possibleDrop;
+        ArrayList<Item> drop = new ArrayList<>();
+        for( Pair<ItemName, Double> possibleDrop : dropTable)
+        {
+            if(ThreadLocalRandom.current().nextDouble(possibleDrop.getY()) < possibleDrop.getY())
+                drop.add(new Item(possibleDrop.getX()));
+        }
+        return drop;
     }
 
 }

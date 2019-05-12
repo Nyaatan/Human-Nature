@@ -1,0 +1,49 @@
+WOOD{
+type = <crafting>
+description = <wood>
+}
+
+WOOL{
+type = <crafting>
+description = <wool>
+}
+
+MEAT{
+type = <crafting>
+description = <meat>
+}
+
+FUR{
+type = <crafting>
+description = <fur>
+}
+
+BLOOD{
+type = <crafting>
+description = <blood>
+}
+
+CYBERWOOL{
+type = <crafting>
+description = <cyberwool>
+}
+
+QUANTUMCIRCUIT{
+type = <crafting>
+description = <quantumcircuit>
+}
+
+CYBERHEART{
+type = <crafting>
+description = <cyberheart>
+}
+
+FLOWER{
+type = <crafting>
+description = <flower>
+}
+
+HOGWEEDLEAF{
+type = <crafting>
+description = <hogweedleaf>
+}

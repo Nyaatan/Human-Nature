@@ -1,5 +1,5 @@
-package bin.enums;
+package bin.enums.item;
 
-public enum GameObjectName {
+public enum ItemName {
     WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF
 }
