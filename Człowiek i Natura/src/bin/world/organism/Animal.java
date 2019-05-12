@@ -5,7 +5,7 @@ import bin.enums.Species;
 import bin.interfaces.InteractionsActive;
 import bin.interfaces.InteractionsPassive;
 import bin.system.Pair;
-import bin.world.World.WorldSPI;
+import bin.world.WorldSPI;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -17,18 +17,19 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
 
     private Pair<Integer, Integer> oldCoords;
 
-    public Animal(Species specimen, Pair<Integer, Integer> coords) {
-        super(specimen, coords);
+    public Animal(int worldID, Species specimen, Pair<Integer, Integer> coords) {
+        super(worldID, specimen, coords);
     }
 
     @Override
-    public void Interact(Organism interacted) {
-        if(this.specimen == interacted.getSpecies()) {this.Multiply(); this.setCoords(this.oldCoords);}
+    public void interact(Organism interacted) {
+        if(this.specimen == interacted.getSpecies()) {this.multiply(); this.setCoords(this.oldCoords);}
         else if(this.type == PREDATOR)
         {
             if(interacted.getType() != PLANT || interacted.getSpecies() == FLOWER) {
 
-                if (this.strength > interacted.getValue(STRENGTH)) { interacted.die(); WorldSPI.setField(this.coordinates, this); }
+                if (this.strength > interacted.getValue(STRENGTH)) { interacted.die(); WorldSPI.setField(this.worldID,
+                        this.coordinates, this); }
                 else this.die();
             }
             else if(interacted.getSpecies() == HOGWEED)
@@ -45,11 +46,11 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
             {
                 if(this.strength >= interacted.getValue(STRENGTH)) {
                     interacted.die();
-                    WorldSPI.setField(this.coordinates, this);
+                    WorldSPI.setField(this.worldID, this.coordinates, this);
                 }
                 else if(this.specimen == CYBERSHEEP && interacted.getSpecies() == HOGWEED) {
                     interacted.die();
-                    WorldSPI.setField(this.coordinates, this);
+                    WorldSPI.setField(this.worldID, this.coordinates, this);
                 }
                 else this.setCoords(this.oldCoords);
             }
@@ -58,26 +59,30 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
     }
 
     @Override
-    public void Move() {
+    public void move() {
         this.oldCoords = this.coordinates;
-        this.setCoords(WorldSPI.getCoordsInDirection(Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)],
+        this.setCoords(WorldSPI.getCoordsInDirection(this.worldID,
+                Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)],
                 this.coordinates)); //get coordinates in random direction from enum Directions, then move
-        if(WorldSPI.getField(this.coordinates) != null) {
-            this.Interact(WorldSPI.getField(this.coordinates));
+        if(WorldSPI.getField(this.worldID, this.coordinates) != null) {
+            this.interact(WorldSPI.getField(this.worldID, this.coordinates));
         }
-        else { WorldSPI.setField(this.oldCoords, null); WorldSPI.setField(this.coordinates, this); }
+        else {
+            WorldSPI.setField(this.worldID, this.oldCoords, null);
+            WorldSPI.setField(this.worldID, this.coordinates, this);
+        }
     }
 
     @Override
-    public void Multiply() {
+    public void multiply() {
 
         Pair <Integer,Integer> newCoords = new Pair<>(0,0);
 
         for(int i = 0; i < 6; ++i){
-            if(WorldSPI.getField(WorldSPI.getCoordsInDirection(Directions.values()[i],this.coordinates)) == null ){
-                newCoords = WorldSPI.getCoordsInDirection(Directions.values()[i],this.coordinates); break;}
+            if(WorldSPI.getField(this.worldID, WorldSPI.getCoordsInDirection(this.worldID, Directions.values()[i],this.coordinates)) == null ){
+                newCoords = WorldSPI.getCoordsInDirection(this.worldID, Directions.values()[i],this.coordinates); break;}
         }
 
-        WorldSPI.makeOrganism(this.specimen, newCoords);
+        WorldSPI.makeOrganism(this.worldID, this.specimen, newCoords);
     }
 }

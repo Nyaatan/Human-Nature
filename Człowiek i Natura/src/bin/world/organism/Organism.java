@@ -5,8 +5,7 @@ import bin.enums.Species;
 import bin.enums.Values;
 import bin.system.DataLoader;
 import bin.system.Pair;
-import bin.world.World;
-import bin.world.World.WorldSPI;
+import bin.world.WorldSPI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,9 +13,12 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Organism {
 
-    Organism(Species specimen, Pair<Integer, Integer> coords)
+    int worldID;
+
+    Organism(int worldID, Species specimen, Pair<Integer, Integer> coords)
     {
-        HashMap<String,ArrayList<String>> creationData = DataLoader.getSpeciesConfig(specimen.toString());
+        this.worldID = worldID;
+        HashMap<String,ArrayList<String>> creationData = DataLoader.getBlockConfig(specimen.toString(), "species");
         this.age = 0;
         this.specimen = specimen;
         this.type = OrganismType.valueOf(creationData.get("type").get(0).toUpperCase());
@@ -30,13 +32,13 @@ public abstract class Organism {
         return ThreadLocalRandom.current().nextInt(Integer.parseInt(creationData.get(key).get(idMin)), Integer.parseInt(creationData.get(key).get(idMax))+1);
     } //rand a number in bounds from creation config
 
-    protected int strength; //defines winner in case of collision between organisms
-    protected int initiative; //defines, which organism will move first
-    protected int age; //turns since creation of an object
-    protected OrganismType type; //type of organism, affects interactions
-    protected Species specimen; //defines specimen of the organism, affecting stats and special interactions
+    int strength; //defines winner in case of collision between organisms
+    int initiative; //defines, which organism will move first
+    private int age; //turns since creation of an object
+    OrganismType type; //type of organism, affects interactions
+    Species specimen; //defines specimen of the organism, affecting stats and special interactions
 
-    protected Pair <Integer, Integer> coordinates; //coordinates on world map
+    Pair <Integer, Integer> coordinates; //coordinates on world map
 
     public void setCoords(Pair<Integer, Integer> coords){ this.coordinates = coords; } //imports new coordinates on map
 
@@ -56,10 +58,12 @@ public abstract class Organism {
 
     public void die() //move organism to graveyard
     {
-        WorldSPI.log( this," dies");
-        WorldSPI.setField(this.coordinates, null);
-        this.setCoords(World.graveyard);
-        WorldSPI.setField(World.graveyard, this);
-        WorldSPI.cleanCorpse();
+        WorldSPI.log(this.worldID ,this," dies");
+        WorldSPI.setField(this.worldID, this.coordinates, null);
+        this.setCoords(WorldSPI.graveyard);
+        WorldSPI.setField(this.worldID, WorldSPI.graveyard, this);
+        WorldSPI.cleanCorpse(this.worldID);
     }
+
+
 }
