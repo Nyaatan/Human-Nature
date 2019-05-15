@@ -17,6 +17,9 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
 
     private Pair<Integer, Integer> oldCoords;
 
+    public Animal(int worldID, Species specimen, Pair<Integer, Integer> coords, Pair<Integer, Integer> ID) {
+        super(worldID, specimen, coords, ID);
+    }
     public Animal(int worldID, Species specimen, Pair<Integer, Integer> coords) {
         super(worldID, specimen, coords);
     }
@@ -63,7 +66,7 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
         this.oldCoords = this.coordinates;
         this.setCoords(WorldSPI.getCoordsInDirection(this.worldID,
                 Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)],
-                this.coordinates)); //get coordinates in random direction from enum Directions, then move
+                this.coordinates, this.sectorID)); //get coordinates in random direction from enum Directions, then move
         if(WorldSPI.getField(this.worldID, this.coordinates) != null) {
             this.interact(WorldSPI.getField(this.worldID, this.coordinates));
         }
@@ -79,8 +82,12 @@ public class Animal extends Mob implements InteractionsPassive, InteractionsActi
         Pair <Integer,Integer> newCoords = new Pair<>(0,0);
 
         for(int i = 0; i < 6; ++i){
-            if(WorldSPI.getField(this.worldID, WorldSPI.getCoordsInDirection(this.worldID, Directions.values()[i],this.coordinates)) == null ){
-                newCoords = WorldSPI.getCoordsInDirection(this.worldID, Directions.values()[i],this.coordinates); break;}
+            if(WorldSPI.getField(this.worldID, WorldSPI.getCoordsInDirection(
+                    this.worldID, Directions.values()[i],this.coordinates, this.sectorID)) == null )
+            {
+                newCoords = WorldSPI.getCoordsInDirection(this.worldID, Directions.values()[i],this.coordinates, this.sectorID);
+                break;
+            }
         }
 
         WorldSPI.makeOrganism(this.worldID, this.specimen, newCoords);

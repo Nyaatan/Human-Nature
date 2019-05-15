@@ -1,7 +1,9 @@
-package bin.system;
+package bin.system.dataLoader;
 
 import bin.enums.item.ItemName;
-import bin.world.WorldSPI;
+import bin.system.GameSystem;
+import bin.system.GlobalSettings;
+import bin.system.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,36 +18,37 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class DataLoader {
-    private static String pathDir = System.getProperty("user.dir");
+    private String pathDir = System.getProperty("user.dir");
 
-    private static String pathCfg = pathDir  + "\\cfg";
-    private static String pathSrcCfg = pathDir + "\\src\\cfg";
+    private String pathCfg = pathDir  + "\\cfg";
+    private String pathSrcCfg = pathDir + "\\src\\cfg";
 
-    private static String pathItemDescr = pathDir + "\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
-    private static String pathSrcItemDescr = pathDir + "\\src\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
+    private String pathItemDescr = pathDir + "\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
+    private String pathSrcItemDescr = pathDir + "\\src\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
 
-    private static HashMap<String,ArrayList<String>> configs = new HashMap<>(); //contains config lines equivalent to their file, which name is the key
-    private static HashMap<String,ArrayList<String>> descriptionsItem = new HashMap<>();
+    private HashMap<String,ArrayList<String>> configs = new HashMap<>(); //contains config lines equivalent to their file, which name is the key
+    private HashMap<String,ArrayList<String>> descriptionsItem = new HashMap<>();
 
     public DataLoader() {
-        loadConfigs(configs, pathCfg, pathSrcCfg);
-        loadConfigs(descriptionsItem, pathItemDescr, pathSrcItemDescr);
+        loadConfigs(this.configs, this.pathCfg, this.pathSrcCfg);
+        loadConfigs(this.descriptionsItem, this.pathItemDescr, this.pathSrcItemDescr);
     }
 
-    public static ArrayList<String> getConfig(String config, String fileName) {
+    ArrayList<String> getConfig(String config, String fileName) {
         for(String configLine : configs.get(fileName))
         {
-            if(configLine.contains(config)) { return parseConfig(configLine); }
+            if(configLine.contains(config)) {
+                return parseConfig(configLine); }
         }
         return null;
     } //returns a config line from "config" file
 
-    public static HashMap<String,ArrayList<String>> getBlockConfig(String blockName, String fileName)
+    HashMap<String,ArrayList<String>> getBlockConfig(String blockName, String fileName)
     {
         return parseBlockConfig(configs.get(fileName.toLowerCase()), blockName);
     } ////returns a config block from "species" file
 
-    public static Pair<String, String> getItemDescription(ItemName name) {
+    Pair<String, String> getItemDescription(ItemName name) {
         Pair<String, String> fullDescription = new Pair<>("", "");
         fullDescription.setX(descriptionsItem.get(name.toString().toLowerCase()).get(0));
         StringBuilder description = new StringBuilder();
@@ -57,7 +60,7 @@ public class DataLoader {
         return fullDescription;
     }
 
-    private static void loadConfigs(HashMap<String,ArrayList<String>> configs, String path, String pathSrc)
+    private void loadConfigs(HashMap<String,ArrayList<String>> configs, String path, String pathSrc)
     {
         ArrayList<File> filesInFolder = new ArrayList<>();
         try{ //does it for dev version
@@ -84,7 +87,7 @@ public class DataLoader {
         }
     }
 
-    private static void loadConfig(File file, HashMap<String, ArrayList<String>> configs) //loads config lines from file
+    private void loadConfig(File file, HashMap<String, ArrayList<String>> configs) //loads config lines from file
     {
         ArrayList<String> outputLines = new ArrayList<>();
         Scanner configScan = null;
@@ -98,7 +101,7 @@ public class DataLoader {
         configs.put(file.getName(), outputLines);
     }
 
-    private static HashMap<String,ArrayList<String>> parseBlockConfig(ArrayList<String> configLines, String blockName)
+    private HashMap<String,ArrayList<String>> parseBlockConfig(ArrayList<String> configLines, String blockName)
     {
         HashMap<String, ArrayList<String>> result = new HashMap<>();
         boolean inParsing = false;
@@ -121,7 +124,7 @@ public class DataLoader {
         return null;
     }
 
-    private static ArrayList<String> parseConfig(String configLine) //config format: config_name = <config>
+    private ArrayList<String> parseConfig(String configLine) //config format: config_name = <config>
     {
         return new ArrayList<>(Arrays.asList(configLine.split("<")[1].split(">")[0].split(",")));
     }
