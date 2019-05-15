@@ -1,8 +1,8 @@
 package bin.world.organism;
 
-import bin.enums.item.ItemName;
 import bin.enums.Species;
-import bin.system.DataLoader;
+import bin.enums.item.ItemName;
+import bin.system.dataLoader.DataLoaderAPI;
 import bin.system.Pair;
 import bin.world.item.Item;
 
@@ -11,13 +11,17 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 abstract class Mob extends Organism {
-    Mob(int worldID, Species specimen, Pair<Integer, Integer> coords) {
-        super(worldID, specimen, coords);
-        HashMap<String,ArrayList<String>> creationData = DataLoader.getBlockConfig(specimen.toString(), "species");
+    Mob(int worldID, Species specimen, Pair<Integer, Integer> coords, Pair<Integer, Integer> ID) {
+        super(worldID, specimen, coords, ID);
+        HashMap<String,ArrayList<String>> creationData = DataLoaderAPI.getBlockConfig(specimen.toString(), "species");
         this.dropTable = parseDropTableData(creationData.get("drop"));
 
     }
     private ArrayList<Pair<ItemName,Double>> dropTable; //list of chances for a Item drop upon death by human
+
+    Mob(int worldID, Species specimen, Pair<Integer, Integer> coords) {
+        super(worldID, specimen, coords);
+    }
 
     private ArrayList<Pair<ItemName,Double>> parseDropTableData(ArrayList<String> dropTableData)
     {

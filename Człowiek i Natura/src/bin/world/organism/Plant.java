@@ -11,6 +11,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import static java.lang.Math.abs;
 
 public class Plant extends Mob implements InteractionsPassive {
+    public Plant(int worldID, Species specimen, Pair<Integer, Integer> coords, Pair<Integer, Integer> ID) {
+        super(worldID, specimen, coords, ID);
+    }
+
     public Plant(int worldID, Species specimen, Pair<Integer, Integer> coords) {
         super(worldID, specimen, coords);
     }
@@ -28,7 +32,7 @@ public class Plant extends Mob implements InteractionsPassive {
             {
                 coords = WorldSPI.getCoordsInDirection(this.worldID,
                         Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)],
-                        this.coordinates);
+                        this.coordinates, this.sectorID);
             }
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {
