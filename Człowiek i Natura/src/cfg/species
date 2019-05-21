@@ -28,6 +28,7 @@ initiative = <1,1>
 type = <plant>
 drop = <(wood;1)>
 spawn_rate = <8>
+life_expectancy = <100>
 }
 
 FLOWER{
@@ -36,6 +37,7 @@ initiative = <2,3>
 type = <plant>
 drop = <(flower;1)>
 spawn_rate = <20>
+life_expectancy = <5>
 }
 
 HOGWEED{
@@ -44,6 +46,7 @@ initiative = <2,2>
 type = <plant>
 drop = <(hogweedLeaf;0.7)>
 spawn_rate = <8>
+life_expectancy = <20>
 }
 
 HUMAN{

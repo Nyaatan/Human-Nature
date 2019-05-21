@@ -1,14 +1,14 @@
 package bin.world;
 
-import bin.enums.Species;
-import bin.system.GlobalSettings;
-import bin.system.sectorMap.SectorMap;
+import bin.system.API;
+import lib.Enums;
+import bin.system.chunkMap.ChunkMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WorldAPI{
-    public static ArrayList<String> getLog(int worldID) { return GlobalSettings.getWorld(worldID).getLog();}
-    public static SectorMap getMap(int worldID) {return GlobalSettings.getWorld(worldID).getMap();}
-    public static HashMap<Species, Integer> getPopulation(int worldID) { return GlobalSettings.getWorld(worldID).getPopulation();}
+public class WorldAPI {
+    public ArrayList<String> getLog(int worldID) { return API.systemAPI.getWorld(worldID).getLog();}
+    public ChunkMap getMap(int worldID) {return API.systemAPI.getWorld(worldID).getMap();}
+    public HashMap<Enums.Species.AllSpecies, Integer> getPopulation(int worldID) { return API.systemAPI.getWorld(worldID).getPopulation();}
 }
