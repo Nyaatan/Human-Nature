@@ -1,5 +1,0 @@
-package bin.enums.item;
-
-public enum ItemName {
-    WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF
-}

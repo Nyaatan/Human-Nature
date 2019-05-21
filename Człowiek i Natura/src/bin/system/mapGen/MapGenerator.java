@@ -1,23 +1,23 @@
 package bin.system.mapGen;
 
-import bin.system.Pair;
-import bin.system.sectorMap.SectorMap;
+import lib.Pair;
+import bin.system.chunkMap.ChunkMap;
 
 import java.util.ArrayList;
 
 public class MapGenerator  {
-    private SectorMap map;
+    private ChunkMap map;
     private ArrayList<Pair<Integer,Integer>> toCompute;
     private int worldID;
 
     public MapGenerator(int worldID,Pair<Integer,Integer> mapSize, Pair<Integer,Integer> sectorSize)
     {
         this.toCompute = new ArrayList<>();
-        this.map = new SectorMap(mapSize,sectorSize);
+        this.map = new ChunkMap(mapSize,sectorSize);
         this.worldID = worldID;
     }
 
-    public SectorMap generate()
+    public ChunkMap generate()
     {
         for(Pair<Integer,Integer> ID : this.map.getIDSet())
         {

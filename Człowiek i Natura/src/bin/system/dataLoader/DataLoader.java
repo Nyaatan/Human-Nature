@@ -1,9 +1,8 @@
 package bin.system.dataLoader;
 
-import bin.enums.item.ItemName;
-import bin.system.GameSystem;
-import bin.system.GlobalSettings;
-import bin.system.Pair;
+import bin.system.*;
+import lib.Enums;
+import lib.Pair;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,20 +17,19 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class DataLoader {
-    private String pathDir = System.getProperty("user.dir");
-
-    private String pathCfg = pathDir  + "\\cfg";
-    private String pathSrcCfg = pathDir + "\\src\\cfg";
-
-    private String pathItemDescr = pathDir + "\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
-    private String pathSrcItemDescr = pathDir + "\\src\\lang\\" + GlobalSettings.getLanguage().toString().toLowerCase() + "\\descriptions\\items";
+    private final String pathDir = System.getProperty("user.dir");
 
     private HashMap<String,ArrayList<String>> configs = new HashMap<>(); //contains config lines equivalent to their file, which name is the key
     private HashMap<String,ArrayList<String>> descriptionsItem = new HashMap<>();
 
-    public DataLoader() {
-        loadConfigs(this.configs, this.pathCfg, this.pathSrcCfg);
-        loadConfigs(this.descriptionsItem, this.pathItemDescr, this.pathSrcItemDescr);
+    public DataLoader(Enums.Language language) {
+        String pathSrcCfg = pathDir + "\\src\\cfg";
+        String pathCfg = pathDir + "\\cfg";
+        String pathSrcItemDescr = pathDir + "\\src\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\items";
+        String pathItemDescr = pathDir + "\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\items";
+
+        loadConfigs(this.configs, pathCfg, pathSrcCfg);
+        loadConfigs(this.descriptionsItem, pathItemDescr, pathSrcItemDescr);
     }
 
     ArrayList<String> getConfig(String config, String fileName) {
@@ -48,7 +46,7 @@ public class DataLoader {
         return parseBlockConfig(configs.get(fileName.toLowerCase()), blockName);
     } ////returns a config block from "species" file
 
-    Pair<String, String> getItemDescription(ItemName name) {
+    Pair<String, String> getItemDescription(Enums.ItemName name) {
         Pair<String, String> fullDescription = new Pair<>("", "");
         fullDescription.setX(descriptionsItem.get(name.toString().toLowerCase()).get(0));
         StringBuilder description = new StringBuilder();
@@ -94,7 +92,7 @@ public class DataLoader {
         try {
             configScan = new Scanner(file);
         } catch (FileNotFoundException e) {
-            GameSystem.addLog(e.toString());
+            API.systemAPI.addLog(e.toString());
         }
         assert configScan != null;
         while(configScan.hasNextLine()) { outputLines.add(configScan.nextLine()); }

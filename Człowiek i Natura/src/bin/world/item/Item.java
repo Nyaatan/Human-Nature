@@ -1,24 +1,24 @@
 package bin.world.item;
 
-import bin.enums.item.ItemName;
-import bin.enums.item.ItemType;
-import bin.system.Pair;
-import bin.system.dataLoader.DataLoaderAPI;
+import bin.system.API;
+import lib.Enums;
+import lib.Pair;
 
 //TODO COMMENTS
 public class Item {
-    private ItemName name;
+    private Enums.ItemName name;
     private Pair<String,String> description;
-    private ItemType type;
+    private Enums.ItemType type;
+    //TODO traits
 
-    public Item(ItemName name)
+    public Item(Enums.ItemName name)
     {
         this.name = name;
-        this.description = DataLoaderAPI.getItemDescription(name);
-        this.type = ItemType.valueOf(DataLoaderAPI.getBlockConfig(name.toString(), "items").get("type").get(0));
+        this.description = API.dataLoaderAPI.getItemDescription(name);
+        this.type = Enums.ItemType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("type").get(0));
     }
 
-    public ItemName getName() {return name;}
+    public Enums.ItemName getName() {return name;}
     public Pair<String, String> getDescription() {return description;}
-    public ItemType getType() {return type;}
+    public Enums.ItemType getType() {return type;}
 }
