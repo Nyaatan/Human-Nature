@@ -1,6 +1,6 @@
 Człowiek i Natura
 
-version 0.3.0
+version 0.4.0
 
 Authors
 Dominik Bartkowski
