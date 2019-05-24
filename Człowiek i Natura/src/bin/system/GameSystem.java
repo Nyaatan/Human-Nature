@@ -15,6 +15,7 @@ public class GameSystem {
         log = new ArrayList<>();
         new API();
         globalSettings = new GlobalSettings();
+        API.systemAPI.setVariables();
         ui = new UI();
     }
 
@@ -31,9 +32,9 @@ public class GameSystem {
 
     private static class Thanos
     {
-        public static void snap()
+        static void snap()
         {
-            API.systemAPI.getWorlds().clear();
+            API.systemAPI.addWorld(null);
         }
     }
 

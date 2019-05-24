@@ -50,8 +50,8 @@ life_expectancy = <20>
 }
 
 HUMAN{
-strngth = <6,6>
+strength = <6,6>
 initiative = <10,10>
 type = <predator>
-drop = <(meat,1)>
+drop = <(meat;1)>
 }

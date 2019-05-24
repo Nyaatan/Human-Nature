@@ -17,7 +17,7 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class DataLoader {
-    private final String pathDir = System.getProperty("user.dir");
+    final String pathDir = System.getProperty("user.dir");
 
     private HashMap<String,ArrayList<String>> configs = new HashMap<>(); //contains config lines equivalent to their file, which name is the key
     private HashMap<String,ArrayList<String>> descriptionsItem = new HashMap<>();

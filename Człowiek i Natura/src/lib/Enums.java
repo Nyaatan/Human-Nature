@@ -15,12 +15,12 @@ public class Enums {
         }
 
         public enum AllSpecies {
-            OAK,HOGWEED,FLOWER, WOLF,SHEEP, CYBERSHEEP, HUMAN
+            OAK,HOGWEED,FLOWER, WOLF,SHEEP, CYBERSHEEP, HUMAN, GRASS
         }
     }
 
     public enum OrganismType {
-        PREDATOR,PREY,PLANT
+        PREDATOR,PREY,PLANT, NONE
     }
 
     public enum Directions {
@@ -32,11 +32,11 @@ public class Enums {
     }
 
     public enum ItemName {
-        WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF
+        WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF,AXE
     }
 
     public enum ItemType {
-        EQUIPMENT,CRAFTING,BUFF
+        EQUIPMENT,CRAFTING,BUFF,RESOURCE
     }
 
     public static class Commands{
@@ -51,5 +51,9 @@ public class Enums {
 
     public enum EquipmentType{
         HEAD,BODY,LEGS,BOOTS,TOOL
+    }
+
+    public enum Buff{
+        TIMBERMAN
     }
 }
