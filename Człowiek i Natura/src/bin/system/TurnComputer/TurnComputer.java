@@ -12,8 +12,7 @@ public class TurnComputer{
 
     public TurnComputer(ChunkMap map)
     {
-        this.map = new ChunkMap(map);
-        chunks = this.map.values();
+        this.map = map;
     }
 
     public void compute()
@@ -21,7 +20,7 @@ public class TurnComputer{
         ArrayList<SectorComputer> toCompute = new ArrayList<>();
         for(Chunk chunk : this.chunks)
         {
-            toCompute.add(new SectorComputer(new Chunk(chunk)));
+            toCompute.add(new SectorComputer(chunk));
             if(toCompute.size() == Runtime.getRuntime().availableProcessors()-1)
             {
                 sectorCompute(toCompute);

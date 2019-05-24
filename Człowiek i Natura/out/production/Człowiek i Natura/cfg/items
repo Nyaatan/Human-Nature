@@ -1,49 +1,56 @@
 WOOD{
-type = <crafting>
+type = <resource>
 description = <wood>
 }
 
 WOOL{
-type = <crafting>
+type = <resource>
 description = <wool>
 }
 
 MEAT{
-type = <crafting>
+type = <resource>
 description = <meat>
 }
 
 FUR{
-type = <crafting>
+type = <resource>
 description = <fur>
 }
 
 BLOOD{
-type = <crafting>
+type = <resource>
 description = <blood>
 }
 
 CYBERWOOL{
-type = <crafting>
+type = <resource>
 description = <cyberwool>
 }
 
 QUANTUMCIRCUIT{
-type = <crafting>
+type = <resource>
 description = <quantumcircuit>
 }
 
 CYBERHEART{
-type = <crafting>
+type = <resource>
 description = <cyberheart>
 }
 
 FLOWER{
-type = <crafting>
+type = <resource>
 description = <flower>
 }
 
 HOGWEEDLEAF{
-type = <crafting>
+type = <resource>
 description = <hogweedleaf>
+}
+
+AXE{
+type = <equipment>
+eq_type = <tool>
+buff = <timberman>
+description = <axe>
 }

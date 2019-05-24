@@ -1,21 +1,26 @@
 package bin.world.organism;
 
 import bin.system.API;
+import bin.world.organism.Human.Human;
 import lib.Enums;
 import lib.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-public abstract class Organism {
+import static lib.Enums.Species.Animals.HUMAN;
 
-    int worldID;
-    Pair<Integer,Integer> sectorID;
+public abstract class Organism implements Serializable {
 
-    Organism(int worldID, Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer,Integer> sectorID)
+    protected Pair<Integer,Integer> sectorID;
+    protected Pair<Integer, Integer> oldCoords;
+
+    public Organism(){}
+
+    public Organism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer,Integer> sectorID)
     {
-        this.worldID = worldID;
         HashMap<String,ArrayList<String>> creationData = API.dataLoaderAPI.getBlockConfig(specimen.toString(), "species");
         this.age = 0;
         this.specimen = specimen;
@@ -26,9 +31,8 @@ public abstract class Organism {
         this.sectorID = sectorID;
     } //sets up values of organism based on data from species file
 
-    Organism(int worldID, Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
+    public Organism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
     {
-        this.worldID = worldID;
         HashMap<String,ArrayList<String>> creationData = API.dataLoaderAPI.getBlockConfig(specimen.toString(), "species");
         this.age = 0;
         this.specimen = specimen;
@@ -36,7 +40,7 @@ public abstract class Organism {
         this.strength = randFromCreationData(creationData, 0, 1, "strength");
         this.initiative = randFromCreationData(creationData, 0, 1, "initiative");
         this.coordinates = coords;
-        this.sectorID = API.worldAPI.getMap(worldID).getSectorByCoords(coords).getID();
+        this.sectorID = API.worldAPI.getMap().getChunkByCoords(coords).getID();
     } //sets up values of organism based on data from species file
 
     private int randFromCreationData(HashMap<String, ArrayList<String>> creationData, int idMin, int idMax, String key)
@@ -68,21 +72,14 @@ public abstract class Organism {
 
     public Pair<Integer,Integer> getCoords() {return this.coordinates;} //returns current coordinates of the organism
 
-    public void die() //move organism to graveyard
-    {
-        API.worldSPI.log(this.worldID ,this," dies");
-        API.worldSPI.setField(this.worldID, this.coordinates, null);
-        this.setCoords(API.worldSPI.graveyard);
-        API.worldSPI.setField(this.worldID, API.worldSPI.graveyard, this);
-        API.worldSPI.cleanCorpse(this.worldID, this.sectorID);
-    }
-
-    public static Organism create(int worldID, Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords,
+    public static Organism create(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords,
                                   Pair<Integer, Integer> sectorID)
     {
         Organism newOrganism;
 
-        //TODO if (specimen.equals(HUMAN)){}
+        if (specimen.equals(HUMAN)){
+            return new Human(specimen,coords,sectorID);
+        }
 
         boolean isAnimal = false;
 
@@ -92,15 +89,15 @@ public abstract class Organism {
             if(animal.toString().equals(specimen.toString())) { isAnimal = true; break; } //check if given specimen is an animal
         }
 
-        if(isAnimal) newOrganism = new Animal(worldID, specimen, coords, sectorID);
-        else newOrganism = new Plant(worldID, specimen, coords, sectorID); //if not, it a plant
+        if(isAnimal) newOrganism = new Animal(specimen, coords, sectorID);
+        else newOrganism = new Plant(specimen, coords, sectorID); //if not, it a plant
 
         return newOrganism;
     }
 
-    public static Organism create(int worldID, Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
+    public static Organism create(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
     {
-        return create(worldID, specimen, coords, API.worldAPI.getMap(worldID).getSectorByCoords(coords).getID());
+        return create(specimen, coords, API.worldAPI.getMap().getChunkByCoords(coords).getID());
     }
 
     public abstract void move();
@@ -108,4 +105,7 @@ public abstract class Organism {
     public abstract void interact(Organism interacted);
 
     public abstract void multiply();
+
+    public abstract void die(); //move organism to graveyard
+
 }

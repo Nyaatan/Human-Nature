@@ -1,9 +1,10 @@
 package lib;
 
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class Pair<X, Y> {
+public class Pair<X, Y> implements Serializable {
     private X x;
     private Y y;
 
@@ -60,4 +61,9 @@ public class Pair<X, Y> {
     }
 
     public Pair<X,Y> copy() {return new Pair<>(this.x, this.y);}
+
+    public boolean equals(Pair<Integer,Integer> pair)
+    {
+        return this.getX() == pair.getX() && this.getY() == pair.getY();
+    }
 }

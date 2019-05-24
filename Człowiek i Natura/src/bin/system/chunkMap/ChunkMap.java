@@ -1,111 +1,106 @@
 package bin.system.chunkMap;
 
+import bin.system.API;
 import bin.world.organism.Organism;
 import lib.Enums;
 import lib.Pair;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Set;
+import java.util.HashSet;
+
+import static java.lang.Math.abs;
 
 public class ChunkMap {
+    HashMap<Pair<Integer,Integer>, Chunk> chunkMap;
+    private int renderingDistance;
+    private Pair<Integer,Integer> centerID;
+    private ChunkDumper chunkDumper;
+    private ChunkGen chunkGen;
 
-    private Pair<Integer,Integer> sectorSize;
-
-    private HashMap<Pair<Integer,Integer>, Chunk> sectorMap = new HashMap<>();
-
-    public ChunkMap(Pair<Integer,Integer> mapSize, Pair<Integer,Integer> sectorSize)
+    public ChunkMap()
     {
-        this.sectorSize = sectorSize;
-        Pair<Integer,Integer> constructorIterator = new Pair<>(0,0);
-        Pair<Integer,Integer> sectorBounds;
-        sectorBounds = new Pair<>(
-                (int) Math.round(Math.floor((double) mapSize.getX() / (double)this.sectorSize.getX())),
-                (int) Math.round(Math.floor((double) mapSize.getY() / (double)this.sectorSize.getY())));
-        //System.out.println(secorBounds.getX());
-        //System.out.println(secorBounds.getY());
+        chunkGen = new ChunkGen();
+        chunkDumper = new ChunkDumper();
+        chunkMap = new HashMap<>();
+        this.renderingDistance = API.systemAPI.RENDERING_DISTANCE;
+        this.centerID = new Pair<>(0,0);
+    }
 
-        while(constructorIterator.getX() < sectorBounds.getX())
+    private Chunk get(Pair<Integer,Integer> ID)
+    {
+        for(Pair<Integer,Integer> key : chunkMap.keySet())
         {
-            constructorIterator.setY(0);
-            while(constructorIterator.getY() < sectorBounds.getY())
+            if(key.equals(ID))
             {
-                if(!constructorIterator.getX().equals(sectorBounds.getX()))
-                {
-                    if(!constructorIterator.getY().equals(sectorBounds.getY())) {
-                        this.sectorMap.put(constructorIterator.copy(), new Chunk(sectorSize, constructorIterator.copy()));
-
-                    }
-                    else if(Math.floorMod(mapSize.getY(),sectorSize.getY()) != 0) {
-                        this.sectorMap.put(constructorIterator.copy(), new Chunk(
-                                sectorSize.getX(), Math.floorMod(mapSize.getY(), sectorSize.getY()), constructorIterator.copy()));
-                    }
-                }
-                else
-                {
-                    if(!constructorIterator.getY().equals(sectorBounds.getY()) &&
-                            Math.floorMod(mapSize.getX(),sectorSize.getX()) != 0) {
-                        this.sectorMap.put(constructorIterator.copy(), new Chunk(
-                                Math.floorMod(mapSize.getX(),sectorSize.getX()), sectorSize.getY(), constructorIterator.copy()));
-                    }
-                    else if(Math.floorMod(mapSize.getX(),sectorSize.getX()) != 0)
-                        this.sectorMap.put(constructorIterator.copy(), new Chunk(
-                            Math.floorMod(mapSize.getX(),sectorSize.getX()), Math.floorMod(mapSize.getY(),sectorSize.getY()),
-                                constructorIterator.copy()) );
-                }
-                //System.out.println(this.chunkMap.get(constructorIterator).getSize());
-
-                constructorIterator = new Pair<>(constructorIterator.getX(), constructorIterator.getY()+1);
+                return chunkMap.get(key);
             }
-
-            constructorIterator = new Pair<>(constructorIterator.getX()+1, constructorIterator.getY());
         }
+        return null;
     }
 
-    public ChunkMap(ChunkMap map) {
-        this.sectorMap = map.toHashMap();
-        this.sectorSize = map.sectorSize;
-    }
-
-    public Set<Pair<Integer,Integer>> getIDSet() { return this.sectorMap.keySet(); }
-
-    public Chunk getSectorByID(Pair<Integer,Integer> ID) { return this.sectorMap.get(ID); }
-
-    public Chunk getSectorByCoords(Pair<Integer,Integer> coords)
+    private Pair<Integer,Integer> coordsToID(Pair<Integer,Integer> coords)
     {
-        Pair<Integer,Integer> sectorID = new Pair<>(
-                (int) Math.round(Math.floor((double) coords.getX() / (double)this.sectorSize.getX())),
-                (int) Math.round(Math.floor((double) coords.getY() / (double)this.sectorSize.getY())));
-        return this.sectorMap.get(sectorID);
+        return new Pair<>(coords.getX()/API.systemAPI.CHUNK_SIZE, coords.getY()/API.systemAPI.CHUNK_SIZE);
     }
-
-    public void setSector(Chunk chunk, Pair<Integer,Integer> ID) {this.sectorMap.replace(ID, chunk);}
 
     public Organism getField(Pair<Integer,Integer> coords)
     {
-        return this.getSectorByCoords(coords).getFieldGlobal(coords);
+        Pair<Integer,Integer> chunkID = new Pair<>(coords.getX()/API.systemAPI.CHUNK_SIZE, coords.getY()/API.systemAPI.CHUNK_SIZE);
+        return get(chunkID).get(coords.getX()%API.systemAPI.CHUNK_SIZE, coords.getY()%API.systemAPI.CHUNK_SIZE);
     }
 
-    public void setField(Pair<Integer,Integer> coords, Organism object)
+    public void setField(Pair<Integer,Integer> coords, Organism organism)
     {
-        this.getSectorByCoords(coords).setFieldGlobal(coords,object);
+        Pair<Integer,Integer> ID = coordsToID(coords);
+        get(ID).add(Chunk.toLocalCoords(coords), organism);
     }
 
-    public HashMap<Pair<Integer,Integer>, Chunk> toHashMap() { return this.sectorMap; }
-
-    public Pair<Integer,Integer> getSectorSize() {return this.sectorSize;}
-
-    public Collection<Chunk> values()
+    public Chunk getChunkByCoords(Pair<Integer,Integer> coords)
     {
-        return this.sectorMap.values();
+        Pair<Integer,Integer> ID = coordsToID(coords);
+        return getChunkByID(ID);
+    }
+
+    public Chunk getChunkByID(Pair<Integer,Integer> ID) {return get(ID);}
+
+    public void changeCenter(Pair<Integer,Integer> newCenterID)
+    {
+        centerID = newCenterID;
+        HashSet<Pair<Integer,Integer>> keys = new HashSet<>(chunkMap.keySet());
+        for(Pair<Integer,Integer> ID : keys)
+        {
+            if(abs(ID.getX()-newCenterID.getX())>=renderingDistance || abs(ID.getY()-newCenterID.getY())>=renderingDistance)
+            {
+                chunkDumper.Dump(chunkMap.get(ID));
+                chunkMap.remove(ID);
+            }
+        }
+        for(int x=newCenterID.getX()-renderingDistance;x<newCenterID.getX()+renderingDistance;++x)
+        {
+            for(int y=newCenterID.getY()-renderingDistance;y<newCenterID.getY()+renderingDistance;++y)
+            {
+                Pair<Integer,Integer> newID = new Pair<>(x,y);
+                if(!contains(newID))
+                {
+                    Chunk newChunk = chunkDumper.load(newID);
+                    if(newChunk==null) newChunk = chunkGen.generate(newID);
+                    chunkMap.put(newID,newChunk);
+                }
+            }
+        }
+    }
+
+    public void setChunk(Chunk chunk, Pair<Integer,Integer> ID)
+    {
+        this.chunkMap.put(ID,chunk);
     }
 
     public HashMap<Enums.Species.AllSpecies,Integer> getPopulation()
     {
         HashMap<Enums.Species.AllSpecies,Integer> result = new HashMap<>();
         ArrayList<ArrayList<ArrayList<Organism>>> organismsExtended = new ArrayList<>();
-        for(Chunk chunk : this.sectorMap.values())
+        for(Chunk chunk : this.chunkMap.values())
         {
             organismsExtended.add(chunk.getOrganisms());
         }
@@ -121,5 +116,19 @@ public class ChunkMap {
             }
         }
         return result;
+    }
+
+    private boolean contains(Pair<Integer,Integer> ID)
+    {
+        for(Pair<Integer,Integer> key : chunkMap.keySet())
+        {
+            if(key.equals(ID)) return true;
+        }
+        return false;
+    }
+    //TODO TO DEBUG
+    public HashMap<Pair<Integer,Integer>, Chunk> HashMap()
+    {
+        return chunkMap;
     }
 }

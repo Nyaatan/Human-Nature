@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java" line="48" />
+    <bookmark url="file://$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java" line="47" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7125237-c6d7-4490-b017-dd126d20108c" name="Default Changelist" comment="">
@@ -45,35 +45,47 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Mob.java">
+        <entry file="file://$PROJECT_DIR$/src/bin/system/GlobalSettings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+            <state relative-caret-position="595">
+              <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#parseDropTableData#0;class#Mob#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bin/world/World.java">
+        <entry file="file://$PROJECT_DIR$/src/bin/system/GameSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
+            <state relative-caret-position="340">
+              <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#World#0;class#World#0" />
-                <element signature="method#getCoordsInDirection#0;class#World#0" />
-                <element signature="method#getCoordsInDirection#1;class#World#0" />
-                <element signature="method#getCoordsInDirection#2;class#World#0" />
-                <element signature="method#makeOrganism#0;class#World#0" />
-                <element signature="method#cleanCorpse#0;class#World#0" />
-                <element signature="method#log#0;class#World#0" />
-                <element signature="method#getLog#0;class#World#0" />
-                <element signature="method#getPopulation#0;class#World#0" />
+                <element signature="class#Thanos#0;class#GameSystem#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cfg/config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -81,53 +93,24 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Organism.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
+            <state relative-caret-position="68">
+              <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#randFromCreationData#0;class#Organism#0" />
                 <element signature="method#getValue#0;class#Organism#0" />
-                <element signature="method#create#0;class#Organism#0" />
-                <element signature="method#create#1;class#Organism#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
+        <entry file="file://$PROJECT_DIR$/src/bin/system/API.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+            <state relative-caret-position="272">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/lib/Enums.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
-              <folding>
-                <element signature="class#Species#0;class#Enums#0" />
-                <element signature="class#Move#0;class#Commands#0;class#Enums#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Plant.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="50" column="4" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#move#0;class#Plant#0" />
-                <element signature="method#interact#0;class#Plant#0" />
               </folding>
             </state>
           </provider>
@@ -136,26 +119,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/lib/Pair.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/info.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+            <state relative-caret-position="459">
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+              <folding>
+                <element signature="method#toString#0;class#Pair#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bin/world/WorldAPI.java">
+        <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkDumper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="139" selection-start-line="12" selection-start-column="139" selection-end-line="12" selection-end-column="139" />
+            <state relative-caret-position="765">
+              <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -164,14 +141,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bin/world/WorldSPI.java">
+        <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-209">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+            <state relative-caret-position="884">
+              <caret line="72" column="106" selection-start-line="72" selection-start-column="106" selection-end-line="72" selection-end-column="106" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#createOrganism#0;class#WorldSPI#0" />
-                <element signature="method#createOrganism#1;class#WorldSPI#0" />
+                <element signature="method#ChunkMap#0;class#ChunkMap#0" />
+                <element signature="method#get#0;class#ChunkMap#0" />
+                <element signature="method#coordsToID#0;class#ChunkMap#0" />
+                <element signature="method#getChunkByCoords#0;class#ChunkMap#0" />
+                <element signature="method#getPopulation#0;class#ChunkMap#0" />
+                <element signature="method#contains#0;class#ChunkMap#0" />
               </folding>
             </state>
           </provider>
@@ -192,7 +173,6 @@
     <findStrings>
       <find>dataLoader</find>
       <find>map</find>
-      <find>null</find>
       <find>Class</find>
       <find>print</find>
       <find>println</find>
@@ -200,6 +180,9 @@
       <find>WorldSPI</find>
       <find>System.out</find>
       <find>SPI</find>
+      <find>worldID</find>
+      <find>null</find>
+      <find>out</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -207,10 +190,11 @@
     <dirStrings>
       <dir>C:\Users\domin\Documents\Cz-owiek-i-Natura\Człowiek i Natura</dir>
       <dir>C:\Users\domin\Documents\Cz-owiek-i-Natura\Człowiek i Natura\src</dir>
+      <dir>C:\Users\domin\Documents\Cz-owiek-i-Natura\Beta\Człowiek i Natura\src\bin</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="GroovyConsoleState">
     <option name="list">
@@ -226,57 +210,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/bin/enums/settings/Language.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/Initialize.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/SectorMap.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/Sector.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/DataLoaderAPI.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/DataLoader.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/DataLoader/DataLoader.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/MapGenerator.java" />
-        <option value="$PROJECT_DIR$/src/cfg/config" />
-        <option value="$PROJECT_DIR$/src/bin/system/ToString.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/ObjectPrinter.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/mapGen/OrganismCreator.java" />
-        <option value="$PROJECT_DIR$/src/bin/enums/OrganismType.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/Printer.java" />
-        <option value="$PROJECT_DIR$/src/bin/interfaces/InteractionsActive.java" />
-        <option value="$PROJECT_DIR$/src/cfg/species" />
-        <option value="$PROJECT_DIR$/src/bin/system/turnComputer/TurnComputer.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/TurnComputer.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/TurnComputer/SectorComputer.java" />
-        <option value="$PROJECT_DIR$/src/bin/enums/Enums.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/mapGen/MapGenerator.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/APIs/WorldAPI.java" />
         <option value="$PROJECT_DIR$/src/bin/world/organism/WorldAPI.java" />
         <option value="$PROJECT_DIR$/src/bin/system/APIs.java" />
         <option value="$PROJECT_DIR$/src/bin/system/Pair.java" />
         <option value="$PROJECT_DIR$/src/bin/system/Enums.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/WorldAPI.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/dataLoader/DataLoader.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/dataLoader/DataLoaderAPI.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/organism/Mob.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/API.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java" />
         <option value="$PROJECT_DIR$/src/bin/system/sectorMap/Sector.java" />
         <option value="$PROJECT_DIR$/src/bin/system/sectorMap/SectorMap.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/organism/Animal.java" />
         <option value="$PROJECT_DIR$/src/bin/system/OrganismCreator.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/organism/Organism.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/WorldSPI.java" />
         <option value="$PROJECT_DIR$/src/bin/system/mapGen/SectorGen.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/item/Item.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/organism/Plant.java" />
-        <option value="$PROJECT_DIR$/src/lib/Enums.java" />
         <option value="$PROJECT_DIR$/src/bin/system/Commander.java" />
-        <option value="$PROJECT_DIR$/src/bin/world/World.java" />
+        <option value="$PROJECT_DIR$/src/info.txt" />
+        <option value="$PROJECT_DIR$/src/bin/system/API.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/item/Equipment.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/item/Item.java" />
         <option value="$PROJECT_DIR$/src/bin/world/organism/Human.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/bin/system/GlobalSettings.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Human/Equipment.java" />
+        <option value="$PROJECT_DIR$/src/lib/CommandRefused.java" />
+        <option value="$PROJECT_DIR$/src/lib/CommandRefusedException.java" />
+        <option value="$PROJECT_DIR$/src/cfg/craftingBook" />
+        <option value="$PROJECT_DIR$/src/cfg/items" />
+        <option value="$PROJECT_DIR$/src/bin/world/item/CraftingBook.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Human/Buffs.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Human/Inventory.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/newChunkMap/newChunk.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/newChunkMap/newChunkMap.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/chunkMap/newChunkMap.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/mapGen/MapGenerator.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/WorldAPI.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/WorldSPI.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Human/Human.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Plant.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java" />
         <option value="$PROJECT_DIR$/src/bin/system/SystemAPI.java" />
         <option value="$PROJECT_DIR$/src/bin/system/GameSystem.java" />
+        <option value="$PROJECT_DIR$/src/lib/Enums.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Grass.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Animal.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/chunkMap/ChunkGen.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMapGen.java" />
+        <option value="$PROJECT_DIR$/src/cfg/species" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Mob.java" />
+        <option value="$PROJECT_DIR$/src/bin/world/World.java" />
         <option value="$PROJECT_DIR$/src/bin/system/chunkMap/Chunk.java" />
-        <option value="$PROJECT_DIR$/src/info.txt" />
+        <option value="$PROJECT_DIR$/src/bin/world/organism/Organism.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/dataLoader/DataLoader.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/dataLoader/DataLoaderAPI.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/GlobalSettings.java" />
+        <option value="$PROJECT_DIR$/src/cfg/config" />
+        <option value="$PROJECT_DIR$/src/bin/system/chunkMap/ChunkDumper.java" />
+        <option value="$PROJECT_DIR$/src/lib/Pair.java" />
+        <option value="$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMap.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
       </list>
     </option>
   </component>
@@ -286,7 +270,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="950" />
     <option name="width" value="980" />
     <option name="height" value="1040" />
@@ -297,8 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -310,6 +292,24 @@
               <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
               <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
               <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
@@ -351,7 +351,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="bin" type="462c0819:PsiDirectoryNode" />
               <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="mapGen" type="462c0819:PsiDirectoryNode" />
+              <item name="TurnComputer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
@@ -387,49 +387,38 @@
               <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
               <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+              <item name="world" type="462c0819:PsiDirectoryNode" />
+              <item name="organism" type="462c0819:PsiDirectoryNode" />
+              <item name="Human" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="cfg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
               <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="descriptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Człowiek i Natura" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Człowiek i Natura" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="pl" type="462c0819:PsiDirectoryNode" />
-              <item name="descriptions" type="462c0819:PsiDirectoryNode" />
-              <item name="items" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -505,12 +494,21 @@
       <workItem from="1558356444920" duration="751000" />
       <workItem from="1558357233225" duration="332000" />
       <workItem from="1558383422187" duration="2222000" />
-      <workItem from="1558439723340" duration="1177000" />
+      <workItem from="1558439723340" duration="1659000" />
+      <workItem from="1558445081150" duration="467000" />
+      <workItem from="1558449124842" duration="1605000" />
+      <workItem from="1558452115223" duration="1628000" />
+      <workItem from="1558546726655" duration="1424000" />
+      <workItem from="1558556977866" duration="5794000" />
+      <workItem from="1558605961461" duration="902000" />
+      <workItem from="1558633719435" duration="1506000" />
+      <workItem from="1558635317821" duration="18491000" />
+      <workItem from="1558719296389" duration="3000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34906000" />
+    <option name="totallyTimeSpent" value="67208000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -522,10 +520,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5779037" visible="true" weight="0.19060403" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5779037" visible="true" weight="0.2147651" />
       <window_info id="Structure" order="1" sideWeight="0.4206799" side_tool="true" weight="0.19060403" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -558,39 +555,6 @@
       <window_info anchor="right" id="Database" order="8" weight="0.3295302" />
       <window_info anchor="right" id="Theme Preview" order="9" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36979866" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286119" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39943343" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3286119" />
-      <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.3286119" />
-      <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Maven" order="4" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="right" id="UML design tool window" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Theme Preview" order="9" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -600,53 +564,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/lang/pl/init">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/lang/pl/descriptions/init">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/enums/item/ItemType.java" />
-    <entry file="file://$PROJECT_DIR$/src/bin/enums/Species.java" />
-    <entry file="file://$PROJECT_DIR$/src/lang/pl/descriptions/items/wood">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/enums/settings/Language.java" />
-    <entry file="file://$PROJECT_DIR$/src/cfg/items">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cfg/config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/ToString.java" />
-    <entry file="file://$PROJECT_DIR$/src/bin/enums/item/ItemName.java" />
-    <entry file="file://$PROJECT_DIR$/src/bin/enums/OrganismType.java" />
-    <entry file="jar://C:/Program Files (x86)/Java/jdk-12.0.1/lib/src.zip!/java.base/java/util/concurrent/ForkJoinPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-26111">
-          <caret line="1655" column="30" selection-start-line="1655" selection-start-column="30" selection-end-line="1655" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/Printer.java" />
-    <entry file="file://$PROJECT_DIR$/src/bin/interfaces/InteractionsPassive.java" />
-    <entry file="file://$PROJECT_DIR$/src/bin/interfaces/InteractionsActive.java" />
-    <entry file="uml://JAVA/bin.system.GlobalSettings" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console.groovy">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://C:/Program Files (x86)/Java/jdk-12.0.1/lib/src.zip!/java.base/java/util/concurrent/RecursiveTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -655,605 +572,71 @@
       </provider>
     </entry>
     <entry file="uml://JAVA/bin.system" />
-    <entry file="file://$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="61" lean-forward="true" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#TurnComputer#0;class#TurnComputer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/TurnComputer/SectorComputer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bin/system/OrganismCreator.java" />
     <entry file="uml://JavaScript-modules-diagram/C:/Users/domin/Documents/Cz-owiek-i-Natura/Człowiek i Natura/src" />
     <entry file="uml://JAVA/" />
-    <entry file="file://$PROJECT_DIR$/src/cfg/species">
+    <entry file="file://$PROJECT_DIR$/src/info.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="34">
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="uml://JAVA/bin">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>bin</OriginalElement>
-          <nodes>
-            <node x="813.6779588338019" y="625.0">bin.world.WorldSPI</node>
-            <node x="1038.9932692307693" y="1220.0">bin.system.chunkMap.Chunk</node>
-            <node x="181.15667278941987" y="966.0">bin.world.organism.Plant</node>
-            <node x="552.6779588338019" y="548.0">bin.system.GameSystem</node>
-            <node x="818.5329046341259" y="197.0">bin.system.mapGen.MapGenerator</node>
-            <node x="78.15667278941987" y="966.0">bin.world.organism.Animal</node>
-            <node x="306.6802472527477" y="354.0">bin.system.dataLoader.DataLoader</node>
-            <node x="259.4279588338019" y="625.0">bin.system.dataLoader.DataLoaderAPI</node>
-            <node x="1099.3682692307693" y="197.0">bin.system.TurnComputer.TurnComputer</node>
-            <node x="228.17795883380188" y="451.0">bin.system.GameSystem.Thanos</node>
-            <node x="509.4279588338019" y="0.0">bin.system.Commander</node>
-            <node x="0.0" y="197.0">bin.world.organism.Human</node>
-            <node x="73.20320512820524" y="0.0">bin.world.item.Item</node>
-            <node x="1175.983653846154" y="0.0">bin.system.TurnComputer.SectorComputer</node>
-            <node x="524.3157051282053" y="772.0">bin.system.API</node>
-            <node x="975.9059815572027" y="0.0">bin.system.chunkMap.ChunkMap</node>
-            <node x="558.9242948717953" y="354.0">bin.world.World</node>
-            <node x="391.6779588338019" y="451.0">bin.system.GlobalSettings</node>
-            <node x="696.6779588338019" y="625.0">bin.world.WorldAPI</node>
-            <node x="150.23397435897436" y="1083.0">bin.world.organism.Organism</node>
-            <node x="107.75320512820531" y="849.0">bin.world.organism.Mob</node>
-            <node x="425.9271354033566" y="625.0">bin.system.SystemAPI</node>
-            <node x="621.6779588338019" y="451.0">bin.ui.UI</node>
-            <node x="830.3837280645711" y="0.0">bin.system.mapGen.SectorGen</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="bin.system.GameSystem" target="bin.system.API">
-              <point x="28.0" y="13.5" />
-              <point x="636.6779588338019" y="672.0" />
-              <point x="556.7219551282053" y="672.0" />
-              <point x="1.90625" y="-13.5" />
-            </edge>
-            <edge source="bin.system.API" target="bin.system.SystemAPI">
-              <point x="-5.71875" y="-13.5" />
-              <point x="549.0969551282053" y="692.0" />
-              <point x="451.9271354033566" y="692.0" />
-              <point x="-26.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.SystemAPI" target="bin.system.dataLoader.DataLoader">
-              <point x="-39.0" y="-13.5" />
-              <point x="438.9271354033566" y="605.0" />
-              <point x="381.1779588338019" y="605.0" />
-              <point x="381.1779588338019" y="431.0" />
-              <point x="348.6802472527477" y="431.0" />
-              <point x="-14.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.GameSystem" target="bin.system.GlobalSettings">
-              <point x="-28.0" y="-13.5" />
-              <point x="580.6779588338019" y="508.0" />
-              <point x="479.1779588338019" y="508.0" />
-              <point x="17.5" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Animal" target="bin.world.organism.Mob">
-              <point x="0.0" y="-13.5" />
-              <point x="119.65667278941987" y="926.0" />
-              <point x="143.33653846153868" y="926.0" />
-              <point x="5.083333333333371" y="13.5" />
-            </edge>
-            <edge source="bin.world.WorldAPI" target="bin.system.API">
-              <point x="32.33333333333337" y="13.5" />
-              <point x="777.5112921671353" y="712.0" />
-              <point x="571.9719551282053" y="712.0" />
-              <point x="17.15625" y="-13.5" />
-            </edge>
-            <edge source="bin.system.mapGen.MapGenerator" target="bin.system.chunkMap.ChunkMap">
-              <point x="0.0" y="-13.5" />
-              <point x="881.5329046341259" y="127.0" />
-              <point x="979.636750787972" y="127.0" />
-              <point x="-44.76923076923072" y="13.5" />
-            </edge>
-            <edge source="bin.world.WorldAPI" target="bin.system.chunkMap.ChunkMap">
-              <point x="0.0" y="-13.5" />
-              <point x="745.1779588338019" y="294.0" />
-              <point x="971.9944430956643" y="294.0" />
-              <point x="971.9944430956643" y="177.0" />
-              <point x="1016.9444430956644" y="177.0" />
-              <point x="-7.461538461538453" y="13.5" />
-            </edge>
-            <edge source="bin.system.chunkMap.ChunkMap" target="bin.system.chunkMap.Chunk">
-              <point x="14.923076923076906" y="13.5" />
-              <point x="1039.3290584802796" y="97.0" />
-              <point x="1084.1182692307693" y="97.0" />
-              <point x="7.125" y="-13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.TurnComputer.TurnComputer">
-              <point x="23.75" y="-13.5" />
-              <point x="620.6742948717953" y="314.0" />
-              <point x="1111.9682692307695" y="314.0" />
-              <point x="-50.400000000000006" y="13.5" />
-            </edge>
-            <edge source="bin.system.GlobalSettings" target="bin.world.World">
-              <point x="52.5" y="-13.5" />
-              <point x="514.1779588338019" y="421.0" />
-              <point x="575.2100091575096" y="421.0" />
-              <point x="-21.714285714285666" y="13.5" />
-            </edge>
-            <edge source="bin.system.API" target="bin.world.WorldAPI">
-              <point x="9.53125" y="-13.5" />
-              <point x="564.3469551282053" y="692.0" />
-              <point x="712.8446255004685" y="692.0" />
-              <point x="-32.33333333333337" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Mob" target="bin.world.item.Item">
-              <point x="-20.33333333333337" y="-13.5" />
-              <point x="117.91987179487194" y="824.0" />
-              <point x="127.25320512820531" y="824.0" />
-              <point x="127.25320512820531" y="67.0" />
-              <point x="107.20320512820524" y="67.0" />
-              <point x="0.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.TurnComputer.SectorComputer" target="bin.system.chunkMap.Chunk">
-              <point x="28.0" y="13.5" />
-              <point x="1273.983653846154" y="177.0" />
-              <point x="1277.108653846154" y="177.0" />
-              <point x="1277.108653846154" y="1190.0" />
-              <point x="1107.8682692307693" y="1190.0" />
-              <point x="30.875" y="-13.5" />
-            </edge>
-            <edge source="bin.world.organism.Organism" target="bin.system.API">
-              <point x="14.923076923076906" y="-13.5" />
-              <point x="213.65705128205127" y="1023.0" />
-              <point x="565.8157051282053" y="1023.0" />
-              <point x="565.8157051282053" y="824.0" />
-              <point x="567.0157051282054" y="824.0" />
-              <point x="12.200000000000045" y="13.5" />
-            </edge>
-            <edge source="bin.system.GameSystem.Thanos" target="bin.system.API">
-              <point x="-20.75" y="13.5" />
-              <point x="248.92795883380188" y="722.0" />
-              <point x="537.6594551282053" y="722.0" />
-              <point x="-17.15625" y="-13.5" />
-            </edge>
-            <edge source="bin.system.mapGen.SectorGen" target="bin.system.API">
-              <point x="-41.60000000000002" y="13.5" />
-              <point x="840.783728064571" y="87.0" />
-              <point x="213.865458833802" y="87.0" />
-              <point x="213.865458833802" y="742.0" />
-              <point x="530.0344551282053" y="742.0" />
-              <point x="-24.78125" y="-13.5" />
-            </edge>
-            <edge source="bin.world.organism.Plant" target="bin.world.organism.Organism">
-              <point x="19.0" y="13.5" />
-              <point x="238.15667278941987" y="1013.0" />
-              <point x="206.19551282051282" y="1013.0" />
-              <point x="7.461538461538453" y="-13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.mapGen.MapGenerator">
-              <point x="-4.75" y="-13.5" />
-              <point x="592.1742948717953" y="264.0" />
-              <point x="913.0329046341259" y="264.0" />
-              <point x="31.5" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Mob" target="bin.system.API">
-              <point x="20.33333333333337" y="-13.5" />
-              <point x="158.58653846153868" y="824.0" />
-              <point x="530.4157051282053" y="824.0" />
-              <point x="-24.399999999999977" y="13.5" />
-            </edge>
-            <edge source="bin.system.TurnComputer.SectorComputer" target="bin.world.organism.Organism">
-              <point x="0.0" y="13.5" />
-              <point x="1245.983653846154" y="177.0" />
-              <point x="1266.108653846154" y="177.0" />
-              <point x="1266.108653846154" y="334.0" />
-              <point x="936.1010357568788" y="334.0" />
-              <point x="936.1010357568788" y="1063.0" />
-              <point x="243.50320512820508" y="1063.0" />
-              <point x="44.76923076923072" y="-13.5" />
-            </edge>
-            <edge source="bin.system.SystemAPI" target="bin.system.GameSystem">
-              <point x="39.0" y="-13.5" />
-              <point x="516.9271354033566" y="605.0" />
-              <point x="580.6779588338019" y="605.0" />
-              <point x="-28.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.chunkMap.ChunkMap" target="bin.world.organism.Organism">
-              <point x="0.0" y="13.5" />
-              <point x="1024.4059815572027" y="177.0" />
-              <point x="1032.4278846153848" y="177.0" />
-              <point x="1032.4278846153848" y="304.0" />
-              <point x="928.6394972953403" y="304.0" />
-              <point x="928.6394972953403" y="1053.0" />
-              <point x="236.04166666666663" y="1053.0" />
-              <point x="37.307692307692264" y="-13.5" />
-            </edge>
-            <edge source="bin.system.API" target="bin.world.WorldSPI">
-              <point x="20.96875" y="-13.5" />
-              <point x="575.7844551282053" y="722.0" />
-              <point x="823.3779588338019" y="722.0" />
-              <point x="-38.80000000000001" y="13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.world.organism.Human">
-              <point x="-33.25" y="-13.5" />
-              <point x="563.6742948717953" y="334.0" />
-              <point x="63.33333333333337" y="334.0" />
-              <point x="25.33333333333337" y="13.5" />
-            </edge>
-            <edge source="bin.system.chunkMap.Chunk" target="bin.world.organism.Organism">
-              <point x="-26.125" y="-13.5" />
-              <point x="1050.8682692307693" y="1180.0" />
-              <point x="231.06730769230774" y="1180.0" />
-              <point x="32.33333333333337" y="13.5" />
-            </edge>
-            <edge source="bin.system.mapGen.SectorGen" target="bin.system.chunkMap.Chunk">
-              <point x="41.599999999999966" y="13.5" />
-              <point x="923.983728064571" y="117.0" />
-              <point x="1056.658653846154" y="117.0" />
-              <point x="1056.658653846154" y="1130.0" />
-              <point x="1074.6182692307693" y="1130.0" />
-              <point x="-2.375" y="-13.5" />
-            </edge>
-            <edge source="bin.system.GameSystem" target="bin.world.World">
-              <point x="9.333333333333371" y="-13.5" />
-              <point x="618.0112921671353" y="528.0" />
-              <point x="611.1779588338019" y="528.0" />
-              <point x="611.1779588338019" y="431.0" />
-              <point x="596.9242948717953" y="431.0" />
-              <point x="0.0" y="13.5" />
-            </edge>
-            <edge source="bin.world.WorldSPI" target="bin.system.API">
-              <point x="0.0" y="13.5" />
-              <point x="862.1779588338019" y="742.0" />
-              <point x="583.4094551282053" y="742.0" />
-              <point x="28.59375" y="-13.5" />
-            </edge>
-            <edge source="bin.system.chunkMap.Chunk" target="bin.system.API">
-              <point x="-21.375" y="-13.5" />
-              <point x="1055.6182692307693" y="1170.0" />
-              <point x="948.7164203722634" y="1170.0" />
-              <point x="948.7164203722634" y="824.0" />
-              <point x="579.2157051282053" y="824.0" />
-              <point x="24.399999999999977" y="13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.world.organism.Organism">
-              <point x="21.714285714285666" y="13.5" />
-              <point x="618.6385805860809" y="411.0" />
-              <point x="921.1779588338019" y="411.0" />
-              <point x="921.1779588338019" y="1043.0" />
-              <point x="228.58012820512818" y="1043.0" />
-              <point x="29.84615384615381" y="-13.5" />
-            </edge>
-            <edge source="bin.world.WorldSPI" target="bin.system.chunkMap.Chunk">
-              <point x="38.80000000000001" y="13.5" />
-              <point x="900.977958833802" y="752.0" />
-              <point x="953.4664203722634" y="752.0" />
-              <point x="953.4664203722634" y="1160.0" />
-              <point x="1060.3682692307693" y="1160.0" />
-              <point x="-16.625" y="-13.5" />
-            </edge>
-            <edge source="bin.system.API" target="bin.system.dataLoader.DataLoaderAPI">
-              <point x="-9.53125" y="-13.5" />
-              <point x="545.2844551282053" y="702.0" />
-              <point x="359.1779588338019" y="702.0" />
-              <point x="33.25" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Plant" target="bin.system.API">
-              <point x="25.33333333333337" y="-13.5" />
-              <point x="244.49000612275324" y="946.0" />
-              <point x="554.8157051282053" y="946.0" />
-              <point x="0.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.TurnComputer.SectorComputer">
-              <point x="25.19999999999999" y="-13.5" />
-              <point x="1187.5682692307694" y="177.0" />
-              <point x="1189.983653846154" y="177.0" />
-              <point x="-56.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.GameSystem" target="bin.system.GameSystem.Thanos">
-              <point x="-46.66666666666663" y="-13.5" />
-              <point x="562.0112921671353" y="518.0" />
-              <point x="290.4279588338019" y="518.0" />
-              <point x="20.75" y="13.5" />
-            </edge>
-            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.chunkMap.Chunk">
-              <point x="25.200000000000045" y="13.5" />
-              <point x="1187.5682692307696" y="314.0" />
-              <point x="1149.802958833802" y="314.0" />
-              <point x="1149.802958833802" y="1170.0" />
-              <point x="1098.3682692307693" y="1170.0" />
-              <point x="21.375" y="-13.5" />
-            </edge>
-            <edge source="bin.world.organism.Organism" target="bin.world.organism.Animal">
-              <point x="-14.923076923076906" y="-13.5" />
-              <point x="183.81089743589746" y="1023.0" />
-              <point x="98.90667278941987" y="1023.0" />
-              <point x="-20.75" y="13.5" />
-            </edge>
-            <edge source="bin.system.SystemAPI" target="bin.world.World">
-              <point x="13.0" y="-13.5" />
-              <point x="490.9271354033566" y="595.0" />
-              <point x="542.1779588338019" y="595.0" />
-              <point x="542.1779588338019" y="431.0" />
-              <point x="586.0671520146524" y="431.0" />
-              <point x="-10.85714285714289" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Human" target="bin.world.organism.Organism">
-              <point x="-25.33333333333337" y="13.5" />
-              <point x="12.666666666666629" y="334.0" />
-              <point x="21.602564102563974" y="334.0" />
-              <point x="21.602564102563974" y="1063.0" />
-              <point x="153.96474358974353" y="1063.0" />
-              <point x="-44.76923076923083" y="-13.5" />
-            </edge>
-            <edge source="bin.system.GlobalSettings" target="bin.system.dataLoader.DataLoader">
-              <point x="-17.5" y="-13.5" />
-              <point x="444.1779588338019" y="411.0" />
-              <point x="404.6802472527477" y="411.0" />
-              <point x="42.0" y="13.5" />
-            </edge>
-            <edge source="bin.world.WorldSPI" target="bin.world.organism.Organism">
-              <point x="19.400000000000034" y="13.5" />
-              <point x="881.577958833802" y="752.0" />
-              <point x="846.3963661725875" y="752.0" />
-              <point x="846.3963661725875" y="1033.0" />
-              <point x="221.11858974358972" y="1033.0" />
-              <point x="22.38461538461536" y="-13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.chunkMap.Chunk">
-              <point x="32.571428571428555" y="13.5" />
-              <point x="629.4957234432238" y="401.0" />
-              <point x="958.2164203722634" y="401.0" />
-              <point x="958.2164203722634" y="1150.0" />
-              <point x="1065.1182692307693" y="1150.0" />
-              <point x="-11.875" y="-13.5" />
-            </edge>
-            <edge source="bin.world.organism.Mob" target="bin.world.organism.Organism">
-              <point x="-15.25" y="13.5" />
-              <point x="123.00320512820531" y="906.0" />
-              <point x="66.23397435897436" y="906.0" />
-              <point x="66.23397435897436" y="1033.0" />
-              <point x="176.349358974359" y="1033.0" />
-              <point x="-22.38461538461536" y="-13.5" />
-            </edge>
-            <edge source="bin.system.mapGen.MapGenerator" target="bin.system.mapGen.SectorGen">
-              <point x="-25.200000000000045" y="-13.5" />
-              <point x="856.3329046341258" y="117.0" />
-              <point x="903.183728064571" y="117.0" />
-              <point x="20.799999999999955" y="13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.API">
-              <point x="10.85714285714289" y="13.5" />
-              <point x="607.7814377289382" y="421.0" />
-              <point x="686.1779588338019" y="421.0" />
-              <point x="686.1779588338019" y="682.0" />
-              <point x="560.5344551282053" y="682.0" />
-              <point x="5.71875" y="-13.5" />
-            </edge>
-            <edge source="bin.system.dataLoader.DataLoaderAPI" target="bin.system.GlobalSettings">
-              <point x="0.0" y="-13.5" />
-              <point x="325.9279588338019" y="528.0" />
-              <point x="409.1779588338019" y="528.0" />
-              <point x="-52.5" y="13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.chunkMap.ChunkMap">
-              <point x="4.75" y="-13.5" />
-              <point x="601.6742948717953" y="274.0" />
-              <point x="955.0329046341259" y="274.0" />
-              <point x="955.0329046341259" y="157.0" />
-              <point x="1002.0213661725875" y="157.0" />
-              <point x="-22.38461538461536" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Human" target="bin.system.Commander">
-              <point x="25.33333333333337" y="-13.5" />
-              <point x="63.33333333333337" y="77.0" />
-              <point x="535.4279588338019" y="77.0" />
-              <point x="-26.0" y="13.5" />
-            </edge>
-            <edge source="bin.system.GameSystem" target="bin.ui.UI">
-              <point x="28.0" y="-13.5" />
-              <point x="636.6779588338019" y="528.0" />
-              <point x="635.1779588338019" y="528.0" />
-              <point x="-13.5" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Plant" target="bin.world.organism.Mob">
-              <point x="0.0" y="-13.5" />
-              <point x="219.15667278941987" y="916.0" />
-              <point x="163.66987179487194" y="916.0" />
-              <point x="25.41666666666663" y="13.5" />
-            </edge>
-            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.chunkMap.ChunkMap">
-              <point x="0.0" y="-13.5" />
-              <point x="1162.3682692307693" y="57.0" />
-              <point x="1069.1752123264337" y="57.0" />
-              <point x="44.76923076923083" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Organism" target="bin.world.organism.Plant">
-              <point x="0.0" y="-13.5" />
-              <point x="198.73397435897436" y="1063.0" />
-              <point x="200.15667278941987" y="1063.0" />
-              <point x="-19.0" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Animal" target="bin.system.API">
-              <point x="27.66666666666663" y="-13.5" />
-              <point x="147.3233394560865" y="936.0" />
-              <point x="543.8157051282053" y="936.0" />
-              <point x="543.8157051282053" y="824.0" />
-              <point x="542.6157051282053" y="824.0" />
-              <point x="-12.200000000000045" y="13.5" />
-            </edge>
-            <edge source="bin.world.organism.Animal" target="bin.world.organism.Organism">
-              <point x="20.75" y="13.5" />
-              <point x="140.40667278941987" y="1013.0" />
-              <point x="191.2724358974359" y="1013.0" />
-              <point x="-7.461538461538453" y="-13.5" />
-            </edge>
-            <edge source="bin.world.organism.Human" target="bin.world.item.Item">
-              <point x="0.0" y="-13.5" />
-              <point x="38.0" y="67.0" />
-              <point x="93.60320512820522" y="67.0" />
-              <point x="-13.600000000000023" y="13.5" />
-            </edge>
-            <edge source="bin.system.SystemAPI" target="bin.system.GlobalSettings">
-              <point x="-13.0" y="-13.5" />
-              <point x="464.9271354033566" y="605.0" />
-              <point x="444.1779588338019" y="605.0" />
-              <point x="-17.5" y="13.5" />
-            </edge>
-            <edge source="bin.world.World" target="bin.system.Commander">
-              <point x="-23.75" y="-13.5" />
-              <point x="573.1742948717953" y="244.0" />
-              <point x="587.4279588338019" y="244.0" />
-              <point x="26.0" y="13.5" />
-            </edge>
-            <edge source="bin.world.item.Item" target="bin.system.API">
-              <point x="27.200000000000045" y="13.5" />
-              <point x="134.4032051282053" y="47.0" />
-              <point x="166.0634167092594" y="47.0" />
-              <point x="166.0634167092594" y="752.0" />
-              <point x="526.2219551282053" y="752.0" />
-              <point x="-28.59375" y="-13.5" />
-            </edge>
-            <edge source="bin.system.dataLoader.DataLoader" target="bin.system.API">
-              <point x="-42.0" y="13.5" />
-              <point x="320.6802472527477" y="431.0" />
-              <point x="217.677958833802" y="431.0" />
-              <point x="217.677958833802" y="732.0" />
-              <point x="533.8469551282053" y="732.0" />
-              <point x="-20.96875" y="-13.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.5579216354344122" x="258.0304766858837" y="410.1679389312978" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/item/Equipment.java" />
+    <entry file="file://$PROJECT_DIR$/src/cfg/items">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMap.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Human/Buffs.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
+        <state relative-caret-position="187">
+          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#addBuff#0;class#Buffs#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/Chunk.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Human/Equipment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        <state relative-caret-position="238">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getFieldGlobal#0;class#Chunk#0" />
-            <element signature="method#setFieldGlobal#0;class#Chunk#0" />
+            <element signature="method#Equipment#0;class#Equipment#0" />
+            <element signature="method#equip#0;class#Equipment#0" />
+            <element signature="method#unequip#0;class#Equipment#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/dataLoader/DataLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getConfig#0;class#DataLoader#0" />
-            <element signature="method#getBlockConfig#0;class#DataLoader#0" />
-            <element signature="method#loadConfigs#0;class#DataLoader#0" />
-            <element signature="method#parseBlockConfig#0;class#DataLoader#0" />
-            <element signature="method#parseConfig#0;class#DataLoader#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/dataLoader/DataLoaderAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/mapGen/MapGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-260">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/mapGen/SectorGen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/API.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="44" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/Commander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/GameSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Human/Inventory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="23" column="31" lean-forward="true" selection-start-line="23" selection-start-column="31" selection-end-line="23" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="class#Thanos#0;class#GameSystem#0" />
-            <element signature="e#644#645#0" expanded="true" />
-            <element signature="e#701#702#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/GlobalSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="19" column="49" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="49" />
+          <caret line="26" column="5" lean-forward="true" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/system/SystemAPI.java">
+    <entry file="file://$PROJECT_DIR$/src/lib/CommandRefusedException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="30" column="79" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/mapGen/MapGenerator.java" />
+    <entry file="file://$PROJECT_DIR$/src/bin/system/mapGen/SectorGen.java" />
+    <entry file="file://$PROJECT_DIR$/src/bin/system/Commander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1266,65 +649,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bin/world/item/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="527">
+          <caret line="31" column="46" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Animal.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/system/TurnComputer/SectorComputer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="110" column="16" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="16" />
+        <state relative-caret-position="357">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Human.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/item/CraftingBook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="29" column="97" selection-start-line="29" selection-start-column="97" selection-end-line="29" selection-end-column="97" />
-          <folding>
-            <element signature="method#removeFromInventory#0;class#Human#0" />
-            <element signature="method#addToInventory#0;class#Human#0" />
-            <element signature="method#take#0;class#Human#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Mob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="14" column="74" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+        <state relative-caret-position="374">
+          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#parseDropTableData#0;class#Mob#0" />
+            <element signature="e#933#934#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Organism.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/WorldAPI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="81" column="4" selection-start-line="81" selection-start-column="4" selection-end-line="81" selection-end-column="4" />
+        <state relative-caret-position="170">
+          <caret line="10" column="36" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#randFromCreationData#0;class#Organism#0" />
-            <element signature="method#getValue#0;class#Organism#0" />
-            <element signature="method#create#0;class#Organism#0" />
-            <element signature="method#create#1;class#Organism#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/TurnComputer/TurnComputer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="22" column="50" selection-start-line="22" selection-start-column="50" selection-end-line="22" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/SystemAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setVariables#0;class#SystemAPI#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/WorldSPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Grass.java" />
     <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Plant.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="50" column="4" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+        <state relative-caret-position="142">
+          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#move#0;class#Plant#0" />
@@ -1333,51 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/World.java">
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Animal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="133" column="42" selection-start-line="133" selection-start-column="42" selection-end-line="133" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#World#0;class#World#0" />
-            <element signature="method#getCoordsInDirection#0;class#World#0" />
-            <element signature="method#getCoordsInDirection#1;class#World#0" />
-            <element signature="method#getCoordsInDirection#2;class#World#0" />
-            <element signature="method#makeOrganism#0;class#World#0" />
-            <element signature="method#cleanCorpse#0;class#World#0" />
-            <element signature="method#log#0;class#World#0" />
-            <element signature="method#getLog#0;class#World#0" />
-            <element signature="method#getPopulation#0;class#World#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/WorldAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="139" selection-start-line="12" selection-start-column="139" selection-end-line="12" selection-end-column="139" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bin/world/WorldSPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#createOrganism#0;class#WorldSPI#0" />
-            <element signature="method#createOrganism#1;class#WorldSPI#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="40" selection-start-line="9" selection-start-column="40" selection-end-line="9" selection-end-column="40" />
+        <state relative-caret-position="136">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1386,26 +747,826 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/Enums.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        <state relative-caret-position="136">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
-            <element signature="class#Species#0;class#Enums#0" />
             <element signature="class#Move#0;class#Commands#0;class#Enums#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMapGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkGen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cfg/species">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="55" column="14" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Mob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="30" column="9" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#drop#0;class#Mob#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Human/Human.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="93" column="33" lean-forward="true" selection-start-line="93" selection-start-column="33" selection-end-line="93" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#takeCommand#0;class#Human#0" />
+            <element signature="method#take#0;class#Human#0" />
+            <element signature="method#addBuff#0;class#Human#0" />
+            <element signature="method#use#0;class#Human#0" />
+            <element signature="method#refuseCommand#0;class#Human#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cfg/craftingBook">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="77" column="80" selection-start-line="77" selection-start-column="80" selection-end-line="77" selection-end-column="80" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getCoordsInDirection#0;class#World#0" />
+            <element signature="method#cleanCorpse#0;class#World#0" />
+            <element signature="method#log#0;class#World#0" />
+            <element signature="method#getLog#0;class#World#0" />
+            <element signature="method#getPopulation#0;class#World#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/Chunk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#toLocalCoords#0;class#Chunk#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Człowiek i Natura.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk-12.0.1/lib/src.zip!/java.base/java/util/HashMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="1512" column="39" selection-start-line="1512" selection-start-column="39" selection-end-line="1512" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/dataLoader/DataLoaderAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="134" selection-start-line="13" selection-start-column="134" selection-end-line="13" selection-end-column="134" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/dataLoader/DataLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getBlockConfig#0;class#DataLoader#0" />
+            <element signature="method#loadConfigs#0;class#DataLoader#0" />
+            <element signature="method#parseBlockConfig#0;class#DataLoader#0" />
+            <element signature="method#parseConfig#0;class#DataLoader#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/bin">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>bin</OriginalElement>
+          <nodes>
+            <node x="1291.5314424115595" y="0.0">bin.system.chunkMap.Chunk</node>
+            <node x="241.14462837001497" y="187.0">bin.world.organism.Human.Inventory</node>
+            <node x="225.28990026855138" y="1070.0">bin.world.organism.Plant</node>
+            <node x="881.9779617033482" y="652.0">bin.system.GameSystem</node>
+            <node x="116.28990026855138" y="1070.0">bin.world.organism.Animal</node>
+            <node x="1240.9058602540729" y="187.0">bin.system.chunkMap.ChunkGen</node>
+            <node x="1203.039775744893" y="371.0">bin.system.chunkMap.ChunkMapGen</node>
+            <node x="138.14462837001497" y="264.0">bin.world.organism.Human.Buffs</node>
+            <node x="889.267816775812" y="896.0">bin.system.API</node>
+            <node x="1173.4058602540729" y="264.0">bin.system.chunkMap.ChunkMap</node>
+            <node x="933.6214060202692" y="478.0">bin.world.World</node>
+            <node x="150.36337837001497" y="1217.0">bin.world.organism.Organism</node>
+            <node x="883.2279617033482" y="575.0">bin.ui.UI</node>
+            <node x="1375.9058602540729" y="729.0">bin.world.WorldSPI</node>
+            <node x="1122.7785778047833" y="478.0">bin.system.dataLoader.DataLoader</node>
+            <node x="1140.913072686936" y="729.0">bin.system.dataLoader.DataLoaderAPI</node>
+            <node x="1454.6545129043272" y="1371.0">bin.system.TurnComputer.TurnComputer</node>
+            <node x="250.74462837001488" y="371.0">bin.world.organism.Human.Human</node>
+            <node x="292.89462837001497" y="264.0">bin.world.organism.Human.Equipment</node>
+            <node x="771.1446283700149" y="575.0">bin.system.GameSystem.Thanos</node>
+            <node x="575.8946283700149" y="264.0">bin.system.Commander</node>
+            <node x="128.86337837001497" y="1294.0">bin.system.TurnComputer.SectorComputer</node>
+            <node x="188.25535545503772" y="0.0">bin.world.item.Item</node>
+            <node x="1020.9779617033482" y="575.0">bin.system.GlobalSettings</node>
+            <node x="1073.144628370015" y="187.0">bin.system.chunkMap.ChunkDumper</node>
+            <node x="679.8946283700149" y="729.0">bin.world.WorldAPI</node>
+            <node x="422.89462837001497" y="264.0">bin.world.item.CraftingBook</node>
+            <node x="84.89462837001497" y="973.0">bin.world.organism.Mob</node>
+            <node x="1001.2136887883711" y="729.0">bin.system.SystemAPI</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="bin.system.GameSystem" target="bin.system.API">
+              <point x="0.0" y="13.5" />
+              <point x="940.9779617033482" y="709.0" />
+              <point x="922.767816775812" y="709.0" />
+              <point x="0.0" y="-13.5" />
+            </edge>
+            <edge source="bin.system.API" target="bin.system.SystemAPI">
+              <point x="5.826086956521749" y="-13.5" />
+              <point x="928.5939037323337" y="786.0" />
+              <point x="1083.713688788371" y="786.0" />
+              <point x="27.5" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkDumper" target="bin.system.GlobalSettings">
+              <point x="-41.666666666666686" y="13.5" />
+              <point x="0.0" y="-13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMapGen" target="bin.system.chunkMap.ChunkMap">
+              <point x="-10.416666666666686" y="-13.5" />
+              <point x="1255.1231090782262" y="351.0" />
+              <point x="1240.355860254073" y="351.0" />
+              <point x="15.449999999999989" y="13.5" />
+            </edge>
+            <edge source="bin.system.SystemAPI" target="bin.system.dataLoader.DataLoader">
+              <point x="41.25" y="-13.5" />
+              <point x="1097.463688788371" y="709.0" />
+              <point x="1195.9779617033482" y="709.0" />
+              <point x="14.75" y="13.5" />
+            </edge>
+            <edge source="bin.system.GameSystem" target="bin.system.GlobalSettings">
+              <point x="49.16666666666663" y="-13.5" />
+              <point x="990.1446283700147" y="632.0" />
+              <point x="1064.7779617033482" y="632.0" />
+              <point x="-29.200000000000045" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMapGen" target="bin.system.chunkMap.ChunkGen">
+              <point x="31.25" y="-13.5" />
+              <point x="1296.789775744893" y="351.0" />
+              <point x="1308.2058602540728" y="351.0" />
+              <point x="1308.2058602540728" y="244.0" />
+              <point x="1313.005860254073" y="244.0" />
+              <point x="20.599999999999966" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Animal" target="bin.world.organism.Mob">
+              <point x="-29.666666666666742" y="-13.5" />
+              <point x="131.12323360188464" y="1050.0" />
+              <point x="112.81129503668171" y="1050.0" />
+              <point x="-5.5833333333332575" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkGen" target="bin.system.API">
+              <point x="41.19999999999999" y="13.5" />
+              <point x="1333.605860254073" y="244.0" />
+              <point x="1365.4058602540729" y="244.0" />
+              <point x="1365.4058602540729" y="846.0" />
+              <point x="946.072164601899" y="846.0" />
+              <point x="23.304347826086996" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Organism" target="bin.world.organism.Human.Human">
+              <point x="-48.28125" y="-13.5" />
+              <point x="153.58212837001497" y="1197.0" />
+              <point x="25.0" y="1197.0" />
+              <point x="25.0" y="438.0" />
+              <point x="256.60177122715777" y="438.0" />
+              <point x="-35.14285714285711" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkDumper" target="bin.system.chunkMap.Chunk">
+              <point x="0.0" y="-13.5" />
+              <point x="1135.644628370015" y="127.0" />
+              <point x="1309.4689424115595" y="127.0" />
+              <point x="-23.0625" y="13.5" />
+            </edge>
+            <edge source="bin.world.WorldAPI" target="bin.system.API">
+              <point x="34.33333333333334" y="13.5" />
+              <point x="765.7279617033482" y="806.0" />
+              <point x="911.1156428627685" y="806.0" />
+              <point x="-11.652173913043498" y="-13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.world.organism.Human.Human">
+              <point x="-35.14285714285711" y="-13.5" />
+              <point x="939.4785488774121" y="458.0" />
+              <point x="303.45891408430066" y="458.0" />
+              <point x="11.71428571428578" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMap" target="bin.system.API">
+              <point x="-46.349999999999994" y="13.5" />
+              <point x="1178.555860254073" y="311.0" />
+              <point x="669.3946283700149" y="311.0" />
+              <point x="669.3946283700149" y="836.0" />
+              <point x="902.376512427986" y="836.0" />
+              <point x="-20.391304347826008" y="-13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkGen" target="bin.system.chunkMap.Chunk">
+              <point x="-25.75" y="-13.5" />
+              <point x="1266.6558602540729" y="157.0" />
+              <point x="1324.8439424115595" y="157.0" />
+              <point x="-7.6875" y="13.5" />
+            </edge>
+            <edge source="bin.world.WorldAPI" target="bin.system.chunkMap.ChunkMap">
+              <point x="0.0" y="-13.5" />
+              <point x="731.3946283700149" y="321.0" />
+              <point x="1188.855860254073" y="321.0" />
+              <point x="-36.05000000000001" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMap" target="bin.system.chunkMap.Chunk">
+              <point x="-8.583333333333314" y="-13.5" />
+              <point x="1216.3225269207396" y="244.0" />
+              <point x="1219.4058602540729" y="244.0" />
+              <point x="1219.4058602540729" y="137.0" />
+              <point x="1314.5939424115595" y="137.0" />
+              <point x="-17.9375" y="13.5" />
+            </edge>
+            <edge source="bin.world.item.CraftingBook" target="bin.system.API">
+              <point x="44.0" y="13.5" />
+              <point x="532.894628370015" y="341.0" />
+              <point x="504.16488428113894" y="341.0" />
+              <point x="504.16488428113894" y="856.0" />
+              <point x="896.5504254714642" y="856.0" />
+              <point x="-26.217391304347757" y="-13.5" />
+            </edge>
+            <edge source="bin.system.GlobalSettings" target="bin.world.World">
+              <point x="-58.39999999999998" y="-13.5" />
+              <point x="1035.5779617033481" y="545.0" />
+              <point x="981.4547393536025" y="545.0" />
+              <point x="6.833333333333314" y="13.5" />
+            </edge>
+            <edge source="bin.system.API" target="bin.world.WorldAPI">
+              <point x="-14.565217391304373" y="-13.5" />
+              <point x="908.2025993845076" y="816.0" />
+              <point x="731.3946283700149" y="816.0" />
+              <point x="0.0" y="13.5" />
+            </edge>
+            <edge source="bin.system.GlobalSettings" target="bin.system.API">
+              <point x="58.39999999999998" y="13.5" />
+              <point x="1152.377961703348" y="622.0" />
+              <point x="1290.413072686936" y="622.0" />
+              <point x="1290.413072686936" y="816.0" />
+              <point x="937.3330341671164" y="816.0" />
+              <point x="14.565217391304373" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.organism.Human.Equipment">
+              <point x="12.299999999999955" y="-13.5" />
+              <point x="304.04462837001483" y="321.0" />
+              <point x="375.39462837001497" y="321.0" />
+              <point x="27.5" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Mob" target="bin.world.item.Item">
+              <point x="0.0" y="-13.5" />
+              <point x="118.39462837001497" y="77.0" />
+              <point x="202.13035545503772" y="77.0" />
+              <point x="-23.125" y="13.5" />
+            </edge>
+            <edge source="bin.world.WorldSPI" target="bin.world.organism.Human.Human">
+              <point x="-25.75" y="-13.5" />
+              <point x="1401.6558602540729" y="709.0" />
+              <point x="1423.114775744893" y="709.0" />
+              <point x="1423.114775744893" y="418.0" />
+              <point x="326.887485512872" y="418.0" />
+              <point x="35.14285714285711" y="13.5" />
+            </edge>
+            <edge source="bin.system.TurnComputer.SectorComputer" target="bin.system.chunkMap.Chunk">
+              <point x="48.66666666666674" y="-13.5" />
+              <point x="250.5300450366817" y="1269.0" />
+              <point x="1520.2808602540729" y="1269.0" />
+              <point x="1520.2808602540729" y="117.0" />
+              <point x="1360.7189424115595" y="117.0" />
+              <point x="28.1875" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Organism" target="bin.system.API">
+              <point x="9.65625" y="-13.5" />
+              <point x="211.51962837001497" y="1137.0" />
+              <point x="942.142816775812" y="1137.0" />
+              <point x="942.142816775812" y="948.0" />
+              <point x="947.892816775812" y="948.0" />
+              <point x="25.125" y="13.5" />
+            </edge>
+            <edge source="bin.system.GameSystem.Thanos" target="bin.system.API">
+              <point x="-22.25" y="13.5" />
+              <point x="793.3946283700149" y="796.0" />
+              <point x="914.0286863410294" y="796.0" />
+              <point x="-8.739130434782624" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Plant" target="bin.world.organism.Organism">
+              <point x="20.5" y="13.5" />
+              <point x="286.7899002685514" y="1127.0" />
+              <point x="205.08212837001497" y="1127.0" />
+              <point x="3.21875" y="-13.5" />
+            </edge>
+            <edge source="bin.system.TurnComputer.SectorComputer" target="bin.world.organism.Organism">
+              <point x="5.6843418860808015E-14" y="-13.5" />
+              <point x="0.0" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Mob" target="bin.system.API">
+              <point x="22.333333333333258" y="-13.5" />
+              <point x="140.72796170334823" y="948.0" />
+              <point x="897.642816775812" y="948.0" />
+              <point x="-25.125" y="13.5" />
+            </edge>
+            <edge source="bin.system.SystemAPI" target="bin.system.GameSystem">
+              <point x="-41.25" y="-13.5" />
+              <point x="1014.9636887883711" y="709.0" />
+              <point x="980.3112950366815" y="709.0" />
+              <point x="39.33333333333337" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMap" target="bin.world.organism.Organism">
+              <point x="25.75" y="13.5" />
+              <point x="1250.6558602540729" y="331.0" />
+              <point x="1495.8433602540729" y="331.0" />
+              <point x="1495.8433602540729" y="1167.0" />
+              <point x="230.83212837001497" y="1167.0" />
+              <point x="28.96875" y="-13.5" />
+            </edge>
+            <edge source="bin.system.API" target="bin.world.WorldSPI">
+              <point x="29.130434782608745" y="-13.5" />
+              <point x="951.8982515584207" y="866.0" />
+              <point x="1414.5308602540729" y="866.0" />
+              <point x="-12.875" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.Chunk" target="bin.world.organism.Organism">
+              <point x="12.8125" y="13.5" />
+              <point x="1345.3439424115595" y="147.0" />
+              <point x="1502.2808602540729" y="147.0" />
+              <point x="1502.2808602540729" y="1177.0" />
+              <point x="237.26962837001497" y="1177.0" />
+              <point x="35.40625" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Equipment" target="bin.world.organism.Human.Inventory">
+              <point x="-41.25" y="-13.5" />
+              <point x="306.64462837001497" y="244.0" />
+              <point x="309.89462837001497" y="244.0" />
+              <point x="13.75" y="13.5" />
+            </edge>
+            <edge source="bin.system.GameSystem" target="bin.world.World">
+              <point x="9.833333333333371" y="-13.5" />
+              <point x="950.8112950366815" y="632.0" />
+              <point x="953.7279617033482" y="632.0" />
+              <point x="-20.5" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.Chunk" target="bin.system.API">
+              <point x="-33.3125" y="13.5" />
+              <point x="1299.2189424115595" y="107.0" />
+              <point x="565.3946283700149" y="107.0" />
+              <point x="565.3946283700149" y="846.0" />
+              <point x="899.4634689497251" y="846.0" />
+              <point x="-23.304347826086882" y="-13.5" />
+            </edge>
+            <edge source="bin.world.WorldSPI" target="bin.system.API">
+              <point x="12.875" y="13.5" />
+              <point x="1440.2808602540729" y="876.0" />
+              <point x="954.8112950366815" y="876.0" />
+              <point x="32.043478260869506" y="-13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.world.organism.Organism">
+              <point x="34.16666666666663" y="13.5" />
+              <point x="1008.7880726869358" y="525.0" />
+              <point x="1489.4058602540729" y="525.0" />
+              <point x="1489.4058602540729" y="1157.0" />
+              <point x="224.39462837001497" y="1157.0" />
+              <point x="22.53125" y="-13.5" />
+            </edge>
+            <edge source="bin.system.API" target="bin.system.dataLoader.DataLoaderAPI">
+              <point x="8.739130434782624" y="-13.5" />
+              <point x="931.5069472105946" y="796.0" />
+              <point x="1175.663072686936" y="796.0" />
+              <point x="-34.75" y="13.5" />
+            </edge>
+            <edge source="bin.world.WorldSPI" target="bin.system.chunkMap.Chunk">
+              <point x="25.75" y="-13.5" />
+              <point x="1453.1558602540729" y="709.0" />
+              <point x="1434.114775744893" y="709.0" />
+              <point x="1434.114775744893" y="157.0" />
+              <point x="1340.2189424115595" y="157.0" />
+              <point x="7.6875" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.system.Commander">
+              <point x="36.90000000000009" y="-13.5" />
+              <point x="328.64462837001497" y="351.0" />
+              <point x="603.3946283700149" y="351.0" />
+              <point x="-27.5" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Plant" target="bin.system.API">
+              <point x="27.333333333333258" y="-13.5" />
+              <point x="293.62323360188464" y="1050.0" />
+              <point x="931.142816775812" y="1050.0" />
+              <point x="8.375" y="13.5" />
+            </edge>
+            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.TurnComputer.SectorComputer">
+              <point x="-33.0" y="-13.5" />
+              <point x="1487.6545129043272" y="1341.0" />
+              <point x="238.36337837001497" y="1341.0" />
+              <point x="36.50000000000006" y="13.5" />
+            </edge>
+            <edge source="bin.system.GameSystem" target="bin.system.GameSystem.Thanos">
+              <point x="-49.166666666666686" y="-13.5" />
+              <point x="891.8112950366815" y="632.0" />
+              <point x="837.8946283700149" y="632.0" />
+              <point x="22.25" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.organism.Human.Buffs">
+              <point x="-28.700000000000045" y="-13.5" />
+              <point x="263.04462837001483" y="341.0" />
+              <point x="199.64462837001497" y="341.0" />
+              <point x="20.5" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Equipment" target="bin.world.item.Item">
+              <point x="13.75" y="-13.5" />
+              <point x="361.64462837001497" y="57.0" />
+              <point x="248.38035545503772" y="57.0" />
+              <point x="23.125" y="13.5" />
+            </edge>
+            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.chunkMap.Chunk">
+              <point x="33.0" y="-13.5" />
+              <point x="1553.6545129043272" y="107.0" />
+              <point x="1365.8439424115595" y="107.0" />
+              <point x="33.3125" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMapGen" target="bin.system.chunkMap.Chunk">
+              <point x="52.083333333333314" y="-13.5" />
+              <point x="1317.6231090782262" y="351.0" />
+              <point x="1354.4058602540729" y="351.0" />
+              <point x="1354.4058602540729" y="167.0" />
+              <point x="1335.0939424115595" y="167.0" />
+              <point x="2.5625" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Organism" target="bin.world.organism.Animal">
+              <point x="-16.09375" y="-13.5" />
+              <point x="185.76962837001497" y="1147.0" />
+              <point x="138.53990026855138" y="1147.0" />
+              <point x="-22.25" y="13.5" />
+            </edge>
+            <edge source="bin.system.SystemAPI" target="bin.world.World">
+              <point x="-13.75" y="-13.5" />
+              <point x="1042.463688788371" y="699.0" />
+              <point x="1010.4779617033482" y="699.0" />
+              <point x="1010.4779617033482" y="555.0" />
+              <point x="967.788072686936" y="555.0" />
+              <point x="-6.833333333333314" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.item.Item">
+              <point x="-20.5" y="-13.5" />
+              <point x="271.2446283700149" y="331.0" />
+              <point x="230.64462837001497" y="331.0" />
+              <point x="230.64462837001497" y="87.0" />
+              <point x="220.63035545503772" y="87.0" />
+              <point x="-4.625" y="13.5" />
+            </edge>
+            <edge source="bin.system.GlobalSettings" target="bin.system.dataLoader.DataLoader">
+              <point x="58.39999999999998" y="-13.5" />
+              <point x="1152.377961703348" y="555.0" />
+              <point x="1167.0285778047833" y="555.0" />
+              <point x="-14.75" y="13.5" />
+            </edge>
+            <edge source="bin.world.WorldSPI" target="bin.world.organism.Organism">
+              <point x="38.62499999999994" y="13.5" />
+              <point x="1466.0308602540729" y="876.0" />
+              <point x="1454.778170289855" y="876.0" />
+              <point x="1454.778170289855" y="1147.0" />
+              <point x="217.95712837001497" y="1147.0" />
+              <point x="16.09375" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Mob" target="bin.world.organism.Organism">
+              <point x="-16.75" y="13.5" />
+              <point x="101.64462837001497" y="1040.0" />
+              <point x="105.68573360188464" y="1040.0" />
+              <point x="105.68573360188464" y="1157.0" />
+              <point x="179.33212837001497" y="1157.0" />
+              <point x="-22.53125" y="-13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.system.chunkMap.Chunk">
+              <point x="0.0" y="-13.5" />
+              <point x="974.6214060202692" y="428.0" />
+              <point x="708.3946283700149" y="428.0" />
+              <point x="708.3946283700149" y="117.0" />
+              <point x="1304.3439424115595" y="117.0" />
+              <point x="-28.1875" y="13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.system.API">
+              <point x="-34.166666666666686" y="13.5" />
+              <point x="940.4547393536025" y="555.0" />
+              <point x="870.6446283700149" y="555.0" />
+              <point x="870.6446283700149" y="786.0" />
+              <point x="916.9417298192902" y="786.0" />
+              <point x="-5.826086956521749" y="-13.5" />
+            </edge>
+            <edge source="bin.system.dataLoader.DataLoaderAPI" target="bin.system.GlobalSettings">
+              <point x="0.0" y="-13.5" />
+              <point x="1210.413072686936" y="632.0" />
+              <point x="1123.1779617033483" y="632.0" />
+              <point x="29.200000000000045" y="13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.system.chunkMap.ChunkMap">
+              <point x="11.714285714285722" y="-13.5" />
+              <point x="986.335691734555" y="438.0" />
+              <point x="1004.993450693133" y="438.0" />
+              <point x="1004.993450693133" y="331.0" />
+              <point x="1199.1558602540729" y="331.0" />
+              <point x="-25.75" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.organism.Human.Inventory">
+              <point x="-12.299999999999955" y="-13.5" />
+              <point x="279.4446283700149" y="321.0" />
+              <point x="264.54462837001483" y="321.0" />
+              <point x="264.54462837001483" y="244.0" />
+              <point x="254.89462837001497" y="244.0" />
+              <point x="-41.25" y="13.5" />
+            </edge>
+            <edge source="bin.system.GameSystem" target="bin.ui.UI">
+              <point x="-29.5" y="-13.5" />
+              <point x="911.4779617033482" y="632.0" />
+              <point x="898.2279617033482" y="632.0" />
+              <point x="-15.0" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.item.CraftingBook">
+              <point x="20.5" y="-13.5" />
+              <point x="312.2446283700149" y="331.0" />
+              <point x="444.89462837001497" y="331.0" />
+              <point x="-44.0" y="13.5" />
+            </edge>
+            <edge source="bin.system.TurnComputer.TurnComputer" target="bin.system.chunkMap.ChunkMap">
+              <point x="-11.0" y="-13.5" />
+              <point x="1509.6545129043272" y="1341.0" />
+              <point x="1531.6545129043272" y="1341.0" />
+              <point x="1531.6545129043272" y="321.0" />
+              <point x="1260.9558602540728" y="321.0" />
+              <point x="36.049999999999955" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMap" target="bin.system.chunkMap.ChunkGen">
+              <point x="42.916666666666686" y="-13.5" />
+              <point x="1267.8225269207396" y="244.0" />
+              <point x="1271.805860254073" y="244.0" />
+              <point x="-20.6" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Organism" target="bin.world.organism.Plant">
+              <point x="-3.21875" y="-13.5" />
+              <point x="198.64462837001497" y="1117.0" />
+              <point x="245.78990026855138" y="1117.0" />
+              <point x="-20.5" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Plant" target="bin.world.organism.Mob">
+              <point x="-27.333333333333258" y="-13.5" />
+              <point x="238.95656693521812" y="1030.0" />
+              <point x="135.14462837001497" y="1030.0" />
+              <point x="16.75" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Animal" target="bin.system.API">
+              <point x="29.666666666666742" y="-13.5" />
+              <point x="190.45656693521812" y="1040.0" />
+              <point x="920.142816775812" y="1040.0" />
+              <point x="920.142816775812" y="948.0" />
+              <point x="914.392816775812" y="948.0" />
+              <point x="-8.375" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Animal" target="bin.world.organism.Organism">
+              <point x="22.25" y="13.5" />
+              <point x="183.03990026855138" y="1137.0" />
+              <point x="192.20712837001497" y="1137.0" />
+              <point x="-9.65625" y="-13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.system.chunkMap.ChunkMapGen">
+              <point x="35.14285714285711" y="-13.5" />
+              <point x="1009.7642631631263" y="458.0" />
+              <point x="1234.289775744893" y="458.0" />
+              <point x="-31.25" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMap" target="bin.system.chunkMap.ChunkDumper">
+              <point x="-42.91666666666667" y="-13.5" />
+              <point x="1181.9891935874061" y="244.0" />
+              <point x="1135.644628370015" y="244.0" />
+              <point x="0.0" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.system.API">
+              <point x="0.0" y="13.5" />
+              <point x="291.7446283700149" y="866.0" />
+              <point x="893.6373819932033" y="866.0" />
+              <point x="-29.13043478260863" y="-13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Inventory" target="bin.world.item.Item">
+              <point x="-27.5" y="-13.5" />
+              <point x="268.64462837001497" y="77.0" />
+              <point x="229.88035545503772" y="77.0" />
+              <point x="4.625" y="13.5" />
+            </edge>
+            <edge source="bin.system.chunkMap.ChunkMapGen" target="bin.system.API">
+              <point x="31.25" y="13.5" />
+              <point x="1296.789775744893" y="836.0" />
+              <point x="943.1591211236381" y="836.0" />
+              <point x="20.39130434782612" y="-13.5" />
+            </edge>
+            <edge source="bin.system.SystemAPI" target="bin.system.GlobalSettings">
+              <point x="13.75" y="-13.5" />
+              <point x="1069.963688788371" y="699.0" />
+              <point x="1093.9779617033482" y="699.0" />
+              <point x="0.0" y="13.5" />
+            </edge>
+            <edge source="bin.world.organism.Human.Human" target="bin.world.organism.Organism">
+              <point x="-23.42857142857133" y="13.5" />
+              <point x="268.31605694144355" y="448.0" />
+              <point x="31.4375" y="448.0" />
+              <point x="31.4375" y="1187.0" />
+              <point x="160.01962837001497" y="1187.0" />
+              <point x="-41.84375" y="-13.5" />
+            </edge>
+            <edge source="bin.world.World" target="bin.system.Commander">
+              <point x="-11.714285714285722" y="-13.5" />
+              <point x="962.9071203059834" y="438.0" />
+              <point x="658.3946283700149" y="438.0" />
+              <point x="27.5" y="13.5" />
+            </edge>
+            <edge source="bin.world.item.Item" target="bin.system.API">
+              <point x="-13.875" y="13.5" />
+              <point x="211.38035545503772" y="87.0" />
+              <point x="127.64462837001497" y="87.0" />
+              <point x="127.64462837001497" y="876.0" />
+              <point x="890.7243385149425" y="876.0" />
+              <point x="-32.043478260869506" y="-13.5" />
+            </edge>
+            <edge source="bin.system.dataLoader.DataLoader" target="bin.system.API">
+              <point x="44.25" y="13.5" />
+              <point x="1226.0285778047833" y="555.0" />
+              <point x="1293.3261161651967" y="555.0" />
+              <point x="1293.3261161651967" y="826.0" />
+              <point x="940.2460776453772" y="826.0" />
+              <point x="17.478260869565247" y="-13.5" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="309.0" y="315.0" />
+          <SelectedNodes>
+            <node>bin.system.chunkMap.Chunk</node>
+            <node>bin.world.organism.Human.Inventory</node>
+            <node>bin.world.organism.Plant</node>
+            <node>bin.system.GameSystem</node>
+            <node>bin.world.organism.Animal</node>
+            <node>bin.system.chunkMap.ChunkGen</node>
+            <node>bin.system.chunkMap.ChunkMapGen</node>
+            <node>bin.world.organism.Human.Buffs</node>
+            <node>bin.system.API</node>
+            <node>bin.system.chunkMap.ChunkMap</node>
+            <node>bin.world.World</node>
+            <node>bin.world.organism.Organism</node>
+            <node>bin.ui.UI</node>
+            <node>bin.world.WorldSPI</node>
+            <node>bin.system.dataLoader.DataLoader</node>
+            <node>bin.system.dataLoader.DataLoaderAPI</node>
+            <node>bin.system.TurnComputer.TurnComputer</node>
+            <node>bin.world.organism.Human.Human</node>
+            <node>bin.world.organism.Human.Equipment</node>
+            <node>bin.system.GameSystem.Thanos</node>
+            <node>bin.system.Commander</node>
+            <node>bin.system.TurnComputer.SectorComputer</node>
+            <node>bin.world.item.Item</node>
+            <node>bin.system.GlobalSettings</node>
+            <node>bin.system.chunkMap.ChunkDumper</node>
+            <node>bin.world.WorldAPI</node>
+            <node>bin.world.item.CraftingBook</node>
+            <node>bin.world.organism.Mob</node>
+            <node>bin.system.SystemAPI</node>
+          </SelectedNodes>
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/GlobalSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/GameSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="class#Thanos#0;class#GameSystem#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cfg/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/world/organism/Organism.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="54" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#randFromCreationData#0;class#Organism#0" />
+            <element signature="method#getValue#0;class#Organism#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/API.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/lib/Pair.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="459">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="method#toString#0;class#Pair#0" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/info.txt">
+    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkDumper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
+        <state relative-caret-position="765">
+          <caret line="48" column="32" selection-start-line="48" selection-start-column="32" selection-end-line="48" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/system/chunkMap/ChunkMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="72" column="106" selection-start-line="72" selection-start-column="106" selection-end-line="72" selection-end-column="106" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ChunkMap#0;class#ChunkMap#0" />
+            <element signature="method#get#0;class#ChunkMap#0" />
+            <element signature="method#coordsToID#0;class#ChunkMap#0" />
+            <element signature="method#getChunkByCoords#0;class#ChunkMap#0" />
+            <element signature="method#getPopulation#0;class#ChunkMap#0" />
+            <element signature="method#contains#0;class#ChunkMap#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

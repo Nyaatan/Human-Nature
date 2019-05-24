@@ -9,7 +9,16 @@ import java.util.ArrayList;
 public class SystemAPI {
 
     //GLOBAL SETTINGS
-    public static int MAX_INITIATIVE() {return GameSystem.globalSettings.MAX_INITIATIVE;}
+    public int MAX_INITIATIVE;
+    public int CHUNK_SIZE;
+    public int RENDERING_DISTANCE;
+
+    void setVariables()
+    {
+        MAX_INITIATIVE = GameSystem.globalSettings.MAX_INITIATIVE;
+        CHUNK_SIZE = GameSystem.globalSettings.CHUNK_SIZE;
+        RENDERING_DISTANCE = GameSystem.globalSettings.RENDERING_DISTANCE;
+    }
 
     public DataLoader DataLoader()
     {
@@ -20,15 +29,11 @@ public class SystemAPI {
         GameSystem.globalSettings.addWorld(world);
     }
 
-    public World getWorld(int ID) {return GameSystem.globalSettings.getWorld(ID);}
-
-    public int getWorldID(World world) {return GameSystem.globalSettings.getWorldID(world);}
+    public World getWorld() {return GameSystem.globalSettings.getWorld();}
 
     public Enums.Language getLanguage() { return GameSystem.globalSettings.getLanguage(); }
 
     public void setLanguage(Enums.Language language) { GameSystem.globalSettings.setLanguage(language); }
-
-    ArrayList<World> getWorlds() {return GameSystem.globalSettings.getWorlds();}
     //END GS
     /////////
     //GAME SYSTEM

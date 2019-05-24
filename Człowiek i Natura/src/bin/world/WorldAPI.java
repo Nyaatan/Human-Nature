@@ -7,8 +7,8 @@ import bin.system.chunkMap.ChunkMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WorldAPI {
-    public ArrayList<String> getLog(int worldID) { return API.systemAPI.getWorld(worldID).getLog();}
-    public ChunkMap getMap(int worldID) {return API.systemAPI.getWorld(worldID).getMap();}
-    public HashMap<Enums.Species.AllSpecies, Integer> getPopulation(int worldID) { return API.systemAPI.getWorld(worldID).getPopulation();}
+public class WorldAPI { //API for access from external classes
+    public ArrayList<String> getLog() { return API.systemAPI.getWorld().getLog();}
+    public ChunkMap getMap() {return API.systemAPI.getWorld().getMap();}
+    public HashMap<Enums.Species.AllSpecies, Integer> getPopulation() { return API.systemAPI.getWorld().getPopulation();}
 }
