@@ -1,6 +1,6 @@
 package bin.world.organism;
 
-import bin.system.API;
+import lib.API;
 import bin.world.item.Item;
 import lib.Enums;
 import lib.Pair;
@@ -16,7 +16,7 @@ abstract class Mob extends Organism {
         this.dropTable = parseDropTableData(creationData.get("drop"));
 
     }
-    private ArrayList<Pair<Enums.ItemName,Double>> dropTable; //list of chances for a Item drop upon death by human
+    private ArrayList<Pair<Enums.ItemName,Integer>> dropTable; //list of chances for a Item drop upon death by human
 
     Mob(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords) {
         super(specimen, coords);
@@ -24,13 +24,13 @@ abstract class Mob extends Organism {
         this.dropTable = parseDropTableData(creationData.get("drop"));
     }
 
-    private ArrayList<Pair<Enums.ItemName,Double>> parseDropTableData(ArrayList<String> dropTableData)
+    private ArrayList<Pair<Enums.ItemName, Integer>> parseDropTableData(ArrayList<String> dropTableData)
     {
-        ArrayList<Pair<Enums.ItemName,Double>> result = new ArrayList<>();
+        ArrayList<Pair<Enums.ItemName,Integer>> result = new ArrayList<>();
         for(String dataPair : dropTableData)
         {
             String[] newDataPair = dataPair.substring(1, dataPair.length() - 1).split(";");
-            result.add(new Pair<>(Enums.ItemName.valueOf(newDataPair[0].toUpperCase()), Double.valueOf(newDataPair[1])));
+            result.add(new Pair<>(Enums.ItemName.valueOf(newDataPair[0].toUpperCase()), Integer.parseInt(newDataPair[1])));
         }
         return result;
     } //parses dropTable data from config to workable format
@@ -38,9 +38,9 @@ abstract class Mob extends Organism {
     public ArrayList<Item> drop()
     {
         ArrayList<Item> drop = new ArrayList<>();
-        for( Pair<Enums.ItemName, Double> possibleDrop : dropTable)
+        for( Pair<Enums.ItemName, Integer> possibleDrop : dropTable)
         {
-            if(ThreadLocalRandom.current().nextDouble(possibleDrop.getY()) < possibleDrop.getY())
+            if(ThreadLocalRandom.current().nextInt(100) < possibleDrop.getY())
                 drop.add(new Item(possibleDrop.getX()));
         }
         return drop;

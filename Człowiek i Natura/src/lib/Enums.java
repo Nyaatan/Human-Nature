@@ -15,7 +15,7 @@ public class Enums {
         }
 
         public enum AllSpecies {
-            OAK,HOGWEED,FLOWER, WOLF,SHEEP, CYBERSHEEP, HUMAN, GRASS
+            OAK,HOGWEED,FLOWER, WOLF,SHEEP, CYBERSHEEP, HUMAN
         }
     }
 
@@ -54,6 +54,6 @@ public class Enums {
     }
 
     public enum Buff{
-        TIMBERMAN
+        NONE, TIMBERMAN,HOGWEED_RESISTANT
     }
 }

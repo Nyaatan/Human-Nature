@@ -2,7 +2,7 @@ package bin.world.organism;
 
 import lib.Enums;
 import lib.Pair;
-import bin.system.API;
+import lib.API;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -97,9 +97,9 @@ public class Animal extends Mob{
         Pair <Integer,Integer> newCoords = new Pair<>(0,0);
 
         for(int i = 0; i < 6; ++i){
-            if(API.worldSPI.getField(API.worldSPI.getCoordsInDirection(Enums.Directions.values()[i],this.coordinates, this.sectorID)) == null )
+            if(API.worldSPI.getField(API.worldSPI.getCoordsInDirection(Enums.Directions.values()[i],this.coordinates)) == null )
             {
-                newCoords = API.worldSPI.getCoordsInDirection(Enums.Directions.values()[i],this.coordinates, this.sectorID);
+                newCoords = API.worldSPI.getCoordsInDirection(Enums.Directions.values()[i],this.coordinates);
                 break;
             }
         }

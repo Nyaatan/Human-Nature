@@ -1,12 +1,11 @@
 package bin.world;
 
-import bin.system.API;
 import bin.system.Commander;
-import bin.system.chunkMap.Chunk;
 import bin.system.chunkMap.ChunkMap;
 import bin.system.chunkMap.ChunkMapGen;
 import bin.world.organism.Human.Human;
 import bin.world.organism.Organism;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static bin.system.API.systemAPI;
+import static lib.API.systemAPI;
 
 public class World {
     private Human human;
@@ -34,33 +33,32 @@ public class World {
             humanCoords = new Pair<>(ThreadLocalRandom.current().nextInt(systemAPI.CHUNK_SIZE),
                     ThreadLocalRandom.current().nextInt(systemAPI.CHUNK_SIZE));
         } while(this.map.getField(humanCoords)!=null);
-        makeOrganism(Enums.Species.AllSpecies.HUMAN, humanCoords);
+        this.human = (Human) makeOrganism(Enums.Species.AllSpecies.HUMAN, humanCoords);
     }
 
-    Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords,
-                                               Pair<Integer, Integer> lowBound, Pair<Integer, Integer> highBound)
+    Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords)
     {
-        if (dir.equals(Enums.Directions.UP) && fromCoords.getY() <= highBound.getY())
+        if (dir.equals(Enums.Directions.UP))
             return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
 
-        else if (dir.equals(Enums.Directions.DOWN) && fromCoords.getY() > lowBound.getY())
+        else if (dir.equals(Enums.Directions.DOWN))
             return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
 
-        else if (dir.equals(Enums.Directions.LEFT) && fromCoords.getX() > lowBound.getX())
+        else if (dir.equals(Enums.Directions.LEFT))
             return new Pair<>(fromCoords.getX() - 1, fromCoords.getY());
 
-        else if (dir.equals(Enums.Directions.RIGHT) && fromCoords.getX() <= highBound.getX())
+        else if (dir.equals(Enums.Directions.RIGHT))
             return new Pair<>(fromCoords.getX() + 1, fromCoords.getY());
 
-        else if (dir.equals(Enums.Directions.UPLEFT) && fromCoords.getX() > lowBound.getX() && fromCoords.getY() <= highBound.getY())
+        else if (dir.equals(Enums.Directions.UPLEFT))
             return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
 
-        else if (dir.equals(Enums.Directions.DOWNRIGHT) && fromCoords.getX() <= highBound.getX() && fromCoords.getY() > lowBound.getY())
+        else if (dir.equals(Enums.Directions.DOWNRIGHT))
             return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
 
         else return new Pair<>(fromCoords.getX(),fromCoords.getY());
     }
-
+    /*
     Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords,
                                                Pair<Integer, Integer> sectorID)
     {
@@ -77,7 +75,7 @@ public class World {
         Pair<Integer,Integer> sectorStartCoords = new Pair<>(graveyard.getX(), graveyard.getY());
         Pair<Integer,Integer> sectorEndCoords = new Pair<>(systemAPI.CHUNK_SIZE, systemAPI.CHUNK_SIZE); //TODO COS GROŹNEGO
         return getCoordsInDirection(dir, fromCoords, sectorStartCoords , sectorEndCoords);
-    }
+    }*/
 
     //returns correct pair of coordinates based on direction. Coordinates can't be outside the map
 
@@ -85,10 +83,11 @@ public class World {
 
     void setField(Pair<Integer, Integer> coords, Organism organism) { map.setField(coords,organism); }
 
-    void makeOrganism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords) //createOrganism new organism of given specimen at given coords
+    Organism makeOrganism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
     {
         Organism newOrganism = API.worldSPI.createOrganism(specimen, coords);
         this.map.setField(newOrganism.getCoords(), newOrganism);
+        return newOrganism;
     }
 
     void cleanCorpse(Pair<Integer, Integer> sectorID) //delete dead organisms from organisms list

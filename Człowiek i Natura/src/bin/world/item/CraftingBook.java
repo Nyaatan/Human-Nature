@@ -1,11 +1,13 @@
 package bin.world.item;
 
-import bin.system.API;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import static lib.Enums.ItemType.RESOURCE;
 
 public class CraftingBook {
     private HashMap<Enums.ItemName, ArrayList<Pair<Enums.ItemName, Integer>>> book;
@@ -14,18 +16,27 @@ public class CraftingBook {
         this.book = new HashMap<>();
         for(Enums.ItemName name : Enums.ItemName.values())
         {
-            HashMap<String, ArrayList<String>> config = API.dataLoaderAPI.getBlockConfig(name.toString(), "craftingBook");
-            ArrayList<Pair<Enums.ItemName, Integer>> recipe = new ArrayList<>();
-            for(String key : config.keySet())
-            {
-                recipe.add(new Pair<>(Enums.ItemName.valueOf(key.toUpperCase()), Integer.parseInt(config.get(key).get(0))));
+            HashMap<String, ArrayList<String>> configs = API.dataLoaderAPI.getBlockConfig(name.toString(), "items");
+            if(Enums.ItemType.valueOf(configs.get("type").get(0).toUpperCase())!=RESOURCE) {
+                ArrayList<String> config = API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("recipe");
+                this.book.put(name, parseRecipe(config));
             }
-            this.book.put(name, recipe);
         }
     }
 
     public ArrayList<Pair<Enums.ItemName,Integer>> getRecipe(Enums.ItemName item)
     {
         return book.get(item);
+    }
+
+    private ArrayList<Pair<Enums.ItemName,Integer>> parseRecipe(ArrayList<String> recipe)
+    {
+        ArrayList<Pair<Enums.ItemName,Integer>> result = new ArrayList<>();
+        for(String dataPair : recipe)
+        {
+            String[] newDataPair = dataPair.substring(1, dataPair.length() - 1).split(";");
+            result.add(new Pair<>(Enums.ItemName.valueOf(newDataPair[0].toUpperCase()), Integer.parseInt(newDataPair[1])));
+        }
+        return result;
     }
 }

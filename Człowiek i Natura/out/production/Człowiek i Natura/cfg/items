@@ -53,4 +53,5 @@ type = <equipment>
 eq_type = <tool>
 buff = <timberman>
 description = <axe>
+recipe = <(wood;4)>
 }

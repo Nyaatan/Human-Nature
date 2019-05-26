@@ -1,6 +1,6 @@
 package bin.system.chunkMap;
 
-import bin.system.API;
+import lib.API;
 import lib.Pair;
 
 import java.util.ArrayList;

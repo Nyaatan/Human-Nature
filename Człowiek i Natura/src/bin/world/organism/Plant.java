@@ -1,7 +1,7 @@
 package bin.world.organism;
 //TODO lepsze importy, Enums -> Enums.Species.AllSpecies itd.
 
-import bin.system.API;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
@@ -37,7 +37,7 @@ public class Plant extends Mob {
             {
                 coords = API.worldSPI.getCoordsInDirection(
                         Enums.Directions.values()[ThreadLocalRandom.current().nextInt(Enums.Directions.values().length)],
-                        this.coordinates, this.sectorID);
+                        this.coordinates);
             }
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {

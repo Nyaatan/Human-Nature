@@ -1,6 +1,6 @@
 package bin.system.chunkMap;
 
-import bin.system.API;
+import lib.API;
 import bin.world.organism.Organism;
 import lib.Enums;
 import lib.Pair;
@@ -31,19 +31,24 @@ public class Chunk implements Serializable {
     }
 
     public Organism get(Pair<Integer,Integer> coords) {
-        return get(coords.getX(),coords.getY());
+        Pair<Integer,Integer> local = toLocalCoords(coords);
+        return get(local.getX(),local.getY());
     }
 
     public void add(int x, int y, Organism organism)
     {
-        chunk[x][y] = organism;
         if(organism!=null)
             organisms.get(organism.getValue(Enums.Values.INITIATIVE)).add(organism);
+        else if(chunk[x][y]!=null) {
+            organisms.get(chunk[x][y].getValue(Enums.Values.INITIATIVE)).remove(chunk[x][y]);
+        }
+
+        chunk[x][y] = organism;
     }
 
     public void add(Pair<Integer,Integer> coords, Organism organism)
     {
-        add(coords.getX(),coords.getX(),organism);
+        add(coords.getX(),coords.getY(),organism);
     }
 
     public Pair<Integer,Integer> toGlobalCoords(Pair<Integer,Integer> localCoords)
@@ -53,6 +58,12 @@ public class Chunk implements Serializable {
 
     public static Pair<Integer,Integer> toLocalCoords(Pair<Integer,Integer> globalCoords)
     {
+        if(globalCoords.getX()<0)
+            return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
+        else if(globalCoords.getY()<0)
+            return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
+        else if(globalCoords.getY()<0 && globalCoords.getX()<0)
+            return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
         return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
     }
 
@@ -65,5 +76,9 @@ public class Chunk implements Serializable {
 
     public void addVisitor(Organism organism) {
         this.visitors.add(organism);
+    }
+
+    public Organism[][] getMap() {
+        return this.chunk;
     }
 }
