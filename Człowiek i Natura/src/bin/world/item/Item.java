@@ -1,6 +1,6 @@
 package bin.world.item;
 
-import bin.system.API;
+import lib.API;
 import lib.Enums.*;
 import lib.Pair;
 
@@ -16,11 +16,16 @@ public class Item {
     public Item(ItemName name)
     {
         this.name = name;
-        this.description = API.dataLoaderAPI.getItemDescription(name);
-        this.type = ItemType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("type").get(0));
-        if(this.type.equals(ItemType.EQUIPMENT))
-            this.eqType = EquipmentType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("eq_type").get(0));
-        this.buff = Buff.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("buff").get(0));
+        try {
+            this.description = API.dataLoaderAPI.getItemDescription(name);
+        } catch (Exception e) {
+            this.description = new Pair<>(name.toString(), "No description right now");
+        }
+        this.type = ItemType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("type").get(0).toUpperCase());
+        if(this.type.equals(ItemType.EQUIPMENT)) {
+            this.eqType = EquipmentType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("eq_type").get(0).toUpperCase());
+            this.buff = Buff.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("buff").get(0).toUpperCase());
+        }
     }
 
     public ItemName getName() {return name;}
@@ -30,4 +35,9 @@ public class Item {
     public EquipmentType getEqType() { return this.eqType; }
 
     public Buff getBuff() { return this.buff; }
+
+    public String toString()
+    {
+        return this.name.toString();
+    }
 }

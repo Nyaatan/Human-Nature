@@ -4,7 +4,7 @@ import lib.Enums;
 
 import java.util.ArrayList;
 
-class Buffs {
+public class Buffs {
     private ArrayList<Enums.Buff> buffs;
 
     public Buffs()
@@ -12,14 +12,18 @@ class Buffs {
         this.buffs = new ArrayList<>();
     }
 
-    void add(Enums.Buff buff)
+    public void add(Enums.Buff buff)
     {
         this.buffs.remove(buff);
         this.buffs.add(buff);
     }
 
-    void remove(Enums.Buff buff)
+    public void remove(Enums.Buff buff)
     {
         this.buffs.remove(buff);
+    }
+
+    public boolean contains(Enums.Buff buff) {
+        return buffs.contains(buff);
     }
 }

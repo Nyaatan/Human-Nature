@@ -1,6 +1,6 @@
 package bin.world.organism;
 
-import bin.system.API;
+import lib.API;
 import bin.world.organism.Human.Human;
 import lib.Enums;
 import lib.Pair;
@@ -10,14 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static lib.Enums.Species.Animals.HUMAN;
+import static lib.Enums.Species.AllSpecies.HUMAN;
 
 public abstract class Organism implements Serializable {
 
     protected Pair<Integer,Integer> sectorID;
     protected Pair<Integer, Integer> oldCoords;
-
-    public Organism(){}
 
     public Organism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer,Integer> sectorID)
     {
@@ -56,7 +54,9 @@ public abstract class Organism implements Serializable {
 
     protected Pair<Integer, Integer> coordinates; //coordinates on world map
 
-    public void setCoords(Pair<Integer, Integer> coords){ this.coordinates = coords; } //imports new coordinates on map
+    public void setCoords(Pair<Integer, Integer> coords){
+        this.coordinates = coords;
+    } //imports new coordinates on map
 
     public int getValue(Enums.Values value)
     {

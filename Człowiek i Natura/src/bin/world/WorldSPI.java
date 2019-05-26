@@ -1,9 +1,9 @@
 package bin.world;
 
-import bin.system.API;
 import bin.system.chunkMap.Chunk;
 import bin.world.organism.Human.Human;
 import bin.world.organism.Organism;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
@@ -25,8 +25,8 @@ public class WorldSPI { //API for access from internal classes
         API.systemAPI.getWorld().cleanCorpse(sectorID);
     }
 
-    public void makeOrganism(Enums.Species.AllSpecies specimen, Pair<Integer,Integer> coords) {
-        API.systemAPI.getWorld().makeOrganism(specimen,coords);
+    public Organism makeOrganism(Enums.Species.AllSpecies specimen, Pair<Integer,Integer> coords) {
+        return API.systemAPI.getWorld().makeOrganism(specimen,coords);
     }
 
     public void setField(Pair<Integer,Integer> coords, Organism organism) {
@@ -37,18 +37,7 @@ public class WorldSPI { //API for access from internal classes
         return API.systemAPI.getWorld().getField(coords);
     }
 
-    public Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords,
-                                                             Pair<Integer,Integer> lowBound, Pair<Integer,Integer> highBound) {
-        return API.systemAPI.getWorld().getCoordsInDirection(dir, fromCoords, lowBound, highBound);
-    }
-
-    public Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords,
-                                                             Pair<Integer,Integer> sectorID){
-        return API.systemAPI.getWorld().getCoordsInDirection(dir,fromCoords,sectorID);
-    }
-
-    public Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords)
-    {
+    public Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords) {
         return API.systemAPI.getWorld().getCoordsInDirection(dir, fromCoords);
     }
 

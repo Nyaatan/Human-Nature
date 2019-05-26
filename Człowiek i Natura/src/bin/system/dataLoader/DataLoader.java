@@ -1,6 +1,6 @@
 package bin.system.dataLoader;
 
-import bin.system.*;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
@@ -44,7 +44,7 @@ public class DataLoader {
     HashMap<String,ArrayList<String>> getBlockConfig(String blockName, String fileName)
     {
         return parseBlockConfig(configs.get(fileName.toLowerCase()), blockName);
-    } ////returns a config block from "species" file
+    } ////returns a config block from file
 
     Pair<String, String> getItemDescription(Enums.ItemName name) {
         Pair<String, String> fullDescription = new Pair<>("", "");

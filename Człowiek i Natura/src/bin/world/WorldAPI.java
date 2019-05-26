@@ -1,6 +1,6 @@
 package bin.world;
 
-import bin.system.API;
+import lib.API;
 import lib.Enums;
 import bin.system.chunkMap.ChunkMap;
 

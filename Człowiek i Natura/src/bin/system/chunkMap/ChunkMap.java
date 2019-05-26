@@ -1,6 +1,6 @@
 package bin.system.chunkMap;
 
-import bin.system.API;
+import lib.API;
 import bin.world.organism.Organism;
 import lib.Enums;
 import lib.Pair;
@@ -46,8 +46,9 @@ public class ChunkMap {
 
     public Organism getField(Pair<Integer,Integer> coords)
     {
-        Pair<Integer,Integer> chunkID = new Pair<>(coords.getX()/API.systemAPI.CHUNK_SIZE, coords.getY()/API.systemAPI.CHUNK_SIZE);
-        return get(chunkID).get(coords.getX()%API.systemAPI.CHUNK_SIZE, coords.getY()%API.systemAPI.CHUNK_SIZE);
+        Pair<Integer,Integer> chunkID = new Pair<>((int) Math.floor((double)coords.getX()/(double)API.systemAPI.CHUNK_SIZE),
+                (int) Math.floor((double)coords.getY()/(double)API.systemAPI.CHUNK_SIZE));
+        return get(chunkID).get(new Pair<>(coords.getX()%API.systemAPI.CHUNK_SIZE, coords.getY()%API.systemAPI.CHUNK_SIZE));
     }
 
     public void setField(Pair<Integer,Integer> coords, Organism organism)

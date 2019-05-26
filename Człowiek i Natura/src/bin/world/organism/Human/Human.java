@@ -1,10 +1,10 @@
 package bin.world.organism.Human;
 
-import bin.system.API;
 import bin.system.Commander;
 import bin.world.item.CraftingBook;
 import bin.world.item.Item;
 import bin.world.organism.Organism;
+import lib.API;
 import lib.CommandRefusedException;
 import lib.Enums;
 import lib.Enums.Buff;
@@ -12,6 +12,8 @@ import lib.Pair;
 
 import java.util.ArrayList;
 
+import static lib.Enums.Buff.HOGWEED_RESISTANT;
+import static lib.Enums.Buff.TIMBERMAN;
 import static lib.Enums.ItemType.*;
 
 public class Human extends Organism {
@@ -92,11 +94,42 @@ public class Human extends Organism {
         this.oldCoords = this.coordinates;
         this.setCoords(API.worldSPI.getCoordsInDirection(this.movementDirection, this.coordinates));
         if(API.worldSPI.getField(this.coordinates)!=null) this.interact(API.worldSPI.getField(this.coordinates));
-    } //todo
+        API.worldSPI.setField(this.oldCoords, null);
+        API.worldSPI.setField(this.coordinates, this);
+        if(API.worldAPI.getMap().getChunkByCoords(this.coordinates)!=API.worldAPI.getMap().getChunkByCoords(this.oldCoords))
+        {
+            API.worldAPI.getMap().changeCenter(API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID());
+        }
+
+    }
+
+    private void fight(Organism fighter, boolean buffed)
+    {
+        if(buffed) this.strength += 15;
+        if(fighter.getType()!= Enums.OrganismType.PLANT || fighter.getSpecies().equals(Enums.Species.AllSpecies.HOGWEED)) {
+            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die();
+            else this.die();
+        }
+        else
+        {
+            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die();
+            else this.setCoords(this.oldCoords);
+        }
+        if(buffed) this.strength -= 15;
+    }
 
     @Override
     public void interact(Organism interacted) {
-
+        this.age++;
+        if(interacted.getSpecies()==Enums.Species.AllSpecies.OAK)
+        {
+            fight(interacted, this.buffs.contains(TIMBERMAN));
+        }
+        else if(interacted.getSpecies()== Enums.Species.AllSpecies.HOGWEED)
+        {
+            fight(interacted, this.buffs.contains(HOGWEED_RESISTANT));
+        }
+        else fight(interacted,false);
     }
 
     @Override
@@ -106,6 +139,17 @@ public class Human extends Organism {
 
     @Override
     public void die() {
+        System.out.println("AAAAAAAAAAAAAGHGHGHGHGHGh");
+    }
 
+    public CraftingBook getCraftingBook() {
+        return craftingBook;
+    }
+    public Inventory getInventory() {
+        return inventory;
+    }
+    public Equipment getEquipment() { return equipment; }
+    public Buffs getBuffs() {
+        return buffs;
     }
 }

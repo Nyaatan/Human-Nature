@@ -1,11 +1,12 @@
 package bin.world.organism.Human;
 
 import bin.world.item.Item;
+import lib.Enums.ItemName;
 
 import java.util.HashMap;
 
 class Inventory {
-    private HashMap<Item, Integer> inventory;
+    private HashMap<ItemName, Integer> inventory;
 
     Inventory()
     {
@@ -14,15 +15,20 @@ class Inventory {
 
     void remove(Item item)
     {
-        if(this.inventory.containsKey(item)){
-            if(this.inventory.get(item) > 1) this.inventory.put(item, this.inventory.get(item)-1);
-            else this.inventory.remove(item);
+        if(this.inventory.containsKey(item.getName())){
+            if(this.inventory.get(item.getName()) > 1) this.inventory.put(item.getName(), this.inventory.get(item.getName())-1);
+            else this.inventory.remove(item.getName());
         }
     }
 
     void add(Item item)
     {
-        if(this.inventory.containsKey(item)) this.inventory.put(item, this.inventory.get(item)+1);
-        else this.inventory.put(item, 1);
+        if(this.inventory.containsKey(item.getName())) this.inventory.put(item.getName(), this.inventory.get(item.getName())+1);
+        else this.inventory.put(item.getName(), 1);
+    }
+
+    public String toString()
+    {
+        return this.inventory.toString();
     }
 }
