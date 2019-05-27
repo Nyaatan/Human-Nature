@@ -47,13 +47,12 @@ abstract class Mob extends Organism {
     }
 
     @Override
-    public void die()
+    public void die(Organism killer)
     {
-        API.worldSPI.getHuman().take(this.drop());
-        API.worldSPI.log(this," dies");
+        if(killer.getSpecies()== Enums.Species.AllSpecies.HUMAN)
+            API.worldSPI.getHuman().take(this.drop());
+        API.worldSPI.log(this," dies by ", killer);
         API.worldSPI.setField(this.coordinates, null);
-        this.setCoords(API.worldSPI.graveyard);
-        API.worldSPI.setField(API.worldSPI.graveyard, this);
-        API.worldSPI.cleanCorpse(this.sectorID);
+        API.worldSPI.cleanCorpse(this);
     }
 }

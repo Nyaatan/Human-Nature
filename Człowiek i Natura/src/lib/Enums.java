@@ -24,7 +24,7 @@ public class Enums {
     }
 
     public enum Directions {
-        UP,DOWN,LEFT,RIGHT,UPLEFT,DOWNRIGHT
+        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT
     }
 
     public enum Language {
@@ -41,7 +41,7 @@ public class Enums {
 
     public static class Commands{
         public enum Move{
-            UP,DOWN,LEFT,RIGHT,UPLEFT,DOWNRIGHT
+            UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT
         }
 
         public enum Use{}
