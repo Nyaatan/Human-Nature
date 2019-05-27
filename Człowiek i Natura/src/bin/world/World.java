@@ -6,6 +6,7 @@ import bin.system.chunkMap.ChunkMapGen;
 import bin.world.organism.Human.Human;
 import bin.world.organism.Organism;
 import lib.API;
+import lib.CommandRefusedException;
 import lib.Enums;
 import lib.Pair;
 
@@ -38,11 +39,11 @@ public class World {
 
     Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords)
     {
-        if (dir.equals(Enums.Directions.UP))
-            return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+        if (dir.equals(Enums.Directions.UPRIGHT))
+            return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
 
-        else if (dir.equals(Enums.Directions.DOWN))
-            return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+        else if (dir.equals(Enums.Directions.DOWNLEFT))
+            return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
 
         else if (dir.equals(Enums.Directions.LEFT))
             return new Pair<>(fromCoords.getX() - 1, fromCoords.getY());
@@ -58,26 +59,7 @@ public class World {
 
         else return new Pair<>(fromCoords.getX(),fromCoords.getY());
     }
-    /*
-    Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords,
-                                               Pair<Integer, Integer> sectorID)
-    {
-        Chunk chunk = map.getChunkByID(sectorID);
-        Pair<Integer,Integer> sectorStartCoords = new Pair<>(sectorID.getX()* systemAPI.CHUNK_SIZE,
-                sectorID.getY()* systemAPI.CHUNK_SIZE);
-        Pair<Integer,Integer> sectorEndCoords = new Pair<>(sectorStartCoords.getX()+ systemAPI.CHUNK_SIZE,
-                sectorStartCoords.getY()+ systemAPI.CHUNK_SIZE);
-        return getCoordsInDirection(dir, fromCoords, sectorStartCoords , sectorEndCoords);
-    }
-
-    Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords)
-    {
-        Pair<Integer,Integer> sectorStartCoords = new Pair<>(graveyard.getX(), graveyard.getY());
-        Pair<Integer,Integer> sectorEndCoords = new Pair<>(systemAPI.CHUNK_SIZE, systemAPI.CHUNK_SIZE); //TODO COS GROŹNEGO
-        return getCoordsInDirection(dir, fromCoords, sectorStartCoords , sectorEndCoords);
-    }*/
-
-    //returns correct pair of coordinates based on direction. Coordinates can't be outside the map
+    //returns correct pair of coordinates based on direction.
 
     Organism getField(Pair<Integer, Integer> coords) { return map.getField(coords); } //returns object at given coordinates
 
@@ -90,25 +72,25 @@ public class World {
         return newOrganism;
     }
 
-    void cleanCorpse(Pair<Integer, Integer> sectorID) //delete dead organisms from organisms list
+    void cleanCorpse(Organism organism) //delete dead organisms from organisms list
     {
-        for(ArrayList<Organism> organismList: map.getChunkByID(sectorID).getOrganisms()) {
+        for(ArrayList<Organism> organismList: map.getChunkByCoords(organism.getCoords()).getOrganisms()) {
             organismList.remove(map.getField(graveyard));
         }
         System.gc();
     }
 
     void log(Organism organism, String message) {
-        String logText = organism.getSpecies() +
-                "(x: " + organism.getCoords().getX() +
-                ", y: " + organism.getCoords().getY() +
-                ", ID: " + organism.toString().split("@")[1] +
-                ") " + message;
+        String logText = organism + message;
         log.add(logText);
     }
 
     void log(String message) {log.add(message);}
 
+    void log(Organism organism, String message, Organism killer) {
+        String logText = organism + message + killer;
+        log.add(logText);
+    }
     ArrayList<String> getLog() {
         ArrayList<String> returnLog = new ArrayList<>(log);
         log.clear();
@@ -122,8 +104,7 @@ public class World {
         return this.map.getPopulation();
     }
 
-    public void makeTurn(Commander commander)
-    {
+    public void makeTurn(Commander commander) throws CommandRefusedException {
         this.human.takeCommand(commander);
         //TODO
         //TurnComputer turnComputer = new TurnComputer(this.map);
@@ -134,4 +115,5 @@ public class World {
     {
         return this.human;
     }
+
 }

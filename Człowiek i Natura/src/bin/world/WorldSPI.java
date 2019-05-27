@@ -21,8 +21,8 @@ public class WorldSPI { //API for access from internal classes
         return Organism.create(specimen,coords);
     }
 
-    public void cleanCorpse(Pair<Integer,Integer> sectorID) {
-        API.systemAPI.getWorld().cleanCorpse(sectorID);
+    public void cleanCorpse(Organism organism) {
+        API.systemAPI.getWorld().cleanCorpse(organism);
     }
 
     public Organism makeOrganism(Enums.Species.AllSpecies specimen, Pair<Integer,Integer> coords) {
@@ -49,6 +49,9 @@ public class WorldSPI { //API for access from internal classes
         API.systemAPI.getWorld().log(message);
     }
 
+    public void log(Organism organism, String message, Organism killer) {
+        API.systemAPI.getWorld().log(organism,message,killer);
+    }
     public Chunk getSector(Pair<Integer,Integer> coords)
     {
         return API.worldAPI.getMap().getChunkByCoords(coords);
@@ -58,4 +61,5 @@ public class WorldSPI { //API for access from internal classes
     {
         return API.systemAPI.getWorld().getHuman();
     }
+
 }

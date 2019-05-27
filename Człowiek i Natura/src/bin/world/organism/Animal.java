@@ -8,6 +8,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import static lib.Enums.OrganismType.*;
 import static lib.Enums.Species.AllSpecies.*;
+import static lib.Enums.Values.AGE;
 import static lib.Enums.Values.STRENGTH;
 
 
@@ -24,19 +25,22 @@ public class Animal extends Mob{
     @Override
     public void interact(Organism interacted) {
 
-        if(this.specimen == interacted.getSpecies()) {this.multiply(); this.setCoords(this.oldCoords);}
+        if(this.specimen == interacted.getSpecies()&&interacted.getValue(AGE)>3) {
+            this.multiply();
+            this.setCoords(this.oldCoords);
+        }
 
         else if(this.type == PREDATOR)
         {
             if(interacted.getType() != PLANT || interacted.getSpecies() == FLOWER) {
 
-                if (this.strength > interacted.getValue(STRENGTH)) { interacted.die(); API.worldSPI.setField(this.coordinates, this); }
-                else this.die();
+                if (this.strength > interacted.getValue(STRENGTH)) { interacted.die(this); API.worldSPI.setField(this.coordinates, this); }
+                else this.die(interacted);
             }
 
             else if(interacted.getSpecies() == HOGWEED)
             {
-                if(this.strength <= interacted.getValue(STRENGTH)) this.die();
+                if(this.strength <= interacted.getValue(STRENGTH)) this.die(interacted);
                 else this.setCoords(this.oldCoords);
             }
 
@@ -49,12 +53,12 @@ public class Animal extends Mob{
             if(interacted.getType() == PLANT)
             {
                 if(this.strength >= interacted.getValue(STRENGTH)) {
-                    interacted.die();
+                    interacted.die(this);
                     API.worldSPI.setField(this.coordinates, this);
                 }
 
                 else if(this.specimen == CYBERSHEEP && interacted.getSpecies() == HOGWEED) {
-                    interacted.die();
+                    interacted.die(this);
                     API.worldSPI.setField(this.coordinates, this);
                 }
 
@@ -105,5 +109,7 @@ public class Animal extends Mob{
         }
 
         Organism.create(this.specimen, newCoords);
+
+        API.worldSPI.log(this, "creates new " + this.getSpecies() + " at " + newCoords.toString());
     }
 }

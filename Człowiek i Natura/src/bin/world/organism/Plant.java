@@ -28,7 +28,7 @@ public class Plant extends Mob {
     public void multiply() //returns ArrayList of new organisms
     {
 
-        int range = abs(4-this.initiative); //range of multiplying
+        int range = abs(4-this.initiative)+1; //range of multiplying
 
         for(int i=0;i<initiative;++i) //initiative tells how many times a plant tries to multiply in a single turn
         {
@@ -42,6 +42,7 @@ public class Plant extends Mob {
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {
                 API.worldSPI.makeOrganism(this.specimen, coords);
+                API.worldSPI.log(this, "creates new "+ this.getSpecies() + " at " + coords);
             }
         }
     }
@@ -56,10 +57,10 @@ public class Plant extends Mob {
             double advancement = Math.ceil((double)lifeExpectancy/7); //one of 7 stages of plant's age advancement
             if(ThreadLocalRandom.current().nextDouble(100) < advancement/(135*9*(advancement+8)))
             {
-                this.die();
+                this.die(this);
             }
         }
-        else if(ThreadLocalRandom.current().nextInt(7)==2) this.die();
+        else if(ThreadLocalRandom.current().nextInt(7)==2) this.die(this);
     }
 
     @Override //TODO

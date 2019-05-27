@@ -2,6 +2,7 @@ package bin.world.organism;
 
 import lib.API;
 import bin.world.organism.Human.Human;
+import lib.CommandRefusedException;
 import lib.Enums;
 import lib.Pair;
 
@@ -16,6 +17,7 @@ public abstract class Organism implements Serializable {
 
     protected Pair<Integer,Integer> sectorID;
     protected Pair<Integer, Integer> oldCoords;
+    final int ID;
 
     public Organism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer,Integer> sectorID)
     {
@@ -27,6 +29,7 @@ public abstract class Organism implements Serializable {
         this.initiative = randFromCreationData(creationData, 0, 1, "initiative");
         this.coordinates = coords;
         this.sectorID = sectorID;
+        this.ID = this.hashCode();
     } //sets up values of organism based on data from species file
 
     public Organism(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
@@ -39,6 +42,7 @@ public abstract class Organism implements Serializable {
         this.initiative = randFromCreationData(creationData, 0, 1, "initiative");
         this.coordinates = coords;
         this.sectorID = API.worldAPI.getMap().getChunkByCoords(coords).getID();
+        this.ID = this.hashCode();
     } //sets up values of organism based on data from species file
 
     private int randFromCreationData(HashMap<String, ArrayList<String>> creationData, int idMin, int idMax, String key)
@@ -97,15 +101,21 @@ public abstract class Organism implements Serializable {
 
     public static Organism create(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords)
     {
-        return create(specimen, coords, API.worldAPI.getMap().getChunkByCoords(coords).getID());
+        Organism newOrganism = create(specimen, coords, API.worldAPI.getMap().getChunkByCoords(coords).getID());
+        return newOrganism;
     }
 
-    public abstract void move();
+    public abstract void move() throws CommandRefusedException;
 
-    public abstract void interact(Organism interacted);
+    public abstract void interact(Organism interacted) throws CommandRefusedException;
 
     public abstract void multiply();
 
-    public abstract void die(); //move organism to graveyard
+    public abstract void die(Organism killer); //move organism to graveyard
+
+    public String toString()
+    {
+        return this.getSpecies() + "(" + this.getCoords()+ ", ID: " + this.ID + ")";
+    }
 
 }

@@ -42,7 +42,7 @@ public class Human extends Organism {
 
     private Enums.Directions movementDirection;
 
-    public void takeCommand(Commander commander) {
+    public void takeCommand(Commander commander) throws CommandRefusedException {
         this.age++;
         Enum command = commander.hearCommand();
         if(command.getClass() == Enums.Commands.Move.class) this.execCommand((Enums.Commands.Move) command);
@@ -50,7 +50,7 @@ public class Human extends Organism {
         else if(command.getClass() == Enums.Commands.Craft.class) this.execCommand((Enums.Commands.Craft) command);
     }
 
-    private void execCommand(Enums.Commands.Move direction){
+    private void execCommand(Enums.Commands.Move direction) throws CommandRefusedException {
         this.movementDirection = Enums.Directions.valueOf(direction.toString());
         this.move();
     }
@@ -90,7 +90,7 @@ public class Human extends Organism {
     }
 
     @Override
-    public void move() {
+    public void move() throws CommandRefusedException {
         this.oldCoords = this.coordinates;
         this.setCoords(API.worldSPI.getCoordsInDirection(this.movementDirection, this.coordinates));
         if(API.worldSPI.getField(this.coordinates)!=null) this.interact(API.worldSPI.getField(this.coordinates));
@@ -103,23 +103,26 @@ public class Human extends Organism {
 
     }
 
-    private void fight(Organism fighter, boolean buffed)
-    {
+    private void fight(Organism fighter, boolean buffed) throws CommandRefusedException {
         if(buffed) this.strength += 15;
         if(fighter.getType()!= Enums.OrganismType.PLANT || fighter.getSpecies().equals(Enums.Species.AllSpecies.HOGWEED)) {
-            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die();
-            else this.die();
+            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die(this);
+            else this.die(fighter);
         }
         else
         {
-            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die();
-            else this.setCoords(this.oldCoords);
+            if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die(this);
+            else
+            {
+                this.setCoords(this.oldCoords);
+                this.refuseCommand();
+            }
         }
         if(buffed) this.strength -= 15;
     }
 
     @Override
-    public void interact(Organism interacted) {
+    public void interact(Organism interacted) throws CommandRefusedException {
         this.age++;
         if(interacted.getSpecies()==Enums.Species.AllSpecies.OAK)
         {
@@ -138,7 +141,7 @@ public class Human extends Organism {
     }
 
     @Override
-    public void die() {
+    public void die(Organism killer) {
         System.out.println("AAAAAAAAAAAAAGHGHGHGHGHGh");
     }
 

@@ -58,12 +58,15 @@ public class Chunk implements Serializable {
 
     public static Pair<Integer,Integer> toLocalCoords(Pair<Integer,Integer> globalCoords)
     {
-        if(globalCoords.getX()<0)
+        if(globalCoords.getY()<0 && globalCoords.getX()<0)
+        return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
+
+        else if(globalCoords.getX()<0)
             return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
+
         else if(globalCoords.getY()<0)
             return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
-        else if(globalCoords.getY()<0 && globalCoords.getX()<0)
-            return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
+
         return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
     }
 

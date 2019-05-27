@@ -127,8 +127,8 @@ public class ChunkMap {
         }
         return false;
     }
-    //TODO TO DEBUG
-    public HashMap<Pair<Integer,Integer>, Chunk> HashMap()
+
+    public HashMap<Pair<Integer,Integer>, Chunk> getMap()
     {
         return chunkMap;
     }
