@@ -11,7 +11,7 @@ public class Item {
     private ItemType type;
     private EquipmentType eqType;
     private Buff buff;
-    //TODO traits
+    private int strength;
 
     public Item(ItemName name)
     {
@@ -25,6 +25,11 @@ public class Item {
         if(this.type.equals(ItemType.EQUIPMENT)) {
             this.eqType = EquipmentType.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("eq_type").get(0).toUpperCase());
             this.buff = Buff.valueOf(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("buff").get(0).toUpperCase());
+            try{
+                this.strength = Integer.parseInt(API.dataLoaderAPI.getBlockConfig(name.toString(), "items").get("strength").get(0));
+            } catch (Exception e) {
+                this.strength = 0;
+            }
         }
     }
 
@@ -39,5 +44,9 @@ public class Item {
     public String toString()
     {
         return this.name.toString();
+    }
+
+    public int getStrength() {
+        return strength;
     }
 }

@@ -107,7 +107,7 @@ public abstract class Organism implements Serializable {
 
     public abstract void move() throws CommandRefusedException;
 
-    protected abstract void interact(Organism interacted) throws CommandRefusedException;
+    public abstract void interact(Organism interacted) throws CommandRefusedException;
 
     protected abstract void multiply();
 
@@ -118,4 +118,12 @@ public abstract class Organism implements Serializable {
         return this.getSpecies() + "(" + this.getCoords()+ ", ID: " + this.ID + ")";
     }
 
+    public Pair<Integer, Integer> getOldCoords() {
+        return this.oldCoords;
+    }
+
+    public void commitSeppuku()
+    {
+        API.worldSPI.log(this," commited seppuku");
+    }
 }

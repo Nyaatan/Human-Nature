@@ -1,12 +1,14 @@
 package bin.system.chunkMap;
 
-import lib.API;
 import bin.world.organism.Organism;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static lib.Enums.Species.AllSpecies.HUMAN;
 
 public class Chunk implements Serializable {
     private Organism[][] chunk;
@@ -42,7 +44,7 @@ public class Chunk implements Serializable {
 
     public void add(int x, int y, Organism organism)
     {
-        if(organism!=null)
+        if(organism!=null&&organism.getSpecies()!=HUMAN)
             organisms.get(organism.getValue(Enums.Values.INITIATIVE)).add(organism);
         else if(chunk[x][y]!=null) {
             organisms.get(chunk[x][y].getValue(Enums.Values.INITIATIVE)).remove(chunk[x][y]);
@@ -92,5 +94,9 @@ public class Chunk implements Serializable {
 
     public void setOrganisms(ArrayList<ArrayList<Organism>> organisms) {
         this.organisms = organisms;
+    }
+
+    public void remove(Organism organism) {
+        organisms.get(organism.getValue(Enums.Values.INITIATIVE)).remove(organism);
     }
 }

@@ -23,11 +23,13 @@ public class Animal extends Mob{
     }
 
     @Override
-    protected void interact(Organism interacted) {
+    public void interact(Organism interacted) {
 
         if(this.specimen == interacted.getSpecies()) {
-            if(interacted.getValue(AGE)>3)
+            if(interacted.getValue(AGE)>3 && daysSinceMultiply>10)
             {
+                interacted.multiply();
+                this.daysSinceMultiply = 0;
                 this.multiply();
                 this.setCoords(this.oldCoords);
             }
@@ -48,34 +50,34 @@ public class Animal extends Mob{
     @Override
     public void move() {
         this.age++;
-
+        this.daysSinceMultiply++;
         this.oldCoords = this.coordinates;
+
+        departThisWorld();
 
         this.setCoords(API.worldSPI.getCoordsInDirection(
                 Enums.Directions.values()[ThreadLocalRandom.current().nextInt(Enums.Directions.values().length)],
                 this.coordinates)); //get coordinates in random direction from enum Directions, then move
-
         //System.out.println(this.coordinates);
-
-        if(API.worldSPI.getSector(this.coordinates).getID().equals(this.sectorID)) {
-            if (API.worldSPI.getField(this.coordinates) != null) {
-                this.interact(API.worldSPI.getField(this.coordinates));
+        try {
+            if (API.worldSPI.getSector(this.coordinates).getID().equals(this.sectorID)) {
+                if (API.worldSPI.getField(this.coordinates) != null) {
+                    this.interact(API.worldSPI.getField(this.coordinates));
+                } else {
+                    API.worldSPI.setField(this.oldCoords, null);
+                    API.worldSPI.setField(this.coordinates, this);
+                }
             } else {
+                API.worldAPI.getMap().addTransfer(this);
+                this.sectorID = API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID();
                 API.worldSPI.setField(this.oldCoords, null);
-                API.worldSPI.setField(this.coordinates, this);
             }
-        }
-        else
-        {
-            API.worldAPI.getMap().addTransfer(this);
-            this.sectorID = API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID();
-            API.worldSPI.setField(this.oldCoords, null);
-        }
+        } catch (Exception e) { }
     }
 
     @Override
     protected void multiply() {
-
+        this.daysSinceMultiply = 0;
         Pair <Integer,Integer> newCoords = new Pair<>(0,0);
 
         for(int i = 0; i < 6; ++i){

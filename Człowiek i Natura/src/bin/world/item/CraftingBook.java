@@ -40,4 +40,9 @@ public class CraftingBook implements Serializable {
         }
         return result;
     }
+
+    public String toString()
+    {
+        return book.toString();
+    }
 }

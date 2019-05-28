@@ -27,4 +27,13 @@ public class Buffs implements Serializable {
     public boolean contains(Enums.Buff buff) {
         return buffs.contains(buff);
     }
+
+    public ArrayList<Enums.Buff> getAll() {
+        return buffs;
+    }
+
+    public String toString()
+    {
+        return buffs.toString();
+    }
 }

@@ -34,7 +34,8 @@ public class Enums implements Serializable {
     }
 
     public enum ItemName {
-        WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF,AXE
+        WOOD,WOOL,MEAT,FUR,BLOOD,CYBERWOOL,QUANTUMCIRCUIT,CYBERHEART,FLOWER,HOGWEEDLEAF,AXE, BRANCH,
+        FURCOAT, WOOLENCOAT, WOOLENBOOTS, WOOLENPANTS, WOOLENCAP, WOODENSWORD, BLESSING, MAGICJUICE,
     }
 
     public enum ItemType {
@@ -43,12 +44,16 @@ public class Enums implements Serializable {
 
     public static class Commands{
         public enum Move{
-            UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT
+            UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT
         }
 
-        public enum Use{}
+        public enum Use{
+            AXE,
+        }
 
-        public enum Craft{}
+        public enum Craft{
+            AXE,
+        }
     }
 
     public enum EquipmentType{
@@ -56,7 +61,12 @@ public class Enums implements Serializable {
     }
 
     public enum Buff{
-        NONE, TIMBERMAN,HOGWEED_RESISTANT
+        NONE(0), TIMBERMAN(2),HOGWEED_RESISTANT(0),MAGICJUICE(10), BLESSING(2);
+
+        public final int strength;
+        Buff(int i) {
+            strength=i;
+        }
     }
 
     public enum MenuOption{
