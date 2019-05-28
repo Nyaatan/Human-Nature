@@ -107,9 +107,9 @@ public abstract class Organism implements Serializable {
 
     public abstract void move() throws CommandRefusedException;
 
-    public abstract void interact(Organism interacted) throws CommandRefusedException;
+    protected abstract void interact(Organism interacted) throws CommandRefusedException;
 
-    public abstract void multiply();
+    protected abstract void multiply();
 
     public abstract void die(Organism killer); //move organism to graveyard
 

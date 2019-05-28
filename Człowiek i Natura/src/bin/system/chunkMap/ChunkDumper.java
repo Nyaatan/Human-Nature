@@ -5,7 +5,7 @@ import lib.Pair;
 
 import java.io.*;
 
-public class ChunkDumper {
+public class ChunkDumper implements Serializable{
     private String basePath = System.getProperty("user.dir") + "\\saves\\" + GlobalSettings.worldName;
     private String basePathSrc = System.getProperty("user.dir") + "\\src\\saves\\" + GlobalSettings.worldName;
 

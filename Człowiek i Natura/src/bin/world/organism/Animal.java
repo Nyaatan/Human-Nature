@@ -1,12 +1,12 @@
 package bin.world.organism;
 
+import lib.API;
 import lib.Enums;
 import lib.Pair;
-import lib.API;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-import static lib.Enums.OrganismType.*;
+import static lib.Enums.OrganismType.PLANT;
 import static lib.Enums.Species.AllSpecies.*;
 import static lib.Enums.Values.AGE;
 import static lib.Enums.Values.STRENGTH;
@@ -23,49 +23,25 @@ public class Animal extends Mob{
     }
 
     @Override
-    public void interact(Organism interacted) {
+    protected void interact(Organism interacted) {
 
-        if(this.specimen == interacted.getSpecies()&&interacted.getValue(AGE)>3) {
-            this.multiply();
-            this.setCoords(this.oldCoords);
+        if(this.specimen == interacted.getSpecies()) {
+            if(interacted.getValue(AGE)>3)
+            {
+                this.multiply();
+                this.setCoords(this.oldCoords);
+            }
         }
 
-        else if(this.type == PREDATOR)
+        else switch (this.type)
         {
-            if(interacted.getType() != PLANT || interacted.getSpecies() == FLOWER) {
+            case PREDATOR:
+                fight(interacted);
+                break;
 
-                if (this.strength > interacted.getValue(STRENGTH)) { interacted.die(this); API.worldSPI.setField(this.coordinates, this); }
-                else this.die(interacted);
-            }
-
-            else if(interacted.getSpecies() == HOGWEED)
-            {
-                if(this.strength <= interacted.getValue(STRENGTH)) this.die(interacted);
-                else this.setCoords(this.oldCoords);
-            }
-
-            else this.setCoords(this.oldCoords);
-
-        }
-
-        else if (this.type == PREY)
-        {
-            if(interacted.getType() == PLANT)
-            {
-                if(this.strength >= interacted.getValue(STRENGTH)) {
-                    interacted.die(this);
-                    API.worldSPI.setField(this.coordinates, this);
-                }
-
-                else if(this.specimen == CYBERSHEEP && interacted.getSpecies() == HOGWEED) {
-                    interacted.die(this);
-                    API.worldSPI.setField(this.coordinates, this);
-                }
-
-                else this.setCoords(this.oldCoords);
-            }
-
-            else this.setCoords(oldCoords);
+            case PREY:
+                eat(interacted);
+                break;
         }
     }
 
@@ -79,6 +55,8 @@ public class Animal extends Mob{
                 Enums.Directions.values()[ThreadLocalRandom.current().nextInt(Enums.Directions.values().length)],
                 this.coordinates)); //get coordinates in random direction from enum Directions, then move
 
+        //System.out.println(this.coordinates);
+
         if(API.worldSPI.getSector(this.coordinates).getID().equals(this.sectorID)) {
             if (API.worldSPI.getField(this.coordinates) != null) {
                 this.interact(API.worldSPI.getField(this.coordinates));
@@ -89,14 +67,14 @@ public class Animal extends Mob{
         }
         else
         {
-            API.worldSPI.getSector(this.coordinates).addVisitor(this);
+            API.worldAPI.getMap().addTransfer(this);
             this.sectorID = API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID();
             API.worldSPI.setField(this.oldCoords, null);
         }
     }
 
     @Override
-    public void multiply() {
+    protected void multiply() {
 
         Pair <Integer,Integer> newCoords = new Pair<>(0,0);
 
@@ -111,5 +89,45 @@ public class Animal extends Mob{
         Organism.create(this.specimen, newCoords);
 
         API.worldSPI.log(this, "creates new " + this.getSpecies() + " at " + newCoords.toString());
+    }
+
+    private void fight(Organism fighter)
+    {
+        if(fighter.getType() != PLANT || fighter.getSpecies() == FLOWER) {
+
+            if (this.strength > fighter.getValue(STRENGTH)) {
+                fighter.die(this);
+                API.worldSPI.setField(this.coordinates, this);
+            }
+            else this.die(fighter);
+        }
+
+        else if(fighter.getSpecies() == HOGWEED)
+        {
+            if(this.strength <= fighter.getValue(STRENGTH)) this.die(fighter);
+            else this.setCoords(this.oldCoords);
+        }
+
+        else this.setCoords(this.oldCoords);
+    }
+
+    private void eat(Organism eaten)
+    {
+        if(eaten.getType() == PLANT)
+        {
+            if(this.strength >= eaten.getValue(STRENGTH)) {
+                eaten.die(this);
+                API.worldSPI.setField(this.coordinates, this);
+            }
+
+            else if(this.specimen == CYBERSHEEP && eaten.getSpecies() == HOGWEED) {
+                eaten.die(this);
+                API.worldSPI.setField(this.coordinates, this);
+            }
+
+            else this.setCoords(this.oldCoords);
+        }
+
+        else this.setCoords(oldCoords);
     }
 }

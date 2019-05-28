@@ -2,9 +2,10 @@ package bin.world.organism.Human;
 
 import lib.Enums;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Buffs {
+public class Buffs implements Serializable {
     private ArrayList<Enums.Buff> buffs;
 
     public Buffs()

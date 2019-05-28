@@ -5,18 +5,20 @@ import bin.world.organism.Organism;
 import lib.Enums;
 import lib.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 import static java.lang.Math.abs;
 
-public class ChunkMap {
+public class ChunkMap implements Serializable {
     HashMap<Pair<Integer,Integer>, Chunk> chunkMap;
     private int renderingDistance;
     private Pair<Integer,Integer> centerID;
     private ChunkDumper chunkDumper;
     private ChunkGen chunkGen;
+    private ArrayList<Organism> transfers;
 
     public ChunkMap()
     {
@@ -25,6 +27,7 @@ public class ChunkMap {
         chunkMap = new HashMap<>();
         this.renderingDistance = API.systemAPI.RENDERING_DISTANCE;
         this.centerID = new Pair<>(0,0);
+        this.transfers = new ArrayList<>();
     }
 
     private Chunk get(Pair<Integer,Integer> ID)
@@ -131,5 +134,24 @@ public class ChunkMap {
     public HashMap<Pair<Integer,Integer>, Chunk> getMap()
     {
         return chunkMap;
+    }
+
+    public void addTransfer(Organism organism)
+    {
+        transfers.add(organism);
+    }
+
+    public ArrayList<Organism> getTransfers() {
+        return transfers;
+    }
+
+    public Pair<Integer,Integer> getCenterID()
+    {
+        return this.centerID;
+    }
+
+    public Chunk getCenterChunk()
+    {
+        return this.getChunkByID(getCenterID());
     }
 }
