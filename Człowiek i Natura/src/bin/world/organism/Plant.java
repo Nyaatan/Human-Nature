@@ -8,6 +8,7 @@ import lib.Pair;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.lang.Math.abs;
+import static lib.Enums.Species.AllSpecies.OAK;
 
 public class Plant extends Mob {
     private int lifeExpectancy;
@@ -25,7 +26,7 @@ public class Plant extends Mob {
     }
 
     @Override
-    public void multiply() //returns ArrayList of new organisms
+    protected void multiply() //returns ArrayList of new organisms
     {
 
         int range = abs(4-this.initiative)+1; //range of multiplying
@@ -41,6 +42,7 @@ public class Plant extends Mob {
             }
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {
+                if(API.worldSPI.getField(coords)!=null) interact(API.worldSPI.getField(coords));
                 API.worldSPI.makeOrganism(this.specimen, coords);
                 API.worldSPI.log(this, "creates new "+ this.getSpecies() + " at " + coords);
             }
@@ -48,7 +50,7 @@ public class Plant extends Mob {
     }
 
     @Override //TODO TEST
-    public void move() //increase age, try dying
+    public void move() //increase age, try multiplying and dying
     {
         this.age++;
         if(this.age>this.lifeExpectancy/20) this.multiply();
@@ -64,7 +66,10 @@ public class Plant extends Mob {
     }
 
     @Override //TODO
-    public void interact(Organism interacted) {
-
+    protected void interact(Organism interacted) {
+        if(this.specimen== Enums.Species.AllSpecies.HOGWEED)
+        {
+            if(interacted.getType()== Enums.OrganismType.PLANT && interacted.getSpecies()!=OAK) interacted.die(this);
+        }
     }
 }

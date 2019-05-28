@@ -4,12 +4,13 @@ import lib.API;
 import lib.Enums;
 import lib.Pair;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import static lib.Enums.ItemType.RESOURCE;
 
-public class CraftingBook {
+public class CraftingBook implements Serializable {
     private HashMap<Enums.ItemName, ArrayList<Pair<Enums.ItemName, Integer>>> book;
 
     public CraftingBook() {

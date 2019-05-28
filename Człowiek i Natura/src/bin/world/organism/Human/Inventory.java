@@ -3,9 +3,10 @@ package bin.world.organism.Human;
 import bin.world.item.Item;
 import lib.Enums.ItemName;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-class Inventory {
+class Inventory implements Serializable {
     private HashMap<ItemName, Integer> inventory;
 
     Inventory()

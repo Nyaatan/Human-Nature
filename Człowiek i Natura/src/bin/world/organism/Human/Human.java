@@ -43,11 +43,11 @@ public class Human extends Organism {
     private Enums.Directions movementDirection;
 
     public void takeCommand(Commander commander) throws CommandRefusedException {
-        this.age++;
         Enum command = commander.hearCommand();
         if(command.getClass() == Enums.Commands.Move.class) this.execCommand((Enums.Commands.Move) command);
         else if(command.getClass() == Enums.Commands.Use.class) this.execCommand((Enums.Commands.Use) command);
         else if(command.getClass() == Enums.Commands.Craft.class) this.execCommand((Enums.Commands.Craft) command);
+        this.age++;
     }
 
     private void execCommand(Enums.Commands.Move direction) throws CommandRefusedException {
@@ -124,15 +124,16 @@ public class Human extends Organism {
     @Override
     public void interact(Organism interacted) throws CommandRefusedException {
         this.age++;
-        if(interacted.getSpecies()==Enums.Species.AllSpecies.OAK)
-        {
-            fight(interacted, this.buffs.contains(TIMBERMAN));
+        switch (interacted.getSpecies()) {
+            case OAK:
+                fight(interacted, this.buffs.contains(TIMBERMAN));
+                break;
+            case HOGWEED:
+                fight(interacted, this.buffs.contains(HOGWEED_RESISTANT));
+                break;
+            default:
+                fight(interacted, false);
         }
-        else if(interacted.getSpecies()== Enums.Species.AllSpecies.HOGWEED)
-        {
-            fight(interacted, this.buffs.contains(HOGWEED_RESISTANT));
-        }
-        else fight(interacted,false);
     }
 
     @Override
@@ -152,6 +153,7 @@ public class Human extends Organism {
         return inventory;
     }
     public Equipment getEquipment() { return equipment; }
+
     public Buffs getBuffs() {
         return buffs;
     }

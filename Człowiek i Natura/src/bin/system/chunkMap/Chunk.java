@@ -12,11 +12,9 @@ public class Chunk implements Serializable {
     private Organism[][] chunk;
     Pair<Integer,Integer> ID;
     private ArrayList<ArrayList<Organism>> organisms;
-    private ArrayList<Organism> visitors;
 
     public Chunk(Pair<Integer,Integer> ID)
     {
-        visitors = new ArrayList<>();
         chunk = new Organism[API.systemAPI.CHUNK_SIZE][API.systemAPI.CHUNK_SIZE];
         this.ID = ID;
         organisms = new ArrayList<>();
@@ -24,6 +22,13 @@ public class Chunk implements Serializable {
         {
             organisms.add(new ArrayList<>());
         }
+    }
+
+    public Chunk(Chunk chunk)
+    {
+        this.chunk = chunk.chunk;
+        this.ID = chunk.ID;
+        this.organisms = chunk.organisms;
     }
 
     public Organism get(int x, int y) {
@@ -59,13 +64,13 @@ public class Chunk implements Serializable {
     public static Pair<Integer,Integer> toLocalCoords(Pair<Integer,Integer> globalCoords)
     {
         if(globalCoords.getY()<0 && globalCoords.getX()<0)
-        return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
+        return new Pair<>(15-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), 15-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
 
         else if(globalCoords.getX()<0)
-            return new Pair<>(16-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
+            return new Pair<>(15-Math.abs(globalCoords.getX()%API.systemAPI.CHUNK_SIZE), globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
 
         else if(globalCoords.getY()<0)
-            return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, 16-Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
+            return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, 15 - Math.abs(globalCoords.getY()%API.systemAPI.CHUNK_SIZE));
 
         return new Pair<>(globalCoords.getX()%API.systemAPI.CHUNK_SIZE, globalCoords.getY()%API.systemAPI.CHUNK_SIZE);
     }
@@ -77,11 +82,15 @@ public class Chunk implements Serializable {
 
     public Pair<Integer,Integer> getID() { return this.ID; }
 
-    public void addVisitor(Organism organism) {
-        this.visitors.add(organism);
-    }
-
     public Organism[][] getMap() {
         return this.chunk;
+    }
+
+    public Chunk copy(Chunk chunk) {
+        return new Chunk(chunk);
+    }
+
+    public void setOrganisms(ArrayList<ArrayList<Organism>> organisms) {
+        this.organisms = organisms;
     }
 }

@@ -3,11 +3,12 @@ package bin.world.organism.Human;
 import bin.world.item.Item;
 import lib.Enums;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import static lib.Enums.ItemType.EQUIPMENT;
 
-public class Equipment {
+public class Equipment implements Serializable {
     private HashMap<Enums.EquipmentType, Item> equipment;
     private Inventory inventory;
 

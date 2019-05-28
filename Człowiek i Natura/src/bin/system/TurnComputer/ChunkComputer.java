@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.concurrent.RecursiveAction;
 
-public class SectorComputer extends RecursiveAction {
+import static lib.Enums.Species.AllSpecies.HUMAN;
+
+public class ChunkComputer extends RecursiveAction {
 
     private Chunk chunk;
 
-    public SectorComputer(Chunk chunk) {
+    public ChunkComputer(Chunk chunk) {
         this.chunk = chunk;
     }
 
@@ -23,7 +25,7 @@ public class SectorComputer extends RecursiveAction {
         for (ArrayList<Organism> computedInitiative : toCompute) {
             for (Organism organism : computedInitiative) {
                 try {
-                    organism.move();
+                    if(organism.getSpecies()!=HUMAN) organism.move();
                 } catch (CommandRefusedException e) {
                     System.out.println("DUPA");
                 }

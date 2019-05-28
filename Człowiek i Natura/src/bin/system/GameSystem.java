@@ -1,7 +1,6 @@
 package bin.system;
 
 import bin.ui.UI;
-import bin.world.World;
 import lib.API;
 
 import java.util.ArrayList;
@@ -10,6 +9,8 @@ public class GameSystem {
 
     static GlobalSettings globalSettings;
     UI ui;
+
+    public MenuActionHandler menuActionHandler;
 
     public GameSystem()
     {
@@ -22,7 +23,9 @@ public class GameSystem {
 
     private static ArrayList<String> log;
 
-    public void Start() { new World(); }
+    public void Start() {
+        menuActionHandler = new MenuActionHandler(this);
+    }
     public void Stop() {Thanos.snap();}
 
     static ArrayList<String> getLog() { return log; }

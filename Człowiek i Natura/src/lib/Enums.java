@@ -1,6 +1,8 @@
 package lib;
 
-public class Enums {
+import java.io.Serializable;
+
+public class Enums implements Serializable {
     public enum Values {
         STRENGTH,INITIATIVE,AGE
     }
@@ -55,5 +57,9 @@ public class Enums {
 
     public enum Buff{
         NONE, TIMBERMAN,HOGWEED_RESISTANT
+    }
+
+    public enum MenuOption{
+        NEWGAME,LOAD,EXIT
     }
 }
