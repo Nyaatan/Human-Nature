@@ -2,7 +2,7 @@ package bin.world;
 
 import bin.system.Commander;
 import bin.system.GlobalSettings;
-import bin.system.TurnComputer.TurnComputer;
+import bin.system.TurnComputer;
 import bin.system.chunkMap.Chunk;
 import bin.system.chunkMap.ChunkMap;
 import bin.system.chunkMap.ChunkMapGen;
@@ -80,8 +80,15 @@ public class World implements Serializable {
 
     void cleanCorpse(Organism organism) //delete dead organisms from organisms list
     {
-        map.getChunkByCoords(organism.getCoords()).getOrganisms().get(organism.getValue(Enums.Values.INITIATIVE)).remove(organism);
-        System.gc();
+        try {
+            map.getChunkByCoords(organism.getCoords()).getOrganisms().get(organism.getValue(Enums.Values.INITIATIVE)).remove(organism);
+        } catch (NullPointerException e) //TODO
+        {
+            System.gc();
+        }
+        finally {
+            System.gc();
+        }
     }
 
     void log(Organism organism, String message) {

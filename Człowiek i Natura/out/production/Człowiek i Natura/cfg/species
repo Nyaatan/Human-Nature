@@ -3,7 +3,8 @@ strength = <7,10>
 initiative = <6,8>
 type = <predator>
 drop = <(meat;30),(fur;10),(blood;5)>
-spawn_rate = <10>
+spawn_rate = <6>
+life_expectancy = <10>
 }
 
 SHEEP{
@@ -11,7 +12,8 @@ strength = <3,5>
 initiative = <4,6>
 type = <prey>
 drop = <(meat;30),(wool;20),(blood;5)>
-spawn_rate = <13>
+spawn_rate = <6>
+life_expectancy = <7>
 }
 
 CYBERSHEEP {
@@ -20,14 +22,15 @@ initiative = <5,8>
 type = <prey>
 drop = <(cyberwool;80),(quantumCircuit;10),(cyberheart;1)>
 spawn_rate = <2>
+life_expectancy = <25>
 }
 
 OAK{
 strength = <15,15>
 initiative = <1,1>
 type = <plant>
-drop = <(wood;100)>
-spawn_rate = <8>
+drop = <(wood;100),(branch;100)>
+spawn_rate = <4>
 life_expectancy = <100>
 }
 
@@ -36,8 +39,8 @@ strength = <1,1>
 initiative = <2,3>
 type = <plant>
 drop = <(flower;100)>
-spawn_rate = <15>
-life_expectancy = <5>
+spawn_rate = <8>
+life_expectancy = <3>
 }
 
 HOGWEED{
@@ -45,12 +48,12 @@ strength = <11,11>
 initiative = <2,2>
 type = <plant>
 drop = <(hogweedLeaf;70)>
-spawn_rate = <8>
-life_expectancy = <20>
+spawn_rate = <3>
+life_expectancy = <10>
 }
 
 HUMAN{
 strength = <6,6>
-initiative = <10,10>
+initiative = <14,14>
 type = <predator>
 }

@@ -4,6 +4,7 @@ import bin.world.item.Item;
 import lib.Enums;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 
 import static lib.Enums.ItemType.EQUIPMENT;
@@ -27,6 +28,8 @@ public class Equipment implements Serializable {
                 this.equipment.put(item.getEqType(), item);
             }
             else this.equipment.put(item.getEqType(), item);
+
+            inventory.remove(item);
         }
     }
 
@@ -36,5 +39,9 @@ public class Equipment implements Serializable {
             this.inventory.add(this.equipment.get(eqType));
             this.equipment.remove(eqType);
         }
+    }
+
+    public Collection<Item> getAll() {
+        return equipment.values();
     }
 }

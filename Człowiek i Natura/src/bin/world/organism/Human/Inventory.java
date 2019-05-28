@@ -6,7 +6,7 @@ import lib.Enums.ItemName;
 import java.io.Serializable;
 import java.util.HashMap;
 
-class Inventory implements Serializable {
+public class Inventory implements Serializable {
     private HashMap<ItemName, Integer> inventory;
 
     Inventory()
@@ -31,5 +31,28 @@ class Inventory implements Serializable {
     public String toString()
     {
         return this.inventory.toString();
+    }
+
+    public boolean contains(ItemName itemName) {
+        return inventory.containsKey(itemName);
+    }
+
+    public Item get(ItemName itemName)
+    {
+        return new Item(itemName);
+    }
+
+    public int count(ItemName itemName) {
+        if(contains(itemName))
+            return inventory.get(itemName);
+        else return 0;
+    }
+
+    public void remove(ItemName name, Integer count) {
+        for(int i=0;i<4;++i) remove(name);
+    }
+
+    private void remove(ItemName name) {
+        remove(new Item(name));
     }
 }

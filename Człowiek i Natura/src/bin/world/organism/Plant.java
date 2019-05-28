@@ -1,6 +1,7 @@
 package bin.world.organism;
 //TODO lepsze importy, Enums -> Enums.Species.AllSpecies itd.
 
+import bin.world.item.Item;
 import lib.API;
 import lib.Enums;
 import lib.Pair;
@@ -11,18 +12,15 @@ import static java.lang.Math.abs;
 import static lib.Enums.Species.AllSpecies.OAK;
 
 public class Plant extends Mob {
-    private int lifeExpectancy;
 
     public Plant(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer, Integer> ID) {
         super(specimen, coords, ID);
-        this.lifeExpectancy = Integer.parseInt(API.dataLoaderAPI.getBlockConfig(specimen.toString().toUpperCase(),
-                "species").get("life_expectancy").get(0)); //get life expectancy
+
     }
 
     public Plant(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords) {
         super(specimen, coords);
-        this.lifeExpectancy = Integer.parseInt(API.dataLoaderAPI.getBlockConfig(specimen.toString().toUpperCase(),
-                "species").get("life_expectancy").get(0)); //get life expectancy
+
     }
 
     @Override
@@ -53,23 +51,27 @@ public class Plant extends Mob {
     public void move() //increase age, try multiplying and dying
     {
         this.age++;
-        if(this.age>this.lifeExpectancy/20) this.multiply();
-        if(this.age<lifeExpectancy) //if too young to die easily, try dying with a formula: ageAdvancement * 1/(135*9*(ageAdvancement+8)
-        {
-            double advancement = Math.ceil((double)lifeExpectancy/7); //one of 7 stages of plant's age advancement
-            if(ThreadLocalRandom.current().nextDouble(100) < advancement/(135*9*(advancement+8)))
-            {
-                this.die(this);
-            }
-        }
-        else if(ThreadLocalRandom.current().nextInt(7)==2) this.die(this);
+        this.daysSinceMultiply++;
+        if(this.age>this.lifeExpectancy/20 && daysSinceMultiply>abs(6-initiative)) this.multiply();
+        departThisWorld();
     }
 
     @Override //TODO
-    protected void interact(Organism interacted) {
-        if(this.specimen== Enums.Species.AllSpecies.HOGWEED)
-        {
-            if(interacted.getType()== Enums.OrganismType.PLANT && interacted.getSpecies()!=OAK) interacted.die(this);
+    public void interact(Organism interacted) {
+        switch (this.specimen) {
+            case HOGWEED:
+                if (interacted.getType() == Enums.OrganismType.PLANT && interacted.getSpecies() != OAK)
+                    interacted.die(this);
+                break;
+
+            case OAK:
+                switch (interacted.getSpecies())
+                {
+                    case HUMAN:
+                        API.worldSPI.getHuman().take(new Item(Enums.ItemName.BRANCH));
+                        interacted.setCoords(interacted.oldCoords);
+                        break;
+                }
         }
     }
 }

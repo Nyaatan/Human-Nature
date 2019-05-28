@@ -1,7 +1,7 @@
 package bin.system.chunkMap;
 
-import lib.API;
 import bin.world.organism.Organism;
+import lib.API;
 import lib.Enums;
 import lib.Pair;
 
@@ -57,7 +57,8 @@ public class ChunkMap implements Serializable {
     public void setField(Pair<Integer,Integer> coords, Organism organism)
     {
         Pair<Integer,Integer> ID = coordsToID(coords);
-        get(ID).add(Chunk.toLocalCoords(coords), organism);
+        if(get(ID)!=null)
+            get(ID).add(Chunk.toLocalCoords(coords), organism);
     }
 
     public Chunk getChunkByCoords(Pair<Integer,Integer> coords)
@@ -113,7 +114,7 @@ public class ChunkMap implements Serializable {
             for (ArrayList<Organism> organismList : organisms) {
                 for (Organism organism : organismList) {
                     //if result has the specimen, increment the count, else add specimen to result
-                    if (result.keySet().contains(organism.getSpecies())) {
+                    if (organism!=null && result.keySet().contains(organism.getSpecies())) {
                         result.put(organism.getSpecies(), result.get(organism.getSpecies()) + 1);
                     } else result.put(organism.getSpecies(), 1);
                 }

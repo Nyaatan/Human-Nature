@@ -35,7 +35,7 @@ public class ChunkGen extends RecursiveTask {
     {
         for(Enums.Species.AllSpecies species : Enums.Species.AllSpecies.values()) {
             if(!species.equals(Enums.Species.AllSpecies.HUMAN)) {
-                if (ThreadLocalRandom.current().nextInt(100) <
+                if (ThreadLocalRandom.current().nextInt(1000) <
                         Integer.parseInt(API.dataLoaderAPI.getBlockConfig(species.toString(),
                                 "species").get("spawn_rate").get(0))) {//chance of spawning: specimen.spawn_rate%
                     chunk.add(new Pair<>(i, j), API.worldSPI.createOrganism(species, chunk.toGlobalCoords(new Pair<>(i, j)), ID)); //make random organism

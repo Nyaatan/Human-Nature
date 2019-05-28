@@ -17,14 +17,18 @@ import static lib.Enums.Buff.TIMBERMAN;
 import static lib.Enums.ItemType.*;
 
 public class Human extends Organism {
+    private final int baseStr;
+
     public Human(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords,
                  Pair<Integer, Integer> sectorID) {
         super(specimen, coords, sectorID);
         allocateMemory();
+        baseStr = strength;
     }
     public Human(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords) {
         super(specimen, coords);
         allocateMemory();
+        baseStr = strength;
     }
 
     private void allocateMemory()
@@ -51,11 +55,34 @@ public class Human extends Organism {
     }
 
     private void execCommand(Enums.Commands.Move direction) throws CommandRefusedException {
-        this.movementDirection = Enums.Directions.valueOf(direction.toString());
-        this.move();
+        if(direction!= Enums.Commands.Move.WAIT) {
+            this.movementDirection = Enums.Directions.valueOf(direction.toString());
+            this.move();
+        }
     }
-    private void execCommand(Enums.Commands.Use item){}
-    private void execCommand(Enums.Commands.Craft item){}
+    private void execCommand(Enums.Commands.Use item) throws CommandRefusedException {this.use(Enums.ItemName.valueOf(item.toString()));}
+    private void execCommand(Enums.Commands.Craft item){ this.craft(Enums.ItemName.valueOf(item.toString()));}
+
+    private void craft(Enums.ItemName item) {
+        ArrayList<Pair<Enums.ItemName, Integer>> recipe = craftingBook.getRecipe(item);
+        boolean craftingPossible = true;
+        for(Pair<Enums.ItemName, Integer> itemCount : recipe)
+        {
+            if(inventory.count(itemCount.getX())<itemCount.getY())
+            {
+                craftingPossible = false;
+                break;
+            }
+        }
+        if(craftingPossible)
+        {
+            for(Pair<Enums.ItemName, Integer> itemCount : recipe)
+            {
+                inventory.remove(itemCount.getX(), itemCount.getY());
+            }
+            inventory.add(new Item(item));
+        }
+    }
 
     public void take(ArrayList<Item> loot)
     {
@@ -69,6 +96,9 @@ public class Human extends Organism {
         }
     }
 
+    public void take(Item item) {
+        if(item!=null) this.inventory.add(item);
+    }
     private void addBuff(Buff buff)
     {
         this.buffs.remove(buff);
@@ -76,17 +106,43 @@ public class Human extends Organism {
     }
 
     private void use(Item item) throws CommandRefusedException {
-        if(item.getType().equals(EQUIPMENT)) this.equipment.equip(item);
+        if(item.getType().equals(EQUIPMENT)) {
+            this.equipment.equip(item);
+            this.addBuff(item.getBuff());
+            calculateStats();
+        }
+
         else if(item.getType().equals(BUFF))
         {
             this.addBuff(item.getBuff());
             this.inventory.remove(item);
         }
-        else if(item.getType().equals(CRAFTING)) this.refuseCommand();
+        else if(item.getType().equals(CRAFTING)) this.refuseCommand("Not a usable item");
     }
 
-    private void refuseCommand() throws CommandRefusedException {
-        throw new CommandRefusedException();
+    private void use(Enums.ItemName itemName) throws CommandRefusedException {
+        if(inventory.contains(itemName))
+        {
+            use(inventory.get(itemName));
+        }
+        else refuseCommand("No such item");
+    }
+
+    private void calculateStats() {
+        strength = baseStr;
+        for(Item item : equipment.getAll())
+        {
+            strength+=item.getStrength();
+        }
+        for(Buff buff : buffs.getAll())
+        {
+            strength+=buff.strength;
+        }
+    }
+
+    private void refuseCommand(String message) throws CommandRefusedException {
+        this.coordinates = this.oldCoords;
+        throw new CommandRefusedException(message);
     }
 
     @Override
@@ -100,12 +156,11 @@ public class Human extends Organism {
         {
             API.worldAPI.getMap().changeCenter(API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID());
         }
-
     }
 
     private void fight(Organism fighter, boolean buffed) throws CommandRefusedException {
         if(buffed) this.strength += 15;
-        if(fighter.getType()!= Enums.OrganismType.PLANT || fighter.getSpecies().equals(Enums.Species.AllSpecies.HOGWEED)) {
+        if(fighter.getType()!= Enums.OrganismType.PLANT || fighter.getSpecies()== Enums.Species.AllSpecies.HOGWEED) {
             if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die(this);
             else this.die(fighter);
         }
@@ -114,8 +169,7 @@ public class Human extends Organism {
             if (this.strength > fighter.getValue(Enums.Values.STRENGTH)) fighter.die(this);
             else
             {
-                this.setCoords(this.oldCoords);
-                this.refuseCommand();
+                fighter.interact(this);
             }
         }
         if(buffed) this.strength -= 15;
@@ -157,4 +211,5 @@ public class Human extends Organism {
     public Buffs getBuffs() {
         return buffs;
     }
+
 }

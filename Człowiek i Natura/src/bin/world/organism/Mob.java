@@ -10,18 +10,26 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 abstract class Mob extends Organism {
+
+    protected int lifeExpectancy;
+    int daysSinceMultiply = 0;
     Mob(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords, Pair<Integer, Integer> ID) {
         super(specimen, coords, ID);
-        HashMap<String,ArrayList<String>> creationData = API.dataLoaderAPI.getBlockConfig(specimen.toString(), "species");
-        this.dropTable = parseDropTableData(creationData.get("drop"));
-
+        getData();
     }
     private ArrayList<Pair<Enums.ItemName,Integer>> dropTable; //list of chances for a Item drop upon death by human
 
     Mob(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords) {
         super(specimen, coords);
+        getData();
+    }
+
+    private void getData()
+    {
         HashMap<String,ArrayList<String>> creationData = API.dataLoaderAPI.getBlockConfig(specimen.toString(), "species");
         this.dropTable = parseDropTableData(creationData.get("drop"));
+        this.lifeExpectancy = Integer.parseInt(API.dataLoaderAPI.getBlockConfig(specimen.toString().toUpperCase(),
+                "species").get("life_expectancy").get(0)); //get life expectancy
     }
 
     private ArrayList<Pair<Enums.ItemName, Integer>> parseDropTableData(ArrayList<String> dropTableData)
@@ -54,5 +62,25 @@ abstract class Mob extends Organism {
         API.worldSPI.log(this," dies by ", killer);
         API.worldSPI.setField(this.coordinates, null);
         API.worldSPI.cleanCorpse(this);
+    }
+
+    protected void departThisWorld()
+    {
+        if(this.age<lifeExpectancy) //if too young to die easily, try dying with a formula: ageAdvancement * 1/(135*9*(ageAdvancement+8)
+        {
+            double advancement = Math.ceil((double)lifeExpectancy/7); //one of 7 stages of age advancement
+            if(ThreadLocalRandom.current().nextDouble(1) < advancement/(135*9*(advancement+8)))
+            {
+                this.die(this);
+            }
+        }
+        else if(ThreadLocalRandom.current().nextInt(7)==2)
+        {
+            try {
+                this.die(this);
+            } catch (Exception e) { //TODO
+                e.printStackTrace();
+            }
+        }
     }
 }
