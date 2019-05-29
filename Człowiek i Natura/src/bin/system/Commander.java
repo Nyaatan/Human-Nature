@@ -1,11 +1,14 @@
 package bin.system;
 
 import lib.Enums;
+import lib.Enums.Commands.Craft;
+import lib.Enums.Commands.Move;
+import lib.Enums.Commands.Use;
 
 public class Commander {
-    Enum move = null;
-    Enum use = null;
-    Enum craft = null;
+    private Enum move = null;
+    private Enum use = null;
+    private Enum craft = null;
 
     public void giveCommand(Enums.Commands.Move move)
     {
@@ -24,6 +27,14 @@ public class Commander {
         this.craft = craft;
         this.move = null;
         this.use = null;
+    }
+    public void giveCommand(Enum command)
+    {
+        if(command.getClass()==Move.class) giveCommand((Move) command);
+        
+        else if(command.getClass()==Use.class) giveCommand((Use) command);
+        
+        else if(command.getClass()==Craft.class) giveCommand((Craft) command);
     }
 
     public Enum hearCommand()

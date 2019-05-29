@@ -45,25 +45,39 @@ public class World implements Serializable {
 
     Pair<Integer,Integer> getCoordsInDirection(Enums.Directions dir, Pair<Integer, Integer> fromCoords)
     {
-        if (dir.equals(Enums.Directions.UPRIGHT))
-            return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
-
-        else if (dir.equals(Enums.Directions.DOWNLEFT))
-            return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
-
-        else if (dir.equals(Enums.Directions.LEFT))
-            return new Pair<>(fromCoords.getX() - 1, fromCoords.getY());
-
-        else if (dir.equals(Enums.Directions.RIGHT))
-            return new Pair<>(fromCoords.getX() + 1, fromCoords.getY());
-
-        else if (dir.equals(Enums.Directions.UPLEFT))
-            return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
-
-        else if (dir.equals(Enums.Directions.DOWNRIGHT))
-            return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
-
-        else return new Pair<>(fromCoords.getX(),fromCoords.getY());
+        switch (dir) {
+            case UPRIGHT:
+                if(fromCoords.getY()%2!=0){
+                    return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                }else{
+                    return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
+                }
+                
+            case DOWNLEFT:
+                if(fromCoords.getY()%2==0){
+                    return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                }else{
+                    return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
+                }
+            case LEFT:
+                return new Pair<>(fromCoords.getX() - 1, fromCoords.getY());
+            case RIGHT:
+                return new Pair<>(fromCoords.getX() + 1, fromCoords.getY());
+            case UPLEFT:
+                if(fromCoords.getY()%2==0){
+                    return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                }else{
+                    return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
+                }
+            case DOWNRIGHT:
+                if(fromCoords.getY()%2!=0){
+                    return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                }else{
+                    return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
+                }
+            default:
+                return new Pair<>(fromCoords.getX(),fromCoords.getY());
+        }
     }
     //returns correct pair of coordinates based on direction.
 

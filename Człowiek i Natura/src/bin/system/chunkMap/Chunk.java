@@ -88,10 +88,6 @@ public class Chunk implements Serializable {
         return this.chunk;
     }
 
-    public Chunk copy(Chunk chunk) {
-        return new Chunk(chunk);
-    }
-
     public void setOrganisms(ArrayList<ArrayList<Organism>> organisms) {
         this.organisms = organisms;
     }

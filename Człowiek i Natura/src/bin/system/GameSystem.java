@@ -1,6 +1,6 @@
 package bin.system;
 
-import bin.ui.UI;
+import bin.ui.Menu;
 import lib.API;
 
 import java.util.ArrayList;
@@ -8,9 +8,8 @@ import java.util.ArrayList;
 public class GameSystem {
 
     static GlobalSettings globalSettings;
-    UI ui;
 
-    public MenuActionHandler menuActionHandler;
+    Menu menu;
 
     public GameSystem()
     {
@@ -18,13 +17,14 @@ public class GameSystem {
         new API();
         globalSettings = new GlobalSettings();
         API.systemAPI.setVariables();
-        ui = new UI();
+        menu = new Menu();
     }
 
     private static ArrayList<String> log;
 
-    public void Start() {
-        menuActionHandler = new MenuActionHandler(this);
+    public void Start() throws Exception {
+        menu.setGameSystem(this);
+        menu.Launch();
     }
     public void Stop() {Thanos.snap();}
 

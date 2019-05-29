@@ -76,11 +76,7 @@ abstract class Mob extends Organism {
         }
         else if(ThreadLocalRandom.current().nextInt(7)==2)
         {
-            try {
-                this.die(this);
-            } catch (Exception e) { //TODO
-                e.printStackTrace();
-            }
+            this.die(this);
         }
     }
 }

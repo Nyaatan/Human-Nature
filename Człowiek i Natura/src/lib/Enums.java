@@ -1,6 +1,9 @@
 package lib;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class Enums implements Serializable {
     public enum Values {
@@ -43,6 +46,22 @@ public class Enums implements Serializable {
     }
 
     public static class Commands{
+
+        public static Enum valueOf(String value) { 
+            for(Enum command : Move.values())
+            {
+                if(command.toString().equals(value.toUpperCase())) return command;
+            }
+            for(Enum command : Use.values())
+            {
+                if(command.toString().equals(value.toUpperCase())) return command;
+            }
+            for(Enum command : Craft.values())
+            {
+                if(command.toString().equals(value.toUpperCase())) return command;
+            }
+            return null;
+        }
         public enum Move{
             UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT
         }
@@ -71,5 +90,8 @@ public class Enums implements Serializable {
 
     public enum MenuOption{
         NEWGAME,LOAD,EXIT
+    }
+    public enum ButtonName{
+        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT;
     }
 }
