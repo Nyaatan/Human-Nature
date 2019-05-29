@@ -42,6 +42,10 @@ public class SystemAPI {
     public void addLog(String log) {
         GameSystem.addLog(log);
     }
+
+    public void setWorldName(String worldName) {
+        GlobalSettings.worldName = worldName;
+    }
     //END GAME SYSTEM
 
 }

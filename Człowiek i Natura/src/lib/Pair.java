@@ -1,7 +1,6 @@
 package lib;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Pair<X, Y> implements Serializable {
     private X x;
@@ -22,12 +21,6 @@ public class Pair<X, Y> implements Serializable {
 
     public Y getY() {
         return y;
-    }
-
-    public static Pair<Integer,Integer> makeIntPair(ArrayList<String> arrayList)
-    {
-        assert arrayList.size() > 1;
-        return new Pair<>(Integer.parseInt(arrayList.get(0)), Integer.parseInt(arrayList.get(1)));
     }
 
     public String toString() {

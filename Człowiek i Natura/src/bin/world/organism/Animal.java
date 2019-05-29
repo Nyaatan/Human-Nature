@@ -58,7 +58,7 @@ public class Animal extends Mob{
         this.setCoords(API.worldSPI.getCoordsInDirection(
                 Enums.Directions.values()[ThreadLocalRandom.current().nextInt(Enums.Directions.values().length)],
                 this.coordinates)); //get coordinates in random direction from enum Directions, then move
-        //System.out.println(this.coordinates);
+
         try {
             if (API.worldSPI.getSector(this.coordinates).getID().equals(this.sectorID)) {
                 if (API.worldSPI.getField(this.coordinates) != null) {
