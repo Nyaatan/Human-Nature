@@ -19,7 +19,9 @@ public class ChunkDumper implements Serializable{
                 save(chunk, basePathSrc);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-            } catch (IOException e) { }
+            } catch (Exception e) {
+
+            }
         }
     }
 

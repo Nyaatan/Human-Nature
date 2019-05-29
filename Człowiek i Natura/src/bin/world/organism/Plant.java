@@ -41,7 +41,7 @@ public class Plant extends Mob {
             if(ThreadLocalRandom.current().nextInt(100) < 4*this.initiative)  //take chance to multiply; chance is 4*initiative/100
             {
                 if(API.worldSPI.getField(coords)!=null) interact(API.worldSPI.getField(coords));
-                API.worldSPI.makeOrganism(this.specimen, coords);
+                if(API.worldSPI.getField(coords)==null)API.worldSPI.makeOrganism(this.specimen, coords);
                 API.worldSPI.log(this, "creates new "+ this.getSpecies() + " at " + coords);
             }
         }
