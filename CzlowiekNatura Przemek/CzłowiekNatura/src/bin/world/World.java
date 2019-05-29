@@ -75,7 +75,6 @@ public class World implements Serializable {
                 }else{
                     return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
                 }
-               // return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
             default:
                 return new Pair<>(fromCoords.getX(),fromCoords.getY());
         }

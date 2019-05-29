@@ -1,6 +1,7 @@
 package bin.system;
 
-import bin.world.World;
+import bin.ui.WorldStarter;
+import javafx.stage.Stage;
 import lib.Enums;
 
 import static lib.API.systemAPI;
@@ -13,19 +14,20 @@ public class MenuActionHandler {
         this.gameSystem = gameSystem;
     }
 
-    public void execCommand(Enums.MenuOption option)
-    {
+    public void execCommand(Enums.MenuOption option, Stage stage) throws Exception {
+        stage.close();
         switch (option)
         {
             case NEWGAME:
-                new World();
+                WorldStarter worldStarter = new WorldStarter();
+                worldStarter.Start();
                 break;
 
             case LOAD:
                 break;
 
             case EXIT:
-                systemAPI.getWorld().save();
+                if(systemAPI.getWorld()!= null) systemAPI.getWorld().save();
                 gameSystem.Stop();
                 break;
 

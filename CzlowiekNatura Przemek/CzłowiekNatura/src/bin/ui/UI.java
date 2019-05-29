@@ -2,54 +2,53 @@ package bin.ui;
 
 
 import bin.system.Commander;
-//import lib.CommandRefusedException;
-import javafx.event.*;
-import javafx.geometry.*;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-//import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-//import javafx.scene.layout.FlowPane;
-//import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-//import javafx.scene.layout.StackPane;
-import static javafx.scene.paint.Color.*;
-import javafx.stage.Stage;
-import static java.lang.Math.cos;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lib.API;
 import lib.CommandRefusedException;
 import lib.Enums;
 import lib.Enums.ButtonName;
-import static lib.Enums.Commands.Move.*;
+import lib.Pair;
+
+import static java.lang.Math.cos;
+import static javafx.scene.paint.Color.*;
+
+//import lib.CommandRefusedException;
+//import javafx.scene.Group;
+//import javafx.scene.layout.FlowPane;
+//import javafx.scene.layout.GridPane;
+//import javafx.scene.layout.StackPane;
 //import static java.lang.Math.sin;
 //import lib.Enums.Commands.Move.*;
 //import lib.Enums;
 public class UI extends Application {
    
-    public void create() {
-        launch();
+    void create() {
+        start(new Stage());
     }
     private final int btnSize= 80, r=16,btnX=900,btnY=450;
     private final double sizeX=60,sizeY=60;
+    private final Pair<Integer,Integer> windowSize = new Pair<>(1280,720);
+
     @Override
     public void start(Stage primaryStage) {
 
         
-        primaryStage.setTitle("Człowiek i Natura");
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
-        Pane root = new Pane();          //Korzeń
+        primaryStage.setTitle("Human&Nature");
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+
+        Pane root = new Pane();
         
-        Scene scene = new Scene(root, 1280,720);
+        Scene scene = new Scene(root, windowSize.getX(),windowSize.getY());
         scene.setRoot(root);
         
         
@@ -68,58 +67,43 @@ public class UI extends Application {
         if (API.worldAPI.getCenterChunk().get(j,15-i)!=null){
                     switch(API.worldAPI.getCenterChunk().get(j,15-i).getSpecies()){
                         case WOLF:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BLACK);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BLACK);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, BLACK);
+                            break;
                         case SHEEP:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BEIGE);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BEIGE);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, BEIGE);
+                            break;
                         case HUMAN:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(RED);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(RED);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, RED);
+                            break;
                         case CYBERSHEEP:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BLUE);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(BLUE);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, BLUE);
+                            break;
                         case OAK :
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(MAROON);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(MAROON);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, MAROON);
+                            break;
                         case FLOWER:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(YELLOW);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(YELLOW);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, YELLOW);
+                            break;
                         case HOGWEED:
-                            if(i%2==0){
-                                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(DARKGREEN);
-                            }else{
-                                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(DARKGREEN);
-                            }break;
+                            hex = getHex(i, j, size, sizeX, sizeY, DARKKHAKI);
+                            break;
                 }
         }else{
-            if(i%2==0){
-                hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(GREY);
-            }else{
-                hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(GREY);
-            }
+            hex = getHex(i, j, size, sizeX, sizeY, GREY);
         }
         return hex;    
     }
-    
+
+    private Polygon getHex(int i, int j, double size, double sizeX, double sizeY, Color color) {
+        Polygon hex;
+        if(i%2==0){
+            hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(color);
+        }else{
+            hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(color);
+        }
+        return hex;
+    }
+
     private void mapUpdate(int r,Pane root)
     {
         root.getChildren().clear();
@@ -138,18 +122,14 @@ public class UI extends Application {
         Button btn = new Button();
         btn.setMinWidth (btnSize);        
         btn.setMinHeight (btnSize);
-        btn.setText(btnName.toString()); 
-        btn.setOnAction(new EventHandler<ActionEvent>() {      //Przydzielenie funkcji przyciskom
-            @Override
-            public void handle(ActionEvent event) {
-                //root.getChildren().clear();
-                System.out.println(btnName);
-                Commander com = new Commander();
-                com.giveCommand(Enums.Commands.valueOf(btnName.toString()));
-                doAction(com);
-                mapUpdate(r,root);
-                 
-            }
+        btn.setText(btnName.toString());
+        //Przydzielenie funkcji przyciskom
+        btn.setOnAction(event -> {
+            System.out.println(btnName);
+            Commander com = new Commander();
+            com.giveCommand(Enums.Commands.valueOf(btnName.toString()));
+            doAction(com);
+            mapUpdate(r,root);
         });
         switch(btnName)
         {
