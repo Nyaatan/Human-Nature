@@ -1,9 +1,6 @@
 package lib;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class Enums implements Serializable {
     public enum Values {
@@ -67,11 +64,11 @@ public class Enums implements Serializable {
         }
 
         public enum Use{
-            AXE,
+            AXE, FURCOAT, WOOLENCOAT, WOOLENBOOTS, WOOLENPANTS, WOOLENCAP, WOODENSWORD, BLESSING, MAGICJUICE,
         }
 
         public enum Craft{
-            AXE,
+            AXE, FURCOAT, WOOLENCOAT, WOOLENBOOTS, WOOLENPANTS, WOOLENCAP, WOODENSWORD, BLESSING, MAGICJUICE,
         }
     }
 

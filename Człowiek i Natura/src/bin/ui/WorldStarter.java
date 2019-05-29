@@ -1,5 +1,6 @@
 package bin.ui;
 
+import bin.system.GlobalSettings;
 import bin.world.World;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -8,6 +9,13 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import lib.API;
+
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.FileVisitResult.TERMINATE;
 
 public class WorldStarter extends Application {
     private UI ui;
@@ -40,9 +48,48 @@ public class WorldStarter extends Application {
     private void doAction(TextField field, Stage stage)
     {
         API.systemAPI.setWorldName(field.getText());
+        try {
+            deleteWorldFolder();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         new World();
         stage.close();
         ui = new UI();
         ui.create();
+    }
+
+    public static void deleteWorldFolder() throws IOException {
+        Path path = Paths.get(System.getProperty("user.dir") + "\\saves\\" + GlobalSettings.worldName);
+        try {
+            Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
+                        throws IOException {
+                    Files.delete(file);
+                    return CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult visitFileFailed(final Path file, final IOException e) {
+                    return handleException(e);
+                }
+
+                private FileVisitResult handleException(final IOException e) {
+                    e.printStackTrace(); // replace with more robust error handling
+                    return TERMINATE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(final Path dir, final IOException e)
+                        throws IOException {
+                    if (e != null) return handleException(e);
+                    Files.delete(dir);
+                    return CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
