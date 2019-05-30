@@ -13,6 +13,8 @@ import lib.Enums;
 public class Menu extends Application {
     private GameSystem gameSystem;
 
+    private Stage menuStage;
+
     public void setGameSystem(GameSystem gameSystem)
     {
         this.gameSystem = gameSystem;
@@ -25,6 +27,8 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        menuStage = stage;
+
         stage.initStyle(StageStyle.UNDECORATED);
 
         stage.setTitle("Human&Nature");
@@ -70,5 +74,9 @@ public class Menu extends Application {
         });
 
         return newButton;
+    }
+
+    public void show() {
+        menuStage.show();
     }
 }

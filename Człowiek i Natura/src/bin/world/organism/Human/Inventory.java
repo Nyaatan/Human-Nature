@@ -55,4 +55,10 @@ public class Inventory implements Serializable {
     private void remove(ItemName name) {
         remove(new Item(name));
     }
+
+    public boolean contains(ItemName item, int count) {
+        return count(item) > 0;
+    }
+
+    public HashMap<ItemName, Integer> getInventory() { return inventory; }
 }

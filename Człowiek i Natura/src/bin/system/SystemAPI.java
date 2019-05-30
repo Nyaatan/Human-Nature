@@ -1,6 +1,7 @@
 package bin.system;
 
 import bin.system.dataLoader.DataLoader;
+import bin.ui.Menu;
 import bin.world.World;
 import lib.Enums;
 
@@ -46,6 +47,8 @@ public class SystemAPI {
     public void setWorldName(String worldName) {
         GlobalSettings.worldName = worldName;
     }
+
+    public Menu getMenu() { return GameSystem.menu; }
     //END GAME SYSTEM
 
 }
