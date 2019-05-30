@@ -240,6 +240,7 @@ public class UI extends Application {
                 break;
             case WAIT:
                 btn.relocate(btnX+btnSize/2,btnY+btnSize);
+                break;
             case EXIT:
                 btn.relocate(btnX+E*btnSize, btnY+btnSize*PI/2);
                 btn.setMinWidth(2*btnSize);
@@ -248,6 +249,7 @@ public class UI extends Application {
                     stage.close();
                     API.systemAPI.getMenu().show();
                 });
+                break;
         }
         return btn;
     }
