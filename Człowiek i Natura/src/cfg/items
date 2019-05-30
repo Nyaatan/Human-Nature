@@ -61,7 +61,7 @@ BRANCH{
 type = <resource>
 description = <branch>
 }
-//TODO
+
 FURCOAT{
 type = <equipment>
 eq_type = <body>
@@ -97,7 +97,7 @@ recipe = <(wool;7)>
 WOOLENCAP{
 type = <equipment>
 eq_type = <head>
-buff = <sheepking>
+buff = <shepking>
 description = <woolencap>
 recipe = <(wool;5)>
 }
