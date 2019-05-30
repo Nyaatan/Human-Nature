@@ -4,8 +4,10 @@ import lib.API;
 import lib.Enums.*;
 import lib.Pair;
 
+import java.io.Serializable;
+
 //TODO COMMENTS
-public class Item {
+public class Item implements Serializable {
     private ItemName name;
     private Pair<String,String> description;
     private ItemType type;
