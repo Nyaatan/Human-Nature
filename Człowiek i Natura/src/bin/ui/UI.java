@@ -24,6 +24,7 @@ import java.util.HashMap;
 import static java.lang.Math.*;
 import static javafx.scene.paint.Color.*;
 import static lib.Enums.ButtonName.CRAFT;
+import static lib.Enums.ButtonName.USE;
 
 //import lib.CommandRefusedException;
 //import javafx.scene.Group;
@@ -45,7 +46,6 @@ public class UI extends Application {
     Enums.Species.AllSpecies nameLegend[]=Enums.Species.AllSpecies.values();
     @Override
     public void start(Stage primaryStage) {
-
         
         primaryStage.setTitle("Human&Nature");
 
@@ -64,6 +64,7 @@ public class UI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
     private Label wordLegend(double legendX,double legendY, Enums.Species.AllSpecies nameLegend )
     {
         Label myLabel= new Label(API.dataLoaderAPI.getSpecimenName(nameLegend));
@@ -148,6 +149,7 @@ public class UI extends Application {
 
     private void mapUpdate(int r,Pane root)
     {
+        if(!API.worldSPI.getHuman().alive) endSimulation();
         root.getChildren().clear();
         for(int i=0;i<nameLegend.length;i++)
         {
@@ -155,10 +157,11 @@ public class UI extends Application {
             root.getChildren().add(wordLegend(legendX,legendY+i*legendY/2,nameLegend[i]));
         }
         for(ButtonName name : ButtonName.values()){
-            if(name != CRAFT) root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root,stage));
+            if(name != CRAFT && name != USE) root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root,stage));
         }
         Pair<ComboBox,Button> craftingBox = makeCraftingBox(root);
-        root.getChildren().addAll(craftingBox.getX(), craftingBox.getY(), makeInventoryList());
+        Pair<ListView<String>,Button> inventoryList = makeInventoryList(root);
+        root.getChildren().addAll(craftingBox.getX(), craftingBox.getY(), inventoryList.getX(), inventoryList.getY(), makeBuffList());
 
 
          for(int i=0;i<r;i++){
@@ -181,11 +184,11 @@ public class UI extends Application {
                 FXCollections.observableArrayList(optionList);
 
         ComboBox comboBox = new ComboBox(options);
-        comboBox.relocate(btnX+Math.E*btnSize, btnY);
+        comboBox.relocate(btnX+Math.E*btnSize, btnY+btnSize);
         comboBox.setMinWidth(btnSize*2);
         comboBox.setPromptText("Select item");
 
-        Button button = new Button("Craft");
+        Button button = new Button();
         button.setMinWidth (btnSize*2);
         button.setMinHeight (btnSize);
         button.setText(CRAFT.toString());
@@ -197,24 +200,41 @@ public class UI extends Application {
                 mapUpdate(r, root);
             }
         });
-        button.relocate(btnX+E*btnSize, btnY+btnSize/2);
+        button.relocate(btnX+E*btnSize, btnY+btnSize*PI/2);
 
         return new Pair<>(comboBox,button);
     }
 
-    private ListView<String> makeInventoryList()
+    private Pair<ListView<String>,Button> makeInventoryList(Pane root)
     {
         HashMap<Enums.ItemName,Integer> inventory = API.worldSPI.getHuman().getInventory().getInventory();
         ArrayList<String> items = new ArrayList<>();
         for(Enums.ItemName name : inventory.keySet())
         {
-            items.add(name.toString() + "\t\t\t\t\t\t" + inventory.get(name));
+            String itemName = name.toString() + "\t\t";
+            if(name.toString().length()<=3) itemName += "\t";
+            if(name.toString().length()>=7) itemName = itemName.split("\t")[0] + "\t";
+            if(name.toString().length()>=10) itemName = itemName.split("\t")[0];
+            items.add(itemName + "\t\t\t\t" + inventory.get(name));
         }
         ObservableList<String> data = FXCollections.observableArrayList(items);
         ListView<String> listInventory = new ListView<>();
         listInventory.setItems(data);
-        listInventory.relocate(legendX+100,legendY);
-        return listInventory;
+        listInventory.relocate(legendX+170,legendY-40);
+
+        Button button = new Button(USE.toString());
+        button.setMinWidth (btnSize*2);
+        button.setMinHeight (btnSize);
+        button.relocate(btnX+E*btnSize, btnY-20);
+        button.setOnAction(event -> {
+            Commander com = new Commander();
+            if(listInventory.getSelectionModel().getSelectedItem()!=null) {
+                com.giveCommand(Enums.Commands.Use.valueOf(listInventory.getSelectionModel().getSelectedItem().split("\t")[0]));
+                doAction(com);
+                mapUpdate(r, root);
+            }
+        });
+        return new Pair<>(listInventory,button);
     }
 
     private Button makeButton(int btnSize,int btnX,int btnY, ButtonName btnName,Pane root,Stage stage)
@@ -253,17 +273,24 @@ public class UI extends Application {
             case WAIT:
                 btn.relocate(btnX+btnSize/2,btnY+btnSize);
                 break;
-            case EXIT:
-                btn.relocate(btnX+E*btnSize, btnY+btnSize*PI/2);
-                btn.setMinWidth(2*btnSize);
-                btn.setOnAction(event -> {
-                    API.systemAPI.getWorld().save();
-                    stage.close();
-                    API.systemAPI.getMenu().show();
-                });
-                break;
         }
         return btn;
+    }
+
+    private ListView<String> makeBuffList()
+    {
+        ArrayList<Enums.Buff> inventoryBuff = API.worldSPI.getHuman().getBuffs().getAll();
+        ArrayList<String> buff = new ArrayList<>();
+        for(Enums.Buff name : inventoryBuff)
+        {
+            buff.add(name.toString());
+        }
+        ObservableList<String> data = FXCollections.observableArrayList(buff);
+        ListView<String> listBuff = new ListView<>();
+        listBuff .setItems(data);
+        listBuff .setPrefSize(160, 180);
+        listBuff .relocate(legendX-btnSize/2+10,legendY+170);
+        return listBuff ;
     }
 
     private void doAction(Commander com)
@@ -276,5 +303,11 @@ public class UI extends Application {
         }
         System.out.println(API.worldAPI.getPopulation());
     }
-    
+
+    private void endSimulation() {
+        API.systemAPI.getWorld().save();
+        Alert alert = new Alert(AlertType.ERROR, "YOU DIED\n" + API.worldAPI.getPopulation() , ButtonType.OK);
+        alert.getDialogPane().setMinHeight(300);
+        alert.showAndWait();
+    }
 }

@@ -77,7 +77,8 @@ public class Enums implements Serializable {
     }
 
     public enum Buff{
-        NONE(0), TIMBERMAN(2),HOGWEED_RESISTANT(0),MAGICJUICE(10), BLESSING(2);
+        NONE(0), TIMBERMAN(2),HOGWEED_RESISTANT(0),MAGICJUICE(10), BLESSING(2), SWORDSMAN(2), SHEPKING(1),
+        WARMNIGHT(1), SILKYSTEP(1), SHEPHERD(1), NOBLE(2);
 
         public final int strength;
         Buff(int i) {
@@ -89,6 +90,6 @@ public class Enums implements Serializable {
         NEWGAME,LOAD,EXIT
     }
     public enum ButtonName{
-        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT, CRAFT, EXIT
+        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT, CRAFT, USE
     }
 }
