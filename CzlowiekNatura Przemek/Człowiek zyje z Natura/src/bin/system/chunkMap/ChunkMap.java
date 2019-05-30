@@ -44,7 +44,10 @@ public class ChunkMap implements Serializable {
 
     private Pair<Integer,Integer> coordsToID(Pair<Integer,Integer> coords)
     {
-        return new Pair<>(coords.getX()/API.systemAPI.CHUNK_SIZE, coords.getY()/API.systemAPI.CHUNK_SIZE);
+        int corX = 0, corY = 0;
+        if(coords.getX()<0) corX = 1;
+        if(coords.getY()<0) corY = 1;
+        return new Pair<>(coords.getX()/API.systemAPI.CHUNK_SIZE - corX, coords.getY()/API.systemAPI.CHUNK_SIZE - corY);
     }
 
     public Organism getField(Pair<Integer,Integer> coords)
@@ -75,10 +78,10 @@ public class ChunkMap implements Serializable {
         HashSet<Pair<Integer,Integer>> keys = new HashSet<>(chunkMap.keySet());
         for(Pair<Integer,Integer> ID : keys)
         {
-            if(abs(ID.getX()-newCenterID.getX())>=renderingDistance || abs(ID.getY()-newCenterID.getY())>=renderingDistance)
+            if(abs(ID.getX()-newCenterID.getX())>renderingDistance || abs(ID.getY()-newCenterID.getY())>renderingDistance)
             {
-                chunkDumper.Dump(chunkMap.get(ID));
-                chunkMap.remove(ID);
+                chunkDumper.Dump(get(ID));
+                remove(ID);
             }
         }
         for(int x=newCenterID.getX()-renderingDistance;x<newCenterID.getX()+renderingDistance;++x)
@@ -86,12 +89,25 @@ public class ChunkMap implements Serializable {
             for(int y=newCenterID.getY()-renderingDistance;y<newCenterID.getY()+renderingDistance;++y)
             {
                 Pair<Integer,Integer> newID = new Pair<>(x,y);
-                if(!contains(newID))
+                if(get(newID)==null)
                 {
                     Chunk newChunk = chunkDumper.load(newID);
                     if(newChunk==null) newChunk = chunkGen.generate(newID);
                     chunkMap.put(newID,newChunk);
                 }
+            }
+        }
+    }
+
+    private void remove(Pair<Integer, Integer> id) {
+        HashSet<Pair<Integer,Integer>> keySet = new HashSet<>(chunkMap.keySet());
+
+        for(Pair<Integer,Integer> ID : keySet)
+        {
+            try {
+                if (id.equals(ID)) chunkMap.remove(ID);
+            } finally {
+                chunkMap.remove(ID);
             }
         }
     }

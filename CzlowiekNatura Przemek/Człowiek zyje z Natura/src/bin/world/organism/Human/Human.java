@@ -19,6 +19,8 @@ import static lib.Enums.ItemType.*;
 public class Human extends Organism {
     private final int baseStr;
 
+    public boolean alive = true;
+
     public Human(Enums.Species.AllSpecies specimen, Pair<Integer, Integer> coords,
                  Pair<Integer, Integer> sectorID) {
         super(specimen, coords, sectorID);
@@ -65,16 +67,8 @@ public class Human extends Organism {
 
     private void craft(Enums.ItemName item) {
         ArrayList<Pair<Enums.ItemName, Integer>> recipe = craftingBook.getRecipe(item);
-        boolean craftingPossible = true;
-        for(Pair<Enums.ItemName, Integer> itemCount : recipe)
-        {
-            if(inventory.count(itemCount.getX())<itemCount.getY())
-            {
-                craftingPossible = false;
-                break;
-            }
-        }
-        if(craftingPossible)
+
+        if(canCraft(item))
         {
             for(Pair<Enums.ItemName, Integer> itemCount : recipe)
             {
@@ -83,6 +77,7 @@ public class Human extends Organism {
             inventory.add(new Item(item));
         }
     }
+
 
     public void take(ArrayList<Item> loot)
     {
@@ -197,7 +192,7 @@ public class Human extends Organism {
 
     @Override
     public void die(Organism killer) {
-        System.out.println("AAAAAAAAAAAAAGHGHGHGHGHGh");
+        alive = false;
     }
 
     public CraftingBook getCraftingBook() {
@@ -212,4 +207,18 @@ public class Human extends Organism {
         return buffs;
     }
 
+    public boolean canCraft(Enums.Commands.Craft item) {
+        for(Pair<Enums.ItemName, Integer> itemPair : craftingBook.getRecipe(Enums.ItemName.valueOf(item.toString())))
+        {
+            if(!inventory.contains(itemPair.getX(), itemPair.getY()))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean canCraft(Enums.ItemName item) {
+        return canCraft(Enums.Commands.Craft.valueOf(item.toString()));
+    }
 }

@@ -59,7 +59,6 @@ public class Animal extends Mob{
                 Enums.Directions.values()[ThreadLocalRandom.current().nextInt(Enums.Directions.values().length)],
                 this.coordinates)); //get coordinates in random direction from enum Directions, then move
 
-        try {
             if (API.worldSPI.getSector(this.coordinates).getID().equals(this.sectorID)) {
                 if (API.worldSPI.getField(this.coordinates) != null) {
                     this.interact(API.worldSPI.getField(this.coordinates));
@@ -72,7 +71,6 @@ public class Animal extends Mob{
                 this.sectorID = API.worldAPI.getMap().getChunkByCoords(this.coordinates).getID();
                 API.worldSPI.setField(this.oldCoords, null);
             }
-        } catch (Exception e) { }
     }
 
     @Override

@@ -25,7 +25,7 @@ public class TurnComputer{
     }
 
     public void computeTurn() throws CommandRefusedException {
-        Pair<Integer,Integer> centerID = map.getChunkByCoords(API.worldSPI.getHuman().getCoords()).getID();
+        Pair<Integer,Integer> centerID = API.worldAPI.getCenterChunk().getID();
         computed = new ArrayList<>();
 
         for(Chunk chunk : chunks)
@@ -33,7 +33,7 @@ public class TurnComputer{
             if(Math.abs(centerID.getX()-chunk.getID().getX())<API.systemAPI.RENDERING_DISTANCE-1 &&
                     Math.abs(centerID.getY()-chunk.getID().getY())<API.systemAPI.RENDERING_DISTANCE-1) {
 
-                chunk.setOrganisms(computeChunk(new Chunk(chunk)));
+                chunk.setOrganisms(computeChunk(chunk));
             }
         }
         for(Organism organism : map.getTransfers())

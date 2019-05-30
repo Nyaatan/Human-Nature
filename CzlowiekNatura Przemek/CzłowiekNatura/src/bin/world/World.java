@@ -47,33 +47,65 @@ public class World implements Serializable {
     {
         switch (dir) {
             case UPRIGHT:
-                if(fromCoords.getY()%2!=0){
-                    return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                if(fromCoords.getY()>=0){
+                    if(fromCoords.getY()%2!=0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
+                    }
                 }else{
-                    return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
+                    if(fromCoords.getY()%2==0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() + 1);
+                    }
                 }
-                
+
             case DOWNLEFT:
-                if(fromCoords.getY()%2==0){
-                    return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                if(fromCoords.getY()>=0){
+                    if(fromCoords.getY()%2==0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
+                    }
                 }else{
-                    return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
+                    if(fromCoords.getY()%2!=0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() - 1);
+                    }
                 }
             case LEFT:
                 return new Pair<>(fromCoords.getX() - 1, fromCoords.getY());
             case RIGHT:
                 return new Pair<>(fromCoords.getX() + 1, fromCoords.getY());
             case UPLEFT:
-                if(fromCoords.getY()%2==0){
-                    return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                if(fromCoords.getY()>=0){
+                    if(fromCoords.getY()%2==0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
+                    }
                 }else{
-                    return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
+                    if(fromCoords.getY()%2!=0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() + 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() - 1, fromCoords.getY() + 1);
+                    }
                 }
             case DOWNRIGHT:
-                if(fromCoords.getY()%2!=0){
-                    return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                if(fromCoords.getY()>=0){
+                    if(fromCoords.getY()%2!=0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
+                    }
                 }else{
-                    return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
+                    if(fromCoords.getY()%2==0){
+                        return new Pair<>(fromCoords.getX(), fromCoords.getY() - 1);
+                    }else{
+                        return new Pair<>(fromCoords.getX() + 1, fromCoords.getY() - 1);
+                    }
                 }
             default:
                 return new Pair<>(fromCoords.getX(),fromCoords.getY());

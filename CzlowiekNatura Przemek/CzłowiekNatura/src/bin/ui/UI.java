@@ -8,11 +8,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import lib.API;
 import lib.CommandRefusedException;
 import lib.Enums;
@@ -36,21 +36,24 @@ public class UI extends Application {
         start(new Stage());
     }
     private final int btnSize= 80, r=16,btnX=900,btnY=450;
-    private final double sizeX=60,sizeY=60;
+    private final double sizeX=60,sizeY=60,sizeHex=27,legendX=1000,legendY=50;
     private final Pair<Integer,Integer> windowSize = new Pair<>(1280,720);
-
+    Enums.Species.AllSpecies nameLegend[]=Enums.Species.AllSpecies.values();
     @Override
     public void start(Stage primaryStage) {
 
         
         primaryStage.setTitle("Human&Nature");
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
 
         Pane root = new Pane();
         
         Scene scene = new Scene(root, windowSize.getX(),windowSize.getY());
         scene.setRoot(root);
         
+        /*Label myLabel = new Label("Wilk");
+        root.getChildren().add(myLabel);
+        myLabel.relocate(1000,50);*/
         
         mapUpdate(r,root);
         for(ButtonName name : ButtonName.values()){
@@ -60,6 +63,45 @@ public class UI extends Application {
         
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+    private Label wordLegend(double legendX,double legendY, Enums.Species.AllSpecies nameLegend )
+    {
+        Label myLabel= new Label(API.dataLoaderAPI.getSpecimenName(nameLegend));
+        myLabel.relocate(legendX,legendY);
+        return myLabel;
+    }
+    private Polygon hexLegend(double sizeHex, double legendX, double legendY, Enums.Species.AllSpecies nameLegend)
+    {
+        Polygon hexLeg=new Polygon();
+        switch(nameLegend)
+        {
+            case HUMAN:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(RED);
+                break;
+            case WOLF:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(BLACK);
+                break;
+            case SHEEP:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(BEIGE);
+                break;
+            case CYBERSHEEP:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(BLUE);
+                break;
+            case OAK:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(MAROON);
+                break;
+            case FLOWER:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(YELLOW);
+                break;
+            case HOGWEED:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(DARKGREEN);
+                break;
+            default:
+                hexLeg=new Hexagon(legendX,legendY,sizeHex).setColor(GREY);
+                break;
+        }
+        
+        return hexLeg;
     }
     private Polygon makeHex(int i,int j,double size,double sizeX,double sizeY)
     {
@@ -97,9 +139,9 @@ public class UI extends Application {
     private Polygon getHex(int i, int j, double size, double sizeX, double sizeY, Color color) {
         Polygon hex;
         if(i%2==0){
-            hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(color);
+            hex=new Hexagon(sizeX+size*j*2*cos(Math.toRadians(30)),sizeY+3*i*size/2,sizeHex).setColor(color);
         }else{
-            hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2).setColor(color);
+            hex=new Hexagon(sizeX+size*(j*2+1)*cos(Math.toRadians(30)),sizeY+3*i*size/2,sizeHex).setColor(color);
         }
         return hex;
     }
@@ -107,13 +149,18 @@ public class UI extends Application {
     private void mapUpdate(int r,Pane root)
     {
         root.getChildren().clear();
+        for(int i=0;i<nameLegend.length;i++)
+        {
+            root.getChildren().add(hexLegend(10,legendX-10,legendY+10+i*legendY/2,nameLegend[i]));
+            root.getChildren().add(wordLegend(legendX,legendY+i*legendY/2,nameLegend[i]));
+        }
         for(ButtonName name : ButtonName.values()){
             root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root));
         }
         
          for(int i=0;i<r;i++){
             for(int j=0;j<r;j++){
-                root.getChildren().add(makeHex(i,j,Hexagon.size,sizeX,sizeY));
+                root.getChildren().add(makeHex(i,j,sizeHex,sizeX,sizeY));
             }  
         }
     }

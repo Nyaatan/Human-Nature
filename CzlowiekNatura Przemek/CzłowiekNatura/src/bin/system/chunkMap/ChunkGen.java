@@ -19,6 +19,7 @@ public class ChunkGen extends RecursiveTask {
     Chunk generate(Pair<Integer, Integer> ID)
     {
         chunk = new Chunk(ID);
+        this.ID = ID;
 
         for(int i=0;i< API.systemAPI.CHUNK_SIZE;++i)
         {

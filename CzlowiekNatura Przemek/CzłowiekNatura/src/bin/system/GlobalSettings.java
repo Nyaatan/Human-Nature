@@ -7,7 +7,7 @@ import lib.Enums;
 
 import java.io.File;
 
-public final class GlobalSettings {
+public class GlobalSettings {
     int MAX_INITIATIVE = 15;
     int CHUNK_SIZE = 16;
     int RENDERING_DISTANCE = 10;
@@ -46,9 +46,7 @@ public final class GlobalSettings {
 
     GlobalSettings()
     {
-        System.out.println("dupa");
         setLanguage(Enums.Language.valueOf(System.getProperty("user.language").toUpperCase().split("-")[0]));
-        
         dataLoader = new DataLoader(language);
 
         MAX_INITIATIVE = Integer.parseInt(API.dataLoaderAPI.getConfig("max_initiative", "config").get(0));

@@ -12,4 +12,5 @@ public class DataLoaderAPI {
     public HashMap<String,ArrayList<String>> getBlockConfig(String blockName, String fileName) {
         return GlobalSettings.dataLoader.getBlockConfig(blockName,fileName);}
     public Pair<String, String> getItemDescription(Enums.ItemName name) { return GlobalSettings.dataLoader.getItemDescription(name); }
+    public String getSpecimenName(Enums.Species.AllSpecies specimen) { return GlobalSettings.dataLoader.getSpecimenName(specimen); }
 }
