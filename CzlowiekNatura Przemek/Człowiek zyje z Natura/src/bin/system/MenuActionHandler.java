@@ -3,6 +3,7 @@ package bin.system;
 import bin.ui.WorldStarter;
 import javafx.stage.Stage;
 import lib.Enums;
+
 import static lib.API.systemAPI;
 
 public class MenuActionHandler {

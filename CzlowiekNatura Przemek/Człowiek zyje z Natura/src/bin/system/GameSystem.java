@@ -9,7 +9,7 @@ public class GameSystem {
 
     static GlobalSettings globalSettings;
 
-    Menu menu;
+    static Menu menu;
 
     public GameSystem()
     {

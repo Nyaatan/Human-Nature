@@ -13,6 +13,8 @@ import lib.Enums;
 public class Menu extends Application {
     private GameSystem gameSystem;
 
+    private Stage menuStage;
+
     public void setGameSystem(GameSystem gameSystem)
     {
         this.gameSystem = gameSystem;
@@ -25,6 +27,8 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        menuStage = stage;
+
         stage.initStyle(StageStyle.UNDECORATED);
 
         stage.setTitle("Human&Nature");
@@ -48,15 +52,15 @@ public class Menu extends Application {
         switch(option)
         {
             case NEWGAME:
-                newButton.relocate(200, 150);
+                newButton.relocate(200, 200);
                 break;
 
             case LOAD:
-                newButton.relocate(200, 275);
+                newButton.relocate(200, 325);
                 break;
 
             case EXIT:
-                newButton.relocate(200,400);
+                newButton.relocate(200,450);
                 break;
         }
 
@@ -70,5 +74,9 @@ public class Menu extends Application {
         });
 
         return newButton;
+    }
+
+    public void show() {
+        menuStage.show();
     }
 }

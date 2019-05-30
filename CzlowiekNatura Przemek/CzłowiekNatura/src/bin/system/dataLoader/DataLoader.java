@@ -27,9 +27,12 @@ public class DataLoader {
         String pathCfg = pathDir + "\\cfg";
         String pathSrcItemDescr = pathDir + "\\src\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\items";
         String pathItemDescr = pathDir + "\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\items";
+        String pathSrcSpecName = pathDir + "\\src\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\species";
+        String pathSpecName = pathDir + "\\lang\\" + language.toString().toLowerCase() + "\\descriptions\\species";
 
         loadConfigs(this.configs, pathCfg, pathSrcCfg);
         loadConfigs(this.descriptionsItem, pathItemDescr, pathSrcItemDescr);
+        loadConfigs(this.configs, pathSpecName, pathSrcSpecName);
     }
 
     ArrayList<String> getConfig(String config, String fileName) {
@@ -56,6 +59,15 @@ public class DataLoader {
         }
         fullDescription.setY(description.toString());
         return fullDescription;
+    }
+
+    String getSpecimenName(Enums.Species.AllSpecies specimen)
+    {
+        for(String configLine : configs.get("speciesNames"))
+        {
+            if(configLine.contains(specimen.toString())) return parseConfig(configLine).get(0);
+        }
+        return "None";
     }
 
     private void loadConfigs(HashMap<String,ArrayList<String>> configs, String path, String pathSrc)
@@ -126,4 +138,5 @@ public class DataLoader {
     {
         return new ArrayList<>(Arrays.asList(configLine.split("<")[1].split(">")[0].split(",")));
     }
+
 }

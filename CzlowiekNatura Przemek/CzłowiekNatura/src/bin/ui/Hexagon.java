@@ -13,8 +13,8 @@ import static java.lang.Math.sin;
 
 public class Hexagon {
     private Polygon shape;
-    static double size=27;
-    Hexagon(double centerX, double centerY)
+    //static double size=27;
+    Hexagon(double centerX, double centerY,double size)
     {
         
         this.shape = new Polygon();
