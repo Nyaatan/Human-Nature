@@ -309,5 +309,6 @@ public class UI extends Application {
         Alert alert = new Alert(AlertType.ERROR, "YOU DIED\n" + API.worldAPI.getPopulation() , ButtonType.OK);
         alert.getDialogPane().setMinHeight(300);
         alert.showAndWait();
+        System.exit(0);
     }
 }
