@@ -36,8 +36,8 @@ public class Human extends Organism {
     private void allocateMemory()
     {
         this.inventory = new Inventory();
-        this.equipment = new Equipment(this.inventory);
         this.buffs = new Buffs();
+        this.equipment = new Equipment(this.inventory, this.buffs);
         this.craftingBook = new CraftingBook();
     }
 

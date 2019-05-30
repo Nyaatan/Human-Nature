@@ -57,7 +57,7 @@ public class UI extends Application {
         
         mapUpdate(r,root);
         for(ButtonName name : ButtonName.values()){
-            if(name!=CRAFT) root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root,primaryStage));
+            if((name!=CRAFT)&&(name!=USE)) root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root,primaryStage));
         }
         
         
@@ -288,8 +288,8 @@ public class UI extends Application {
         ObservableList<String> data = FXCollections.observableArrayList(buff);
         ListView<String> listBuff = new ListView<>();
         listBuff .setItems(data);
-        listBuff .setPrefSize(160, 180);
-        listBuff .relocate(legendX-btnSize/2+10,legendY+170);
+        listBuff .setPrefSize(165, 185);
+        listBuff .relocate(legendX-btnSize/2+15,legendY+175);
         return listBuff ;
     }
 
@@ -309,5 +309,6 @@ public class UI extends Application {
         Alert alert = new Alert(AlertType.ERROR, "YOU DIED\n" + API.worldAPI.getPopulation() , ButtonType.OK);
         alert.getDialogPane().setMinHeight(300);
         alert.showAndWait();
+        System.exit(0);
     }
 }
