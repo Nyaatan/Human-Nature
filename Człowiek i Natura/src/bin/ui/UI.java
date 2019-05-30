@@ -19,6 +19,7 @@ import lib.Enums.ButtonName;
 import lib.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static java.lang.Math.*;
 import static javafx.scene.paint.Color.*;
@@ -39,7 +40,7 @@ public class UI extends Application {
         start(stage = new Stage());
     }
     private final int btnSize= 80, r=16,btnX=900,btnY=450;
-    private final double sizeX=60,sizeY=60,sizeHex=27,legendX=1000,legendY=50;
+    private final double sizeX=60,sizeY=60,sizeHex=27,legendX=850,legendY=50;
     private final Pair<Integer,Integer> windowSize = new Pair<>(1280,720);
     Enums.Species.AllSpecies nameLegend[]=Enums.Species.AllSpecies.values();
     @Override
@@ -47,16 +48,12 @@ public class UI extends Application {
 
         
         primaryStage.setTitle("Human&Nature");
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
 
         Pane root = new Pane();
         
         Scene scene = new Scene(root, windowSize.getX(),windowSize.getY());
         scene.setRoot(root);
-        
-        /*Label myLabel = new Label("Wilk");
-        root.getChildren().add(myLabel);
-        myLabel.relocate(1000,50);*/
+
         
         mapUpdate(r,root);
         for(ButtonName name : ButtonName.values()){
@@ -161,7 +158,8 @@ public class UI extends Application {
             if(name != CRAFT) root.getChildren().add(makeButton(btnSize,btnX,btnY,name,root,stage));
         }
         Pair<ComboBox,Button> craftingBox = makeCraftingBox(root);
-        root.getChildren().addAll(craftingBox.getX(), craftingBox.getY());
+        root.getChildren().addAll(craftingBox.getX(), craftingBox.getY(), makeInventoryList());
+
 
          for(int i=0;i<r;i++){
             for(int j=0;j<r;j++){
@@ -204,6 +202,20 @@ public class UI extends Application {
         return new Pair<>(comboBox,button);
     }
 
+    private ListView<String> makeInventoryList()
+    {
+        HashMap<Enums.ItemName,Integer> inventory = API.worldSPI.getHuman().getInventory().getInventory();
+        ArrayList<String> items = new ArrayList<>();
+        for(Enums.ItemName name : inventory.keySet())
+        {
+            items.add(name.toString() + "\t\t\t\t\t\t" + inventory.get(name));
+        }
+        ObservableList<String> data = FXCollections.observableArrayList(items);
+        ListView<String> listInventory = new ListView<>();
+        listInventory.setItems(data);
+        listInventory.relocate(legendX+100,legendY);
+        return listInventory;
+    }
 
     private Button makeButton(int btnSize,int btnX,int btnY, ButtonName btnName,Pane root,Stage stage)
     {
