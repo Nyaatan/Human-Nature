@@ -52,15 +52,15 @@ public class Menu extends Application {
         switch(option)
         {
             case NEWGAME:
-                newButton.relocate(200, 150);
+                newButton.relocate(200, 200);
                 break;
 
             case LOAD:
-                newButton.relocate(200, 275);
+                newButton.relocate(200, 325);
                 break;
 
             case EXIT:
-                newButton.relocate(200,400);
+                newButton.relocate(200,450);
                 break;
         }
 
