@@ -212,4 +212,11 @@ public class Human extends Organism {
         return buffs;
     }
 
+    public boolean canCraft(Enums.Commands.Craft item) {
+        for(Pair<Enums.ItemName, Integer> itemPair : craftingBook.getRecipe(Enums.ItemName.valueOf(item.toString())))
+        {
+            if(!inventory.contains(itemPair.getX(), itemPair.getY())) return false;
+        }
+        return true;
+    }
 }

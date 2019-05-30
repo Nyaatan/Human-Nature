@@ -68,7 +68,7 @@ public class Enums implements Serializable {
         }
 
         public enum Craft{
-            AXE, FURCOAT, WOOLENCOAT, WOOLENBOOTS, WOOLENPANTS, WOOLENCAP, WOODENSWORD, BLESSING, MAGICJUICE,
+            AXE, FURCOAT, WOOLENCOAT, WOOLENBOOTS, WOOLENPANTS, WOOLENCAP, WOODENSWORD, BLESSING, MAGICJUICE;
         }
     }
 
@@ -89,6 +89,6 @@ public class Enums implements Serializable {
         NEWGAME,LOAD,EXIT
     }
     public enum ButtonName{
-        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT;
+        UPRIGHT, DOWNLEFT,LEFT,RIGHT,UPLEFT,DOWNRIGHT,WAIT, CRAFT, EXIT
     }
 }

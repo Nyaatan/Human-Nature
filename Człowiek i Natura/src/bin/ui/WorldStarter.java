@@ -54,12 +54,12 @@ public class WorldStarter extends Application {
             e.printStackTrace();
         }
         new World();
-        stage.close();
+        stage.hide();
         ui = new UI();
         ui.create();
     }
 
-    public static void deleteWorldFolder() throws IOException {
+    private static void deleteWorldFolder() throws IOException {
         Path path = Paths.get(System.getProperty("user.dir") + "\\saves\\" + GlobalSettings.worldName);
         try {
             Files.walkFileTree(path, new SimpleFileVisitor<Path>() {
